@@ -1,0 +1,43 @@
+ /* Mise en page général */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ /* Titre */
+
+ /* Bouton */
+
+
+ /* HEADER */
+
+ /* MAIN */
+.parent {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    width: 80vw;
+    height: 80vh;
+    }
+
+div{
+    background-color: rgb(0, 0, 0);
+}
+    
+.div1 { 
+    background-color: rgb(0, 0, 0);
+    width: 200px;
+    height: 200px;
+    grid-area: 1 / 1 / 2 / 2; }
+.div2 { grid-area: 2 / 1 / 3 / 2; }
+.div3 { grid-area: 1 / 2 / 3 / 3; }
+.div4 { grid-area: 1 / 3 / 2 / 4; }
+.div5 { grid-area: 1 / 4 / 2 / 5; }
+.div6 { grid-area: 2 / 3 / 3 / 5; }
+
+ /* FOOTER */
