@@ -1,0 +1,164 @@
+ /* Mise en page général */
+
+// variable
+
+$main-color : #139909;
+$second-color : #523CE6;
+
+$title-font :'Abril Fatface', cursive;
+$main-font : 'Lato';
+
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $main-font, Helvetica, sans-serif;
+}
+
+/* Mixin */
+
+@mixin flex-center-btw {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ /* Titre */
+
+h1{
+    font-family: $title-font;
+    font-size: 50px;
+    margin: 30px 0;
+} 
+
+h2{
+    font-family: $title-font;
+    font-size: 35px;
+    margin: 30px 0;
+}
+
+h3{
+    font-size: 16px;
+    color: $second-color;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    margin: 30px 0;
+}
+
+p{
+    font-size: 17px;
+    line-height: 1.3;
+}
+
+ /* Bouton */
+
+.main-cta {
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: $main-color;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    color: white;
+        &:hover{
+            border: 2px solid $main-color;
+            background-color: transparent;
+            color: $main-color;
+    }
+}
+
+.second-cta {
+    border: none;
+    background-color: transparent;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+        &:hover{
+            color: $second-color;
+            text-decoration: underline;
+    }
+}
+
+ /* Class fonctionnelles */
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+ /* NAV */
+
+ header{
+    margin-top: 20px;
+}
+
+nav{
+    @include flex-center-btw;
+    .link-nav{
+        margin-left: 15%;
+    }
+    ul{
+        @include flex-center-btw;
+        li{
+            list-style-type: none;
+        
+            a{
+                text-decoration: none;
+                color: black;
+                padding: 12px 30px;
+            
+                &:hover{
+                    color: $second-color;
+                    transition: all 0.3s ease;
+                }
+            }
+        }
+    }
+}
+
+ /* MAIN */
+
+#header{
+    margin: 60px 0;
+}
+
+.wrapper{
+    width: 100%;
+    @include flex-center-btw;
+    justify-content: flex-start;
+    padding: 70px 0;
+}
+
+.header-block{
+    width: 50%;
+}
+
+.header-block.img {
+    width: 50%;
+    margin-left: 70px;
+    &#hotel-img{
+        margin-right: 70px;
+        margin-left: 0;
+    }
+    img{
+        width: auto;
+        height: 70vh;
+    }
+}
+
+.header-block.text {
+    width: 50%;
+    .header-cta{
+        @include flex-center-btw;
+        margin-top: 40px;
+    }
+}
+
+
+
+ /* FOOTER */
