@@ -1,0 +1,123 @@
+ /* Mise en page général */
+
+@font-face {
+    font-family: "Fahkwang";
+    src: url('../font/Fahkwang-Regular.ttf');
+    src: url('../font/Fahkwang-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Gunsan";
+    src: url('../font/Gunsan.ttf');
+    src: url('../font/Gunsan.ttf') format('truetype');
+}
+
+// variable
+
+$main-color : #97FFD0;
+$second-color : #fdfdfd;
+$bg-color : #0E0E0E;
+
+$title-font :'Gunsan';
+$main-font : 'Fahkwang';
+
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $main-font, Helvetica, sans-serif;
+}
+
+body{
+    background-color: $bg-color;
+    color: $second-color;
+
+}
+/* Mixin */
+
+@mixin flex-center-btw {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ /* Titre */
+
+h1{
+    font-family: $main-font;
+    font-weight: 400;
+    font-size: 10vw;
+    span{
+        font-family: $title-font;
+        color: $main-color;
+        
+    }
+}
+
+p{
+    font-size: 2.1rem;
+}
+
+ /* Bouton */
+
+ .main-cta{
+    
+ }
+
+ /* Class fonctionnelles */
+
+ .container{
+    width: 80%;
+    margin: 0 auto;
+    &.large{
+        width: 95%;
+    }
+}
+
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+section { 
+    height: 150vh;
+}
+
+ /* HEADER */
+
+ header{
+    margin-top: 20px;
+}
+
+nav{
+    @include flex-center-btw;
+    .link-nav{
+        margin-left: 15%;
+    }
+    ul{
+        @include flex-center-btw;
+        li{
+            list-style-type: none;
+        
+            a{
+                text-decoration: none;
+                color: $second-color;
+                padding: 12px 30px;
+            
+                &:hover{
+                    color: $main-color;
+                    transition: all 0.3s ease;
+                }
+            }
+        }
+    }
+}
+
+ /* MAIN */
+
+ .block-bio{
+    width: 50vw;
+ }
+
+ /* FOOTER */
