@@ -7,13 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Description de la page">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" href="favicon.ico" />
+    <link rel='icon' href='img/favicon-32.png' type='image/x-icon' />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <title>My 1st page </title>
+    <script>
+
+        var LoaderPage;
+        var hidePage;
+
+        function myFunction() {
+            LoaderPage = setTimeout(showPage, 2800);
+            hidePage = setTimeout(hideLoader, 4000);
+        }
+
+        function showPage() {
+            document.querySelector(".loader-animation").style.opacity = "0";
+            document.querySelector(".blockBg-loader").style.animation = "scaleYToZero 500ms 1 ease 700ms";
+            document.querySelector(".blockBg-loader.green").style.animation = "scaleYToZero 500ms 1 ease 800ms";
+        }
+
+        function hideLoader() {
+            document.querySelector(".loader-animation").style.display = "none";
+            document.querySelector(".loader-wrapper").style.display = "none";
+        }
+    </script>
 </head>
 
-<body>
+<body onload="myFunction()">
+    <div class="loader-wrapper">
+        <lottie-player class="loader-animation"
+            src="https://lottie.host/826066a6-2a34-4669-bd7b-e9c51246677e/EKGFZiWKuC.json" background="transparent"
+            speed="1" loop autoplay></lottie-player>
+        <div class="blockBg-loader"></div>
+        <div class="blockBg-loader green"></div>
+    </div>
     <header>
-        <div class="container large">
+        <div class=" footer">
             <nav>
                 <div class="logo">
                     <a href=""><img src="img/logo.svg" alt="Creation of Adam logo"></a>
@@ -31,20 +60,177 @@
 
     <section id="hero">
         <div class="container large">
-            <div class="wrapper">
-                <h1>Hey, I'm <span>Ewan</span><br>a french<br><span>creative</span> developer</h1>
+            <div class="mainWrapper">
+                <div class="headerMask">
+                    <h2 class="headingLarge-XX green"><span>Hey, I'm </span>Ewan</h2>
+                </div>
+                <div class="headerMask">
+                    <h2 class="headingLarge-XX"><span>a french</span></h2>
+                </div>
+                <div class="headerMask">
+                    <h1 class="green">creative <span>developer</span></h1>
+                </div>
             </div>
         </div>
     </section>
     <section id="bio">
         <div class="container">
-            <div class="wrapper">
+            <div class="mainWrapper bio">
                 <div class="block-bio">
                     <p>I’m a digital addict based in France.<br><br>
                         I create engaging experience for people, and occasionally for me. I'm a full time digital worker
                         who
                         believe anything can be learned !</p>
-                        <button class="main-cta">Learn More</button>
+                    <div class="main-btn">
+                        <img class="hide" src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img src="img/EllipseBtn green.svg" alt="elipse green">
+                        <a class="main-cta" href="#">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="project">
+        <div class="container small">
+            <div class="mainWrapper">
+                <div class="headerMask">
+                    <h2 class="headingLarge-XX">Projects</h2>
+                </div>
+                <div class="projectWrapper">
+                    <div class="collectionProject">
+                        <a class="blockProject-item" href="#">
+                            <div class="blockProject-img">
+                                <img src="img/img LIKL.jpg" alt="project LIKL visual">
+                            </div>
+                            <div class="secondary-btn">
+                                <p>View LIKL website</p>
+                                <img src="img/right arrow green.svg" alt="green arrow">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="collectionProject right">
+                        <a class="blockProject-item" href="#">
+                            <div class="blockProject-img">
+                                <img src="img/img Luc coaching.jpg" alt="project Luc coaching visual">
+                            </div>
+                            <div class="secondary-btn">
+                                <p>Luc Coaching Project</p>
+                                <img src="img/right arrow green.svg" alt="green arrow">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="collectionProject">
+                        <a class="blockProject-item" href="#">
+                            <div class="blockProject-img">
+                                <img src="img/img old-portfolio.jpg" alt="project old portfolio visual">
+                            </div>
+                            <div class="secondary-btn">
+                                <p>Portfolio Website</p>
+                                <img src="img/right arrow green.svg" alt="green arrow">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="expertise">
+        <div class="container small">
+            <div class="mainWrapper">
+                <div class="headerMask">
+                    <h2 class="headingLarge-XX">My expertises</h2>
+                </div>
+                <div class="expertiseWrapper">
+                    <div class="blockExpertise">
+                        <h3>Webflow Development</h3>
+                        <div class="lineBlockExpertise"></div>
+                    </div>
+                    <div class="blockExpertise">
+                        <h3>Animation & Motion Design</h3>
+                        <div class="lineBlockExpertise"></div>
+                    </div>
+                    <div class="blockExpertise">
+                        <h3>User Experience & Interface</h3>
+                        <div class="lineBlockExpertise"></div>
+                    </div>
+                    <div class="blockExpertise">
+                        <h3>Front-end Developement</h3>
+                        <div class="lineBlockExpertise"></div>
+                    </div>
+                    <div class="blockExpertise">
+                        <h3>Art Direction</h3>
+                        <div class="lineBlockExpertise bottom"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container large">
+            <div class="mainWrapper contact">
+                <div class="headerMask">
+                    <h2 class="headingLarge-XX">Contact</h2>
+                </div>
+                <div class="main-btn">
+                    <img class="hide" src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img src="img/EllipseBtn green.svg" alt="elipse green">
+                    <a class="main-cta" href="#">Contact me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="footer">
+        <div class="container large footer">
+            <div class="mainWrapper footer">
+                <div class="footerNavWrapper">
+                    <nav id="footerNav">
+                        <div class="link-footer">
+                            <ul>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Work</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                        <a class="mailLink-footer" href="mailto:contact.toutain@gmail.com">Send me an email</a>
+                    </nav>
+
+                </div>
+                <div class="footerHeaderBlock">
+                    <div class="headerMask">
+                        <h2 class="headingLarge-XX">Have an idea ?</h2>
+                    </div>
+                    <div class="secondary-btn">
+                        <p>Hire me</p>
+                        <img src="img/right arrow green.svg" alt="green arrow">
+                    </div>
+                </div>
+                <div class="footerNavWrapper">
+                    <nav id="footerNav">
+                        <a class="mailLink-footer" href="#">© Ewan Toutain - 2022</a>
+                        <div class="social-footer">
+                            <ul>
+                                <li class="circleSocial"><a href="#"><img src="img/icon-malt.svg" alt="icon malt"></a>
+                                </li>
+                                <li class="circleSocial"><a href="#"><img src="img/icon-linkedin.svg"
+                                            alt="icon linkedin"></a></li>
+                                <li class="circleSocial"><a href="#"><img src="img/icon-instagram.svg"
+                                            alt="icon Instagram"></a></li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>

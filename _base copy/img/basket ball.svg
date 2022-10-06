@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 235.57 235.62">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#radial-gradient-7);
+      }
+
+      .cls-2 {
+        fill: url(#radial-gradient-8);
+      }
+
+      .cls-3 {
+        fill: url(#radial-gradient-5);
+      }
+
+      .cls-4 {
+        fill: url(#radial-gradient-4);
+      }
+
+      .cls-5 {
+        fill: url(#radial-gradient-6);
+      }
+
+      .cls-6 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-7 {
+        fill: url(#radial-gradient-2);
+      }
+
+      .cls-8 {
+        fill: url(#radial-gradient-3);
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="14.45" cy="-10.63" fx="14.45" fy="-10.63" r="424.13" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#97ffd0"/>
+      <stop offset="1" stop-color="#221e1f"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-2" r="424.13" xlink:href="#radial-gradient"/>
+    <radialGradient id="radial-gradient-3" r="424.13" xlink:href="#radial-gradient"/>
+    <radialGradient id="radial-gradient-4" r="424.13" xlink:href="#radial-gradient"/>
+    <radialGradient id="radial-gradient-5" r="424.13" xlink:href="#radial-gradient"/>
+    <radialGradient id="radial-gradient-6" r="424.13" xlink:href="#radial-gradient"/>
+    <radialGradient id="radial-gradient-7" r="424.13" xlink:href="#radial-gradient"/>
+    <radialGradient id="radial-gradient-8" r="424.13" xlink:href="#radial-gradient"/>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="basket_ball" data-name="basket ball">
+      <path class="cls-6" d="M123.22,.31c26.65-1.19,68.36,18.97,82.84,39.99-28.19,15.83-44.06,39.82-47.12,72.2h-35.71V.31Z"/>
+      <path class="cls-7" d="M206.53,195.44c-22.63,24.76-50.11,38.11-83.38,40.19V123.18h35.87c1.15,15.14,5.62,29.28,13.99,42.06,8.39,12.81,19.42,22.76,33.52,30.19Z"/>
+      <path class="cls-8" d="M29.21,195.58c28.48-16.04,44.35-40.04,47.46-72.42h35.7v112.44c-33.13-2.04-60.63-15.4-83.16-40.02Z"/>
+      <path class="cls-4" d="M29.22,40.08C51.68,15.48,79.15,2.15,112.41,0V112.43h-35.75c-3.07-32.36-18.98-56.32-47.43-72.35Z"/>
+      <path class="cls-3" d="M22.62,48.34c26.01,13.69,40.51,34.78,43.76,64.05H.05c1.18-23.55,8.71-44.71,22.58-64.05Z"/>
+      <path class="cls-5" d="M212.94,48.33c13.98,19.45,21.34,40.58,22.63,64.12-22.27,0-44.16,0-66.34,0,3.13-29.28,17.74-50.32,43.71-64.12Z"/>
+      <path class="cls-1" d="M0,123.15H65.82c0,22.87-16.37,51.86-43.36,63.87C8.76,168.09,1.34,146.94,0,123.15Z"/>
+      <path class="cls-2" d="M169.2,123.16h66.32c-1.17,23.59-8.64,44.75-22.56,64.13-25.93-13.66-40.49-34.69-43.76-64.13Z"/>
+    </g>
+  </g>
+</svg>

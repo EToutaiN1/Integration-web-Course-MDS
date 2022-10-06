@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 225">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#radial-gradient);
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="-41.81" cy="-74.57" fx="-41.81" fy="-74.57" r="579.03" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#97ffd0"/>
+      <stop offset="1" stop-color="#221e1f"/>
+    </radialGradient>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <path id="japan_flag" data-name="japan flag" class="cls-1" d="M0,225C0,150,0,75,0,0c110,0,220,0,330,0,0,75,0,150,0,225-110,0-220,0-330,0ZM166.41,51.71c-34.07-.15-61.71,27.01-61.85,60.75-.14,34.5,27.16,61.92,61.71,61.97,33.58,.05,61.22-27.34,61.37-60.82,.16-34.27-27.03-61.75-61.22-61.9Z"/>
+  </g>
+</svg>
