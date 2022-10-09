@@ -97,6 +97,7 @@ p{
     @include flex-center-center();
     margin-top: 7%;
     position: relative;
+    z-index: 1;
     cursor: pointer;
     img {
         position: absolute;
@@ -105,11 +106,30 @@ p{
         width: 150%;
         max-width: 150%;
         z-index: -1;
+        transition: all ease-in-out 0.4s;
         &.hide{
             opacity: 0;
             transform: rotateZ(-15deg);
         }
+        &.active{
+            &:nth-child(2){
+                transform: rotateZ(-5deg);
+            }
+            &:nth-child(3){
+                transform: rotateZ(0deg);
+            }
+            &:nth-child(4){
+                transform: rotateZ(5deg);
+            }
+            &:nth-child(5){
+                transform: rotateZ(10deg);
+            }
+            &:nth-child(6){
+                transform: rotateZ(-10deg);
+            }
+        }
     }
+
     .main-cta{
         font-size: 1.5rem;
         padding: 20px;
@@ -119,11 +139,13 @@ p{
     }
  }
  
+ 
  .secondary-btn {
     color: $main-color;
     padding: 0 15px;
     margin-left: -35px;
     text-decoration: none;
+    z-index: 12;
     @include flex-center-btw(flex-start, row);
     p{
         display: inline-block;
@@ -131,8 +153,12 @@ p{
         font-size: 1.1rem;
         padding: 20px;
     }
-    img{
+    .secondBtn-img{
         height: auto;
+        transition: all ease-in-out 0.4s;
+        &.active{
+          transform: translateX(10px);  
+        }
     }
  }
 
@@ -217,10 +243,9 @@ nav{
                 text-decoration: none;
                 color: $second-color;
                 padding: 12px 30px;
-            
+                
                 &:hover{
                     color: $main-color;
-                    transition: all 0.3s ease;
                 }
             }
         }
@@ -245,6 +270,7 @@ nav{
     width: 100%;
     height: 100vh;
     opacity: 1;
+    z-index: 1000;
     transition: all 1s ease-out 1.3s;
     &.hidden{
         opacity: 0;
@@ -363,9 +389,9 @@ nav{
                     text-decoration: none;
                     color: $second-color;
                     padding: 12px 30px;
+                    transition: all ease-in-out 0.2s;
                     &:hover{
                         color: $main-color;
-                        transition: all 0.3s ease;
                     }
                 }
             }

@@ -98,6 +98,7 @@ p {
   justify-content: center;
   margin-top: 7%;
   position: relative;
+  z-index: 1;
   cursor: pointer;
 }
 .main-btn img {
@@ -107,10 +108,26 @@ p {
   width: 150%;
   max-width: 150%;
   z-index: -1;
+  transition: all ease-in-out 0.4s;
 }
 .main-btn img.hide {
   opacity: 0;
   transform: rotateZ(-15deg);
+}
+.main-btn img.active:nth-child(2) {
+  transform: rotateZ(-5deg);
+}
+.main-btn img.active:nth-child(3) {
+  transform: rotateZ(0deg);
+}
+.main-btn img.active:nth-child(4) {
+  transform: rotateZ(5deg);
+}
+.main-btn img.active:nth-child(5) {
+  transform: rotateZ(10deg);
+}
+.main-btn img.active:nth-child(6) {
+  transform: rotateZ(-10deg);
 }
 .main-btn .main-cta {
   font-size: 1.5rem;
@@ -125,6 +142,7 @@ p {
   padding: 0 15px;
   margin-left: -35px;
   text-decoration: none;
+  z-index: 12;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -136,8 +154,12 @@ p {
   font-size: 1.1rem;
   padding: 20px;
 }
-.secondary-btn img {
+.secondary-btn .secondBtn-img {
   height: auto;
+  transition: all ease-in-out 0.4s;
+}
+.secondary-btn .secondBtn-img.active {
+  transform: translateX(10px);
 }
 
 /* Class fonctionnelles */
@@ -238,7 +260,6 @@ nav ul li a {
 }
 nav ul li a:hover {
   color: #97FFD0;
-  transition: all 0.3s ease;
 }
 
 .headerMask {
@@ -256,6 +277,7 @@ nav ul li a:hover {
   width: 100%;
   height: 100vh;
   opacity: 1;
+  z-index: 1000;
   transition: all 1s ease-out 1.3s;
 }
 .loader-wrapper.hidden {
@@ -380,10 +402,10 @@ nav ul li a:hover {
   text-decoration: none;
   color: #fdfdfd;
   padding: 12px 30px;
+  transition: all ease-in-out 0.2s;
 }
 #footerNav .link-footer ul li a:hover {
   color: #97FFD0;
-  transition: all 0.3s ease;
 }
 
 .mailLink-footer {

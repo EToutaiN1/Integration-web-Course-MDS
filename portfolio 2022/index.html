@@ -10,27 +10,6 @@
     <link rel='icon' href='img/favicon-32.png' type='image/x-icon' />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <title>My 1st page </title>
-    <script>
-
-        var LoaderPage;
-        var hidePage;
-
-        function myFunction() {
-            LoaderPage = setTimeout(showPage, 2800);
-            hidePage = setTimeout(hideLoader, 4000);
-        }
-
-        function showPage() {
-            document.querySelector(".loader-animation").style.opacity = "0";
-            document.querySelector(".blockBg-loader").style.animation = "scaleYToZero 500ms 1 ease 700ms";
-            document.querySelector(".blockBg-loader.green").style.animation = "scaleYToZero 500ms 1 ease 800ms";
-        }
-
-        function hideLoader() {
-            document.querySelector(".loader-animation").style.display = "none";
-            document.querySelector(".loader-wrapper").style.display = "none";
-        }
-    </script>
 </head>
 
 <body onload="myFunction()">
@@ -42,7 +21,7 @@
         <div class="blockBg-loader green"></div>
     </div>
     <header>
-        <div class=" footer">
+        <div class="container large">
             <nav>
                 <div class="logo">
                     <a href=""><img src="img/logo.svg" alt="Creation of Adam logo"></a>
@@ -81,15 +60,13 @@
                         I create engaging experience for people, and occasionally for me. I'm a full time digital worker
                         who
                         believe anything can be learned !</p>
-                    <div class="main-btn">
+                    <div class="main-btn" onmouseover="mainBtnHover()">
                         <img class="hide" src="img/EllipseBtn green.svg" alt="elipse green">
-                        <img src="img/EllipseBtn green.svg" alt="elipse green">
-                        <img src="img/EllipseBtn green.svg" alt="elipse green">
-                        <img src="img/EllipseBtn green.svg" alt="elipse green">
-                        <img src="img/EllipseBtn green.svg" alt="elipse green">
-                        <img src="img/EllipseBtn green.svg" alt="elipse green">
-                        <img src="img/EllipseBtn green.svg" alt="elipse green">
-                        <img src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img class="img-btn" src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img class="img-btn" src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img class="img-btn" src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img class="img-btn" src="img/EllipseBtn green.svg" alt="elipse green">
+                        <img class="img-btn" src="img/EllipseBtn green.svg" alt="elipse green">
                         <a class="main-cta" href="#">Learn More</a>
                     </div>
                 </div>
@@ -109,9 +86,9 @@
                             <div class="blockProject-img">
                                 <img src="img/img LIKL.jpg" alt="project LIKL visual">
                             </div>
-                            <div class="secondary-btn">
+                            <div class="secondary-btn" onmouseover="secondBtnHover()">
                                 <p>View LIKL website</p>
-                                <img src="img/right arrow green.svg" alt="green arrow">
+                                <img class="secondBtn-img" src="img/right arrow green.svg" alt="green arrow">
                             </div>
                         </a>
                     </div>
@@ -120,9 +97,9 @@
                             <div class="blockProject-img">
                                 <img src="img/img Luc coaching.jpg" alt="project Luc coaching visual">
                             </div>
-                            <div class="secondary-btn">
+                            <div class="secondary-btn" onmouseover="secondBtnHover()">
                                 <p>Luc Coaching Project</p>
-                                <img src="img/right arrow green.svg" alt="green arrow">
+                                <img class="secondBtn-img" src="img/right arrow green.svg" alt="green arrow">
                             </div>
                         </a>
                     </div>
@@ -131,9 +108,9 @@
                             <div class="blockProject-img">
                                 <img src="img/img old-portfolio.jpg" alt="project old portfolio visual">
                             </div>
-                            <div class="secondary-btn">
+                            <div class="secondary-btn" onmouseover="secondBtnHover()">
                                 <p>Portfolio Website</p>
-                                <img src="img/right arrow green.svg" alt="green arrow">
+                                <img class="secondBtn-img" src="img/right arrow green.svg" alt="green arrow">
                             </div>
                         </a>
                     </div>
@@ -178,15 +155,13 @@
                 <div class="headerMask">
                     <h2 class="headingLarge-XX">Contact</h2>
                 </div>
-                <div class="main-btn">
+                <div class="main-btn" onmouseover="mainBtnHover()">
                     <img class="hide" src="img/EllipseBtn green.svg" alt="elipse green">
-                    <img src="img/EllipseBtn green.svg" alt="elipse green">
-                    <img src="img/EllipseBtn green.svg" alt="elipse green">
-                    <img src="img/EllipseBtn green.svg" alt="elipse green">
-                    <img src="img/EllipseBtn green.svg" alt="elipse green">
-                    <img src="img/EllipseBtn green.svg" alt="elipse green">
-                    <img src="img/EllipseBtn green.svg" alt="elipse green">
-                    <img src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img class="img-btn" src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img class="img-btn" src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img class="img-btn" src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img class="img-btn" src="img/EllipseBtn green.svg" alt="elipse green">
+                    <img class="img-btn" src="img/EllipseBtn green.svg" alt="elipse green">
                     <a class="main-cta" href="#">Contact me</a>
                 </div>
             </div>
@@ -212,10 +187,10 @@
                     <div class="headerMask">
                         <h2 class="headingLarge-XX">Have an idea ?</h2>
                     </div>
-                    <div class="secondary-btn">
+                    <a href="#" class="secondary-btn" onmouseover="secondBtnHover()">
                         <p>Hire me</p>
-                        <img src="img/right arrow green.svg" alt="green arrow">
-                    </div>
+                        <img class="secondBtn-img" src="img/right arrow green.svg" alt="green arrow">
+                    </a>
                 </div>
                 <div class="footerNavWrapper">
                     <nav id="footerNav">
@@ -235,6 +210,7 @@
             </div>
         </div>
     </section>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
