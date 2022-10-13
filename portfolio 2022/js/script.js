@@ -1,3 +1,5 @@
+// Loader animation
+
 let LoaderPage;
 let hidePage;
 
@@ -17,26 +19,54 @@ function hideLoader() {
     document.querySelector(".loader-wrapper").style.display = "none";
 }
 
-const boxes = document.querySelectorAll(".box");
+// Mouse Animation
 
-window.addEventListener("scroll", checkBoxes);
+const circle = document.querySelector('.circleCursor');
+const link = document.querySelectorAll('a');
+window.addEventListener('mousemove', mouseMoveHandler);
+window.addEventListener('mousedown', mouseDownHandler);
+window.addEventListener('mouseup', mouseUpHandler);
+link.forEach((lik) => {
+  lik.addEventListener('mouseenter', linkEnterHandler);
+})
+link.forEach((lik) => {
+  lik.addEventListener('mouseleave', linkLeaveHandler);
+})
 
-checkBoxes();
-
-function checkBoxes() {
-  const triggerBottom = (window.innerHeight / 5) * 3;
-
-  boxes.forEach((box) => {
-    const boxTop = box.getBoundingClientRect().top;
-
-    if (boxTop < triggerBottom) {
-      box.classList.add("show");
-    } else {
-      box.classList.remove("show");
-    }
-  });
+function mouseMoveHandler(e) {
+  circle.style.left = e.clientX - circle.offsetWidth / 2 + "px";
+  circle.style.top = e.clientY - circle.offsetHeight / 2 + "px";
+  circle.style.opacity = 1;
 }
 
+function mouseUpHandler(e) {
+  circle.style.transform = "scale(1)";
+
+  if (e.target.classList.contains('link')) {
+    circle.style.transform = 'scale(5)';
+  }
+}
+
+function mouseDownHandler() {
+  circle.style.transform = "scale(1.5)";
+}
+
+function linkEnterHandler() {
+  console.log('hi');
+  circle.style.transform = "scale(1.5)";
+}
+
+function linkLeaveHandler() {
+  console.log('hey');
+  circle.style.transform = "scale(1)";
+}
+
+
+// Hover Animation for the mainBtn
+
+link.forEach((lik) => {
+  lik.addEventListener('mouseenter', linkEnterHandler);
+})
 
 function mainBtnHover() {
   const mainBtn = document.querySelectorAll(".main-btn");
@@ -56,6 +86,8 @@ function mainBtnHover() {
     });
   })
 }
+
+// Hover Animation for the secondBtn
 
 function secondBtnHover() {
   const secondBtn = document.querySelectorAll(".secondary-btn");
