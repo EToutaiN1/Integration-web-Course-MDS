@@ -1,0 +1,243 @@
+@charset "UTF-8";
+/* variables */
+/* Mise en page général */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+/* Import */
+/* Mixin */
+/* Titre */
+.HeadingLarge-X {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #080E41;
+}
+.HeadingLarge-X.testimonial {
+  margin-bottom: 8rem;
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #080E41;
+}
+
+/* Bouton */
+.main-cta {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 1rem 1.4rem;
+  background: linear-gradient(93.79deg, #FFFFFF 0%, #FF7020 0%, #F8872D 55.55%, #F19D3A 109.5%);
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 1.5rem;
+  border: none;
+}
+
+/* Class fonctionnelles */
+section {
+  height: auto;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+section#hero {
+  max-height: 90vh;
+  background-color: #FBF8FF;
+  padding-top: 5vh;
+}
+section#testimonial {
+  box-shadow: 0px 2px 11px 4px rgba(0, 0, 0, 0.25);
+  background-color: #FBF8FF;
+}
+
+.container {
+  width: 70vw;
+  margin: 0 auto;
+}
+.container.medium {
+  width: 80vw;
+  padding: 20vh 0;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+.wrapper.column {
+  align-items: center;
+  flex-direction: column;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+}
+
+/* HEADER */
+header {
+  background-color: #FBF8FF;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3rem;
+  position: relative;
+  z-index: 10;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+nav ul li {
+  list-style-type: none;
+}
+nav ul li a {
+  font-size: 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #000000;
+  padding: 0.8rem 3rem;
+}
+
+/* MAIN */
+.blockImgSection {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+.blockImgSection.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 4rem;
+}
+
+ul {
+  margin-left: 2rem;
+}
+ul li {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #080E41;
+}
+
+.testimonialWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+}
+.testimonialWrapper .testimonialItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 30%;
+  border-radius: 1rem;
+  padding: 2.2rem 3rem;
+  transition: all 0.3s ease;
+}
+.testimonialWrapper .testimonialItem:hover {
+  background-color: #FFE4D3;
+}
+.testimonialWrapper .testimonialItem p {
+  text-align: center;
+  margin: 1rem 0;
+}
+.testimonialWrapper .testimonialItem h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.wrapper.form {
+  flex-direction: column;
+}
+.wrapper.form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+.wrapper.form form .block-name-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.6rem;
+}
+.wrapper.form form .block-name-form div {
+  width: 50%;
+}
+.wrapper.form form input, .wrapper.form form textarea {
+  background-color: #F5F5F5;
+  padding: 2rem 1.5rem;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+.wrapper.form form input::-moz-placeholder, .wrapper.form form textarea::-moz-placeholder {
+  color: #000000;
+  font-weight: 600;
+}
+.wrapper.form form input:-ms-input-placeholder, .wrapper.form form textarea:-ms-input-placeholder {
+  color: #000000;
+  font-weight: 600;
+}
+.wrapper.form form input::placeholder, .wrapper.form form textarea::placeholder {
+  color: #000000;
+  font-weight: 600;
+}
+.wrapper.form form div {
+  width: 100%;
+}
+.wrapper.form form button {
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  background-color: #080E41;
+}
+footer .wrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 7rem;
+}
+footer h4 {
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+footer ul {
+  list-style-type: none;
+  margin: 0;
+}
+footer ul li a {
+  font-size: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+}/*# sourceMappingURL=style.css.map */

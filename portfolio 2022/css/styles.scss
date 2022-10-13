@@ -351,7 +351,7 @@ nav{
                 position: relative;
                 transition: all .6s ease-in-out;
                 &:hover{
-                    box-shadow: rgba($main-color, 0.25) 0px 50px 100px -20px, rgba($main-color, 0.3) 0px 30px 60px -30px;
+                    box-shadow: rgba($main-color, 0.25) 0px 0px 100px 0px, rgba($main-color, 0.3) 0px 0px 60px 0px;
                 }
                 img{
                     background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgba(0, 212, 255, 0) 100%);

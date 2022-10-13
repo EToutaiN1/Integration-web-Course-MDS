@@ -365,7 +365,7 @@ nav ul li a:hover {
   transition: all 0.6s ease-in-out;
 }
 .projectWrapper .collectionProject .blockProject-item .blockProject-img:hover {
-  box-shadow: rgba(151, 255, 208, 0.25) 0px 50px 100px -20px, rgba(151, 255, 208, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(151, 255, 208, 0.25) 0px 0px 100px 0px, rgba(151, 255, 208, 0.3) 0px 0px 60px 0px;
 }
 .projectWrapper .collectionProject .blockProject-item .blockProject-img img {
   background: linear-gradient(180deg, rgb(10, 10, 10) 0%, rgba(0, 212, 255, 0) 100%);
