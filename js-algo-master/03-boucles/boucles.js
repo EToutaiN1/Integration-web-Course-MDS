@@ -1,10 +1,12 @@
 // Calculer et retourner la factorielle de n.
 // Par convention, factorielle(0) == 1.
 function factorielle(n) {
-    var idx, n, factor = 1;
-    for(idx = 1; idx <= n; idx++)  
+    // la factorielle d'un entier naturel n est le produit des nombres entiers strictement positifs inférieurs ou égaux à n.
+
+    let i, n, factor = 1;
+    for(i = 1; i <= n; i++)  
     {
-        factor = factor * idx;   // ou f *= i;
+        factor *= i;   // ou f *= i;
     }  
     return factor;
 };
@@ -51,13 +53,7 @@ function multiplier(nombre1, nombre2) {
 // en lisant le nombre à l'envers.
 // Par exemple, le miroir de 4209 est 9024.
 function miroir(nombre) {
-    // let miror = [String(nombre)];
-    let miror = [String(1234)];
-    miror = [...miror];
-    // miror = .split('').reverse().join("");
-    // miror = [...miror].split("").reverse().join("");
-    console.log(miror);
-
- 
-    
+    let miror = String(nombre).split('').reverse().join('');
+    miror = Number(miror);
+    return miror;
 };
