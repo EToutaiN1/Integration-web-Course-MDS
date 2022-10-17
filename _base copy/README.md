@@ -35,7 +35,7 @@ Buy full multiplier is too easy. Go back to step 6, you will understand why we s
 For example, the first would be `50`, the following `100`, the following `200`, etc.. No need to complicate your life, do not do full conditions, find another way to change the price!
 
 ## Level 10: _Displaying of Price_
-Display the price onthe `button`, in addition to counter display like the previouse example which showed  "x5", it has to display the cost of the next purchase next to counter display.
+Display the price on the `button`, in addition to counter display like the previouse example which showed  "x5", it has to display the cost of the next purchase next to counter display.
 
 ## Level 11: _Autoclicker_
 Further improvement to buy is to use: autoclick. Once you have a credit of `200`, an automatic click will be done every second. (`setInterval` is your friend)
@@ -52,3 +52,4 @@ Ensure that the multiplier buttons, autoclic and bonuses are not active when the
 
 ## Level 15: _CSS_
 Wheather is beautifull! No pictures!
+

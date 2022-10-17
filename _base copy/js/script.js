@@ -15,11 +15,11 @@ function augmenterMultiplicateur() {
 };
 
 function augmenterMultiplicateur10() {
-    multiplier+= 10;
+    multiplier+= 5;
 };
 
 function augmenterMultiplicateur30() {
-    multiplier+= 30;
+    multiplier+= 10;
 };
 
 function AddActiveClass(btn) {
@@ -71,6 +71,6 @@ multiplyBtn30.addEventListener('click', () => {
 })
 
 clickBtn.addEventListener('click', () => {
-    counter += 1 * multiplier;
+    counter += 1 + multiplier;
     display.innerHTML = counter;    
 })

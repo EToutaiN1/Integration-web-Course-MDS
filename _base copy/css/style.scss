@@ -2,6 +2,18 @@
 
  /* variables */
 
+ $mainColor: #F0F0F3;
+ $secondColor: #1b1b1b;
+ $btnBg: #D9D9D9;
+ 
+ $bronzeGradient: linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%);
+ $silverGradient: linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%);
+ $goldGradient: linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%);
+
+ $dropShadow: -2.8px -2.8px 8.5px #FFFFFF, 4.2px 4.2px 5.7px rgba(174, 174, 192, 0.4);
+ $innerShadow: inset -2.8px -2.8px 2.8px rgba(255, 255, 255, 0.7), inset 4.2px 4.2px 2.8px rgba(174, 174, 192, 0.2);
+ 
+
 * {
     margin: 0;
     padding: 0;
