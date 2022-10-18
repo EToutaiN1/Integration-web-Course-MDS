@@ -74,3 +74,14 @@ clickBtn.addEventListener('click', () => {
     counter += 1 + multiplier;
     display.innerHTML = counter;    
 })
+
+const ToggleBtn = document.getElementById("btn_container");
+const one = document.getElementById("one");
+const purpleCircle = document.getElementById("purpleCircle");
+
+
+ToggleBtn.addEventListener("click", () => {
+    console.log("hey");
+    one.classList.toggle("active");
+    purpleCircle.classList.toggle("active");
+});

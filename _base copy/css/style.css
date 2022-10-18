@@ -5,53 +5,115 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Space Mono", monospace;
 }
 
 #section {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   gap: 4rem;
   height: 100vh;
+  max-height: 100vh;
   width: 100%;
+  background-color: #F0F0F3;
 }
-
-button {
-  padding: 2rem 3rem;
-  color: #fff;
-  background-color: rgb(160, 160, 160);
-  border: none;
-  border-radius: 20px;
-  transition: all 0.3s ease-out;
-}
-button#click {
-  background-color: rgb(144, 20, 20);
-}
-button#click:hover {
-  opacity: 0.8;
-}
-button.active {
-  background-color: rgb(2, 140, 94);
-}
-button.active:hover {
-  opacity: 0.8;
-}
-button:hover {
-  cursor: pointer;
-}
-
-.btnWrapper {
-  display: flex;
-  flex-direction: row;
-  gap: 3rem;
-}
-.btnWrapper .btnItem {
+#section .leftContent {
+  height: 100%;
+  width: 50%;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-  gap: 1.5rem;
+  border-right: 0.1rem solid rgba(27, 27, 27, 0.1);
+}
+#section .rightContent {
+  padding: 10vh;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btnDropshadow {
+  display: inline-block;
+  box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
+  padding: 0.2rem;
+  border-radius: 1rem;
+  transition: all 0.5s ease-out;
+}
+.btnDropshadow .btnBoost {
+  background-color: #EEEEEE;
+  padding: 1.2rem 1.9rem;
+  border: none;
+  border-radius: 1rem;
+  transition: all 0.5s ease;
+}
+.btnDropshadow .btnBoost:hover {
+  cursor: pointer;
+  box-shadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
+}
+.btnDropshadow .btnBoost#click {
+  box-shadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
+}
+.btnDropshadow:active {
+  transform: scale(0.95);
+}
+
+.toggleWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#borderToggleBtn {
+  box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
+  width: 5.625rem;
+  height: 2.5rem;
+  margin: 1.25rem;
+  border-radius: 1.875rem;
+  display: inline-block;
+}
+#borderToggleBtn #btn_container {
+  cursor: pointer;
+  width: 5.5rem;
+  height: 2.4rem;
+  background-color: #EEEEEE;
+  display: flex;
+  position: relative;
+  border-radius: 1.875rem;
+  box-shadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
+  align-items: center;
+}
+#borderToggleBtn #btn_container #one {
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  background-color: #F0F0F3;
+  display: block;
+  border-radius: 1.875rem;
+  box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
+  transition: all 0.3s ease;
+  left: 0.325rem;
+}
+#borderToggleBtn #btn_container #one.active {
+  transform: translateX(145%);
+}
+#borderToggleBtn #btn_container #one #purpleCircle {
+  height: 0.8rem;
+  width: 0.8rem;
+  background-color: #745FF2;
+  position: absolute;
+  border-radius: 1rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.3s ease-out;
+}
+#borderToggleBtn #btn_container #one #purpleCircle.active {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* Import */
@@ -60,5 +122,113 @@ button:hover {
 /* Bouton */
 /* Class fonctionnelles */
 /* HEADER */
+.burgerMenu {
+  position: fixed;
+  right: 0%;
+  z-index: 10001;
+  width: 5rem;
+  height: 3rem;
+}
+.burgerMenu .barBurger {
+  background-color: #1b1b1b;
+  box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
+  border-radius: 2rem;
+  height: 0.5rem;
+  width: 3rem;
+}
+
+.menuWrapper {
+  background-color: #EEEEEE;
+  box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 1rem;
+}
+.menuWrapper .topBlock {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+  background-color: transparent;
+}
+.menuWrapper .topBlock .menuLink {
+  margin-top: 2rem;
+  background-color: transparent;
+}
+.menuWrapper .topBlock .menuLink ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.menuWrapper .topBlock .menuLink ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-start;
+}
+.menuWrapper .topBlock .menuLink ul li a {
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  color: #1b1b1b;
+  text-decoration: none;
+}
+.menuWrapper .topBlock .menuLink ul li:hover {
+  text-decoration: underline;
+}
+.menuWrapper .btmBlock .socialLink ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+}
 /* MAIN */
+.btnWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 5vh;
+}
+.btnWrapper .btnItem {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.btnWrapper .btnItem .price {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.btnWrapper .btnItem .price#bronze {
+  background: linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.btnWrapper .btnItem .price#silver {
+  background: linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.btnWrapper .btnItem .price#gold {
+  background: linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.imgLevel {
+  display: none;
+}
+
 /* FOOTER *//*# sourceMappingURL=style.css.map */

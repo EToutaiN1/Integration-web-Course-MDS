@@ -9,10 +9,115 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="favicon.ico" />
     <title>My 1st page </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
+    <div class="burgerMenu">
+        <span class="barBurger" id="topBurger"></span>
+        <span class="barBurger" id="middleBurger"></span>
+        <span class="barBurger" id="bottomBurger"></span>
+    </div>
+    <div class="menuWrapper">
+        <div class="topBlock">
+            <div class="menuLogo">
+                <img src="./img/logo Ewan.svg" alt="logo Ewan. T">
+            </div>
+            <div class="menuLink">
+                <ul>
+                    <li class="menuLinkItem">
+                        <img src="./img/components icon.svg" alt="components icon">
+                        <a href="#">Components</a>
+                    </li>
+                    <li class="menuLinkItem">
+                        <img src="./img/stat icon.svg" alt="stats icon">
+                        <a href="#">Stats</a>
+                    </li>
+                    <li class="menuLinkItem">
+                        <img src="./img/settings icon.svg" alt="settings icon">
+                        <a href="#">Paramètres</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="btmBlock">
+            <div class="socialLink">
+                <ul>
+                    <li class="social"><a href="#"><img src="./img/icon Github.svg" alt="icon Github"></a></li>
+                    <li class="social"><a href="#"><img src="./img/icon Malt.svg" alt="icon Malt"></a></li>
+                    <li class="social"><a href="#"><img src="./img/icon LinkedIn.svg" alt="icon LinkedIn"></a></li>
+                </ul>
+            </div>
+            <p>© Ewan.T - 2022</p>
+        </div>
+    </div>
+
     <section id="section">
+        <div class="leftContent">
+            <div class="btnWrapper">
+                <div class="btnItem">
+                    <p class="price" id="bronze">Bronze +1</p>
+                    <div class="btnDropshadow">
+                        <button class="btnBoost" id="multiply">
+                            20 units
+                        </button>
+                    </div>
+                </div>
+                <div class="btnItem">
+                    <p class="price" id="silver">Argent +5</p>
+                    <div class="btnDropshadow">
+                        <button class="btnBoost" id="10">
+                            200 units
+                        </button>
+                    </div>
+                </div>
+                <div class="btnItem">
+                    <p class="price" id="gold">Or +10</p>
+                    <div class="btnDropshadow">
+                        <button class="btnBoost" id="30">
+                            500 units
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="toggleWrapper">
+                <div id="borderToggleBtn">
+                    <div id="btn_container">
+                        <span id="one">
+                            <span id="purpleCircle"></span>
+                        </span>
+                    </div>
+                </div>
+                <p>Auto mining</p>
+            </div>
+        </div>
+        <div class="rightContent">
+            <H1 id="mainMessage">Message</H1>
+            <div id="display">0</div>
+            <div class="imgWrapper">
+                <img class="imgLevel" src="./img/Level 1.svg" alt="Level 1 Illustration">
+                <img class="imgLevel" src="./img/Level 2.svg" alt="Level 2 Illustration">
+                <img class="imgLevel" src="./img/Level 3.svg" alt="Level 3 Illustration">
+                <img class="imgLevel" src="./img/Level 4.svg" alt="Level 4 Illustration">
+                <img class="imgLevel" src="./img/Level 5.svg" alt="Level 5 Illustration">
+                <img class="imgLevel" src="./img/Level 6.svg" alt="Level 6 Illustration">
+                <img class="imgLevel" src="./img/Level 7.svg" alt="Level 7 Illustration">
+                <img class="imgLevel" src="./img/Level 8.svg" alt="Level 8 Illustration">
+                <img class="imgLevel" src="./img/Level 9.svg" alt="Level 9 Illustration">
+                <img class="imgLevel" src="./img/Level 10.svg" alt="Level 10 Illustration">
+            </div>
+            <div class="btnItem">
+                <div class="btnDropshadow">
+                    <button class="btnBoost" id="click">Click here</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section id="section">
         <H1 id="mainMessage">Message</H1>
         <div id="display">0</div>
         <button id="click">Click here</button>
@@ -36,9 +141,9 @@
                 </button>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <script src="js/script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
