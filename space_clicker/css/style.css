@@ -34,6 +34,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-content: flex-start;
+}
+#section .rightContent .MainWrapperRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
 }
 
 .btnDropshadow {
@@ -42,6 +52,8 @@
   padding: 0.2rem;
   border-radius: 1rem;
   transition: all 0.5s ease-out;
+  position: relative;
+  z-index: 5;
 }
 .btnDropshadow .btnBoost {
   background-color: #EEEEEE;
@@ -148,9 +160,6 @@ label input[type=checkbox]:checked ~ span:nth-of-type(3) {
   width: 50%;
   transform: translate(22px, -13px) rotatez(45deg);
 }
-label input[type=checkbox]:checked ~ #menuWrapper.active {
-  transform: translateX(-150%);
-}
 label span {
   position: relative;
   background: #1b1b1b;
@@ -173,8 +182,7 @@ label span:nth-of-type(3) {
   width: 75%;
 }
 
-#menuWrapper {
-  display: none;
+.menuWrapper {
   background-color: #EEEEEE;
   box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
   position: absolute;
@@ -183,51 +191,55 @@ label span:nth-of-type(3) {
   bottom: 0;
   width: 20%;
   z-index: 1000;
+  padding: 3rem 1.5rem;
+  transition: all 0.5s ease-out;
+  transform: translateX(-100%);
+  display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  padding: 3rem 1.5rem;
-  transition: all 0.5s ease-out;
-  transform: translateX(0%);
 }
-#menuWrapper .topBlock {
+.menuWrapper.active {
+  transform: translateX(0);
+}
+.menuWrapper .topBlock {
   display: flex;
   align-items: flex-end;
   justify-content: center;
   flex-direction: column;
   background-color: transparent;
 }
-#menuWrapper .topBlock .menuLink {
+.menuWrapper .topBlock .menuLink {
   margin-top: 2rem;
   background-color: transparent;
 }
-#menuWrapper .topBlock .menuLink ul {
+.menuWrapper .topBlock .menuLink ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
-#menuWrapper .topBlock .menuLink ul li {
+.menuWrapper .topBlock .menuLink ul li {
   display: flex;
   align-items: center;
   justify-content: center;
   justify-content: flex-start;
 }
-#menuWrapper .topBlock .menuLink ul li a {
+.menuWrapper .topBlock .menuLink ul li a {
   padding: 0.7rem 1.2rem;
   cursor: pointer;
   color: #1b1b1b;
   text-decoration: none;
 }
-#menuWrapper .topBlock .menuLink ul li:hover {
+.menuWrapper .topBlock .menuLink ul li:hover {
   text-decoration: underline;
 }
-#menuWrapper .btmBlock .socialLink {
+.menuWrapper .btmBlock .socialLink {
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid rgba(27, 27, 27, 0.1);
 }
-#menuWrapper .btmBlock .socialLink ul {
+.menuWrapper .btmBlock .socialLink ul {
   list-style-type: none;
   display: flex;
   align-items: center;
@@ -271,16 +283,61 @@ label span:nth-of-type(3) {
   background-clip: text;
 }
 
-.progressBarWrapper {
+.scoreWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.scoreWrapper #mainMessage {
+  text-align: center;
+  font-weight: 400;
+}
+.scoreWrapper #display {
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
+}
+
+.imgWrapper {
+  width: 20vw;
+  margin: 5vh 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imgWrapper .imgLevel {
   display: none;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(50%);
+  position: absolute;
+  z-index: 0;
+  transition: all 0.5s ease-out;
+}
+.imgWrapper .imgLevel:first-of-type {
+  display: block;
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.progressBarWrapper {
   width: 10%;
   position: relative;
-  z-index: -2;
-  align-content: center;
-  justify-content: flex-start;
+  z-index: 2;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -15vh;
+  transform: rotate(-90deg);
+}
+.progressBarWrapper h2 {
+  transform: rotate(90deg);
+  text-align: center;
 }
 .progressBarWrapper .progressShadow {
-  transform: rotate(-90deg);
   border-radius: 3rem;
 }
 .progressBarWrapper .progressShadow .progress {
@@ -297,13 +354,8 @@ label span:nth-of-type(3) {
 }
 .progressBarWrapper .progressShadow .progress .progress-value {
   border-radius: 3rem;
-  background: #1b1b1b;
   height: 1.4rem;
-  width: 40%;
-}
-
-.imgLevel {
-  display: none;
+  width: 0;
 }
 
 /* FOOTER *//*# sourceMappingURL=style.css.map */

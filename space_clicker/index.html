@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Description de la page">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="favicon.ico" />
     <title>My 1st page </title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +22,7 @@
         <span></span>
     </label>
 
-    <div id="menuWrapper">
+    <div class="menuWrapper">
         <div class="topBlock">
             <div class="menuLogo">
                 <img src="./img/logo Ewan.svg" alt="logo Ewan. T">
@@ -63,7 +62,7 @@
                 <div class="btnItem">
                     <p class="price" id="bronze">Bronze +1</p>
                     <div class="btnDropshadow">
-                        <button class="btnBoost" id="multiply">
+                        <button class="btnBoost" id="bronzeBtn">
                             20 units
                         </button>
                     </div>
@@ -71,7 +70,7 @@
                 <div class="btnItem">
                     <p class="price" id="silver">Argent +5</p>
                     <div class="btnDropshadow">
-                        <button class="btnBoost" id="10">
+                        <button class="btnBoost" id="silverBtn">
                             30 units
                         </button>
                     </div>
@@ -79,11 +78,17 @@
                 <div class="btnItem">
                     <p class="price" id="gold">Or +10</p>
                     <div class="btnDropshadow">
-                        <button class="btnBoost" id="30">
+                        <button class="btnBoost" id="goldBtn">
                             40 units
                         </button>
                     </div>
                 </div>
+            </div>
+
+            <div class="btnDropshadow">
+                <button class="btnBoost" id="btnBoostAutoClick">
+                    Boost Auto-minage <span></span>
+                </button>
             </div>
             <div class="toggleWrapper">
                 <div id="borderToggleBtn">
@@ -103,6 +108,7 @@
                         <div class="progress-value"></div>
                     </div>
                 </div>
+                <h2>Progression Level</h2>
             </div>
             <div class="MainWrapperRight">
                 <div class="scoreWrapper">

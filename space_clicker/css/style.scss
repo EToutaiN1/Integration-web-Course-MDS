@@ -46,6 +46,14 @@
         width: 60%;
         height: 100%;
         @include flexCenter();
+        justify-content: flex-start;
+        .MainWrapperRight{
+            @include flexCenter();
+            margin: 0 auto;
+            justify-content: space-around;
+            flex-direction: column;
+            height: 100%;
+        }
     }
 }
 
@@ -55,6 +63,8 @@
     padding: 0.2rem;
     border-radius: 1rem;
     transition: all 0.5s ease-out;
+    position: relative;
+    z-index: 5;
     .btnBoost{
         background-color: $secondColor;
         padding: 1.2rem 1.9rem;
@@ -167,9 +177,9 @@ label{
             width:50%;
             transform: translate(22px, -13px) rotatez(45deg);
         }
-        &:checked ~ #menuWrapper.active{
-            transform: translateX(-150%);
-        }
+        // &:checked + .menuWrapper{
+        //     transform: translateX(0%);
+        // }
     }
     span{
         position: relative;
@@ -194,8 +204,7 @@ label{
     }
 }
 
-#menuWrapper {
-    display: none;
+.menuWrapper {
     background-color: $secondColor;
     box-shadow: $dropShadow;
     position: absolute;
@@ -204,12 +213,16 @@ label{
     bottom: 0;
     width: 20%;
     z-index: 1000;
+    padding: 3rem 1.5rem;
+    transition: all 0.5s ease-out;
+    transform: translateX(-100%);
+    display: flex; 
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    padding: 3rem 1.5rem;
-    transition: all 0.5s ease-out;
-    transform: translateX(0%);
+    &.active{
+        transform: translateX(0);
+    }
     .topBlock{
         display: flex;
         align-items: flex-end;
@@ -291,17 +304,55 @@ label{
     }
 }
 
+.scoreWrapper{
+    @include flexCenter();
+    flex-direction: column;
+    #mainMessage{
+        text-align: center;
+        font-weight: 400;
+
+    }
+    #display{
+        font-size: 3rem;
+        font-weight: 700;
+        text-shadow: $dropShadow;
+    }
+}
+
+.imgWrapper {
+    width: 20vw;
+    margin: 5vh 0;
+    position: relative;
+    @include flexCenter();
+    .imgLevel{
+        display: none;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(50%);
+        position: absolute;
+        z-index: 0;
+        transition: all 0.5s ease-out;
+        &:first-of-type{
+            display: block;
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
+}
 
 .progressBarWrapper{
-    display: none;
     width: 10%;
     position: relative;
-    z-index: -2;
-    // display: flex;
-    align-content: center;
-    justify-content: flex-start;
+    z-index: 2;
+    left: 0;
+    @include flexCenter();
+    margin-top: -15vh;
+    transform: rotate(-90deg);
+    h2{
+        transform: rotate(90deg);
+        text-align: center;
+    }
     .progressShadow{
-        transform: rotate(-90deg);
         border-radius: 3rem;
         .progress {
             background-color: $secondColor;
@@ -316,17 +367,13 @@ label{
             width: 15rem;
             .progress-value {
                 border-radius: 3rem;
-                background: $fontcolor;
                 height: 1.4rem;
-                width: 40%;
+                width: 0;
             }
         }
     }
 }
 
 
-.imgLevel{
-    display: none;
-}
 
 /* FOOTER */
