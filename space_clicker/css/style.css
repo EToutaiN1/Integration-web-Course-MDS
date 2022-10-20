@@ -30,10 +30,10 @@
 #section .rightContent {
   padding: 10vh;
   width: 60%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 
 .btnDropshadow {
@@ -77,15 +77,15 @@
   display: inline-block;
 }
 #borderToggleBtn #btn_container {
-  cursor: pointer;
+  position: relative;
   width: 5.5rem;
   height: 2.4rem;
   background-color: #EEEEEE;
-  display: flex;
-  position: relative;
-  border-radius: 1.875rem;
   box-shadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
+  display: flex;
   align-items: center;
+  border-radius: 1.875rem;
+  cursor: pointer;
 }
 #borderToggleBtn #btn_container #one {
   position: absolute;
@@ -122,22 +122,59 @@
 /* Bouton */
 /* Class fonctionnelles */
 /* HEADER */
-.burgerMenu {
+label {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
   position: fixed;
-  right: 0%;
-  z-index: 10001;
-  width: 5rem;
-  height: 3rem;
+  left: 3rem;
+  top: 3rem;
+  z-index: 1001;
+  cursor: pointer;
 }
-.burgerMenu .barBurger {
-  background-color: #1b1b1b;
+label input[type=checkbox] {
+  display: none;
+}
+label input[type=checkbox]:checked ~ span:nth-of-type(1) {
+  transform-origin: bottom;
+  transform: rotatez(45deg) translate(12px, 4px);
+}
+label input[type=checkbox]:checked ~ span:nth-of-type(2) {
+  transform-origin: top;
+  transform: rotatez(-45deg);
+}
+label input[type=checkbox]:checked ~ span:nth-of-type(3) {
+  transform-origin: bottom;
+  width: 50%;
+  transform: translate(22px, -13px) rotatez(45deg);
+}
+label input[type=checkbox]:checked ~ #menuWrapper.active {
+  transform: translateX(-150%);
+}
+label span {
+  position: relative;
+  background: #1b1b1b;
   box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
-  border-radius: 2rem;
-  height: 0.5rem;
-  width: 3rem;
+  border-radius: 10px;
+  height: 7px;
+  margin: 7px 0;
+  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+label span:nth-of-type(1) {
+  z-index: 1;
+  width: 50%;
+}
+label span:nth-of-type(2) {
+  z-index: 2;
+  width: 100%;
+}
+label span:nth-of-type(3) {
+  z-index: 1;
+  width: 75%;
 }
 
-.menuWrapper {
+#menuWrapper {
+  display: none;
   background-color: #EEEEEE;
   box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
   position: absolute;
@@ -146,51 +183,58 @@
   bottom: 0;
   width: 20%;
   z-index: 1000;
-  display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  padding: 1rem;
+  padding: 3rem 1.5rem;
+  transition: all 0.5s ease-out;
+  transform: translateX(0%);
 }
-.menuWrapper .topBlock {
+#menuWrapper .topBlock {
   display: flex;
   align-items: flex-end;
   justify-content: center;
   flex-direction: column;
   background-color: transparent;
 }
-.menuWrapper .topBlock .menuLink {
+#menuWrapper .topBlock .menuLink {
   margin-top: 2rem;
   background-color: transparent;
 }
-.menuWrapper .topBlock .menuLink ul {
+#menuWrapper .topBlock .menuLink ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
-.menuWrapper .topBlock .menuLink ul li {
+#menuWrapper .topBlock .menuLink ul li {
   display: flex;
   align-items: center;
   justify-content: center;
   justify-content: flex-start;
 }
-.menuWrapper .topBlock .menuLink ul li a {
+#menuWrapper .topBlock .menuLink ul li a {
   padding: 0.7rem 1.2rem;
   cursor: pointer;
   color: #1b1b1b;
   text-decoration: none;
 }
-.menuWrapper .topBlock .menuLink ul li:hover {
+#menuWrapper .topBlock .menuLink ul li:hover {
   text-decoration: underline;
 }
-.menuWrapper .btmBlock .socialLink ul {
+#menuWrapper .btmBlock .socialLink {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(27, 27, 27, 0.1);
+}
+#menuWrapper .btmBlock .socialLink ul {
   list-style-type: none;
   display: flex;
   align-items: center;
   justify-content: center;
   justify-content: space-around;
 }
+
 /* MAIN */
 .btnWrapper {
   display: flex;
@@ -225,6 +269,37 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.progressBarWrapper {
+  display: none;
+  width: 10%;
+  position: relative;
+  z-index: -2;
+  align-content: center;
+  justify-content: flex-start;
+}
+.progressBarWrapper .progressShadow {
+  transform: rotate(-90deg);
+  border-radius: 3rem;
+}
+.progressBarWrapper .progressShadow .progress {
+  background-color: #EEEEEE;
+  box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
+  justify-content: flex-start;
+  border-radius: 3rem;
+  align-items: center;
+  position: relative;
+  padding: 0 0.2rem;
+  display: flex;
+  height: 1.5rem;
+  width: 15rem;
+}
+.progressBarWrapper .progressShadow .progress .progress-value {
+  border-radius: 3rem;
+  background: #1b1b1b;
+  height: 1.4rem;
+  width: 40%;
 }
 
 .imgLevel {

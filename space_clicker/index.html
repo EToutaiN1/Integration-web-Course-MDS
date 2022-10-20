@@ -16,12 +16,14 @@
 </head>
 
 <body>
-    <div class="burgerMenu">
-        <span class="barBurger" id="topBurger"></span>
-        <span class="barBurger" id="middleBurger"></span>
-        <span class="barBurger" id="bottomBurger"></span>
-    </div>
-    <div class="menuWrapper">
+    <label for="check" id="burgerMenu">
+        <input type="checkbox" id="check">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <div id="menuWrapper">
         <div class="topBlock">
             <div class="menuLogo">
                 <img src="./img/logo Ewan.svg" alt="logo Ewan. T">
@@ -70,7 +72,7 @@
                     <p class="price" id="silver">Argent +5</p>
                     <div class="btnDropshadow">
                         <button class="btnBoost" id="10">
-                            200 units
+                            30 units
                         </button>
                     </div>
                 </div>
@@ -78,7 +80,7 @@
                     <p class="price" id="gold">Or +10</p>
                     <div class="btnDropshadow">
                         <button class="btnBoost" id="30">
-                            500 units
+                            40 units
                         </button>
                     </div>
                 </div>
@@ -95,53 +97,40 @@
             </div>
         </div>
         <div class="rightContent">
-            <H1 id="mainMessage">Message</H1>
-            <div id="display">0</div>
-            <div class="imgWrapper">
-                <img class="imgLevel" src="./img/Level 1.svg" alt="Level 1 Illustration">
-                <img class="imgLevel" src="./img/Level 2.svg" alt="Level 2 Illustration">
-                <img class="imgLevel" src="./img/Level 3.svg" alt="Level 3 Illustration">
-                <img class="imgLevel" src="./img/Level 4.svg" alt="Level 4 Illustration">
-                <img class="imgLevel" src="./img/Level 5.svg" alt="Level 5 Illustration">
-                <img class="imgLevel" src="./img/Level 6.svg" alt="Level 6 Illustration">
-                <img class="imgLevel" src="./img/Level 7.svg" alt="Level 7 Illustration">
-                <img class="imgLevel" src="./img/Level 8.svg" alt="Level 8 Illustration">
-                <img class="imgLevel" src="./img/Level 9.svg" alt="Level 9 Illustration">
-                <img class="imgLevel" src="./img/Level 10.svg" alt="Level 10 Illustration">
+            <div class="progressBarWrapper">
+                <div class="progressShadow">
+                    <div class="progress">
+                        <div class="progress-value"></div>
+                    </div>
+                </div>
             </div>
-            <div class="btnItem">
-                <div class="btnDropshadow">
-                    <button class="btnBoost" id="click">Click here</button>
+            <div class="MainWrapperRight">
+                <div class="scoreWrapper">
+                    <H1 id="mainMessage">Message</H1>
+                    <div id="display">0</div>
+                </div>
+                <div class="imgWrapper">
+                    <img class="imgLevel" src="./img/Level 1.svg" alt="Level 1 Illustration">
+                    <img class="imgLevel" src="./img/Level 2.svg" alt="Level 2 Illustration">
+                    <img class="imgLevel" src="./img/Level 3.svg" alt="Level 3 Illustration">
+                    <img class="imgLevel" src="./img/Level 4.svg" alt="Level 4 Illustration">
+                    <img class="imgLevel" src="./img/Level 5.svg" alt="Level 5 Illustration">
+                    <img class="imgLevel" src="./img/Level 6.svg" alt="Level 6 Illustration">
+                    <img class="imgLevel" src="./img/Level 7.svg" alt="Level 7 Illustration">
+                    <img class="imgLevel" src="./img/Level 8.svg" alt="Level 8 Illustration">
+                    <img class="imgLevel" src="./img/Level 9.svg" alt="Level 9 Illustration">
+                    <img class="imgLevel" src="./img/Level 10.svg" alt="Level 10 Illustration">
+                </div>
+                <div class="ClickBtnWrapper">
+                    <div class="btnItem">
+                        <div class="btnDropshadow">
+                            <button class="btnBoost" id="click">Click here</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- <section id="section">
-        <H1 id="mainMessage">Message</H1>
-        <div id="display">0</div>
-        <button id="click">Click here</button>
-        <div class="btnWrapper">
-            <div class="btnItem">
-                <button id="multiply">
-                    <p class="price"></p>
-                    x1 multiplier
-                </button>
-            </div>
-            <div class="btnItem">
-                <button id="10">
-                    <p class="price"></p>
-                    x10 multiplier
-                </button>
-            </div>
-            <div class="btnItem">
-                <button id="30">
-                    <p class="price"></p>
-                    x30 multiplier
-                </button>
-            </div>
-        </div>
-    </section> -->
 
     <script src="./js/script.js"></script>
 </body>
