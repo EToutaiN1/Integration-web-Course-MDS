@@ -69,6 +69,12 @@
 .btnDropshadow .btnBoost#click {
   box-shadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
 }
+.btnDropshadow .btnBoost.reset {
+  padding: 0.7rem 1rem;
+}
+.btnDropshadow .btnBoost#btnBoostAutoClick {
+  display: none;
+}
 .btnDropshadow:active {
   transform: scale(0.95);
 }
@@ -310,8 +316,6 @@ label span:nth-of-type(3) {
   position: absolute;
   font-size: 1.2rem;
   font-weight: 700;
-  -webkit-animation: counterUp 0.5s ease;
-          animation: counterUp 0.5s ease;
   display: none;
 }
 .scoreWrapper .score span:nth-of-type(1) {
@@ -382,18 +386,17 @@ label span:nth-of-type(3) {
   justify-content: center;
 }
 .imgWrapper .imgLevel {
-  display: none;
   width: 100%;
   opacity: 0;
-  transform: translateY(50%);
+  top: 50%;
   position: absolute;
   z-index: 0;
+  transform: translateY(-50%);
   transition: all 0.5s ease-out;
 }
 .imgWrapper .imgLevel:first-of-type {
   display: block;
-  opacity: 1;
-  transform: translateY(0%);
+  top: 0;
 }
 
 .progressBarWrapper {
@@ -413,22 +416,23 @@ label span:nth-of-type(3) {
 }
 .progressBarWrapper .progressShadow {
   border-radius: 3rem;
+  box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
+  padding: 0.2rem;
 }
 .progressBarWrapper .progressShadow .progress {
   background-color: #EEEEEE;
-  box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
+  box-shadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
   justify-content: flex-start;
   border-radius: 3rem;
   align-items: center;
   position: relative;
-  padding: 0 0.2rem;
   display: flex;
   height: 1.5rem;
   width: 15rem;
 }
 .progressBarWrapper .progressShadow .progress .progress-value {
   border-radius: 3rem;
-  height: 1.4rem;
+  height: 1.3rem;
   width: 0;
 }
 

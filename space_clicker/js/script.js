@@ -10,9 +10,15 @@ const priceGold = document.getElementsByClassName('price')[2];
 const imgLevel = document.querySelectorAll('.imgLevel');
 const progress_value = document.querySelector('.progress-value');
 
-let global_counter = 1;
+window.addEventListener('load', ()=> {
+    imgLevel[0].style.opacity = '0';
+    update_level()
+})
 
-let objective_level = [20, 60, 200, 500, 10000, 35000, 100000, 250000, 600000, 1000000];
+let global_counter = Number(localStorage.getItem('global_counter'));
+
+let objective_level = [20, 30, 40, 500, 10000, 35000, 100000, 250000, 600000, 1000000];
+
 
 function reset_width_level(level){
     let sum = 0;
@@ -22,25 +28,27 @@ function reset_width_level(level){
     return sum;
 }
 
+
 function reset_level(){
     imgLevel.forEach((img)=> {
-        img.style.transform = 'translateY(50%)';
         img.style.opacity = '0';
         img.style.display = 'none';
+        img.style.top = '50%';
     })
     progress_value.style.background = 'none';
 }
 function update_level(){
     if ( (global_counter-reset_width_level(0)) <= objective_level[0]){
+        reset_level()
         progress_value.style.width = ((global_counter-reset_width_level(0))/objective_level[0]) * 100 + '%';
         imgLevel[0].style.display = 'block';
         progress_value.style.background = '#B6CFD1';
+        imgLevel[0].style.opacity = '1';
     }
     else if( (global_counter-reset_width_level(1)) <= objective_level[1]){
         reset_level()
         progress_value.style.width = ((global_counter-reset_width_level(1))/objective_level[1]) * 100 + '%';
         imgLevel[1].style.display = 'block';
-        imgLevel[1].style.transform = 'translateY(0)';
         imgLevel[1].style.opacity = '1';
         progress_value.style.background = '#B6CFD1';
     } 
@@ -48,7 +56,6 @@ function update_level(){
         reset_level()
         progress_value.style.width = ((global_counter-reset_width_level(2))/objective_level[2]) * 100 + '%';
         imgLevel[2].style.display = 'block';
-        imgLevel[2].style.transform = 'translateY(0)';
         imgLevel[2].style.opacity = '1';
         progress_value.style.background = 'linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%)';
     }
@@ -56,7 +63,6 @@ function update_level(){
         reset_level()
         progress_value.style.width = ((global_counter-reset_width_level(3))/objective_level[3]) * 100 + '%';
         imgLevel[3].style.display = 'block';
-        imgLevel[3].style.transform = 'translateY(0)';
         imgLevel[3].style.opacity = '1';
         progress_value.style.background = 'linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%)';
     } 
@@ -64,7 +70,6 @@ function update_level(){
         reset_level()
         progress_value.style.width = ((global_counter-reset_width_level(4))/objective_level[4]) * 100 + '%';
         imgLevel[4].style.display = 'block';
-        imgLevel[4].style.transform = 'translateY(0)';
         imgLevel[4].style.opacity = '1';
         progress_value.style.background = 'linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%)';
     }
@@ -72,7 +77,6 @@ function update_level(){
         reset_level()
         progress_value.style.width = ((global_counter-reset_width_level(5))/objective_level[5]) * 100 + '%';
         imgLevel[5].style.display = 'block';
-        imgLevel[5].style.transform = 'translateY(0)';
         imgLevel[5].style.opacity = '1';
         progress_value.style.background = 'linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%)';
     } 
@@ -80,7 +84,6 @@ function update_level(){
         reset_level()
         progress_value.style.width = ((global_counter-reset_width_level(6))/objective_level[6]) * 100 + '%';
         imgLevel[6].style.display = 'block';
-        imgLevel[6].style.transform = 'translateY(0)';
         imgLevel[6].style.opacity = '1';
         progress_value.style.background = 'linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%)';
     }
@@ -88,7 +91,6 @@ function update_level(){
         reset_level()
         progress_value.style.width = ((global_counter-reset_width_level(7))/objective_level[7]) * 100 + '%';
         imgLevel[7].style.display = 'block';
-        imgLevel[7].style.transform = 'translateY(0)';
         imgLevel[7].style.opacity = '1';
         progress_value.style.background = 'linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%)';
     } 
@@ -96,7 +98,6 @@ function update_level(){
         reset_level()
         progress_value.style.width = ((global_counter-reset_width_level(8))/objective_level[8]) * 100 + '%';
         imgLevel[8].style.display = 'block';
-        imgLevel[8].style.transform = 'translateY(0)';
         imgLevel[8].style.opacity = '1';
         progress_value.style.background = 'linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%)';
     }
@@ -104,49 +105,89 @@ function update_level(){
         reset_level()
         progress_value.style.width = ((global_counter-reset_width_level(9))/objective_level[9]) * 100 + '%';
         imgLevel[9].style.display = 'block';
-        imgLevel[9].style.transform = 'translateY(0)';
         imgLevel[9].style.opacity = '1';
         progress_value.style.background = 'linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%)';
     }
 }
 
+function update_score(counterUpdate) {
+    setTimeout(() => {counterUpdate.style.animation = "counterUp 0.5s ease";
+}, 500)
+}
+
 clickBtn.addEventListener('click', () => {
     counter += 0 + multiplier;
     global_counter += 0 + multiplier;
-    display.innerHTML = counter;
+
+    update_score(scoreUp[0])
+    counter += 0 + counterBronze;
+    global_counter += 0 + counterBronze;
     
+    counter += 0 + counterSilver;
+    global_counter += 0 + counterSilver;
+
+    counter += 0 + counterGold;
+    global_counter += 0 + counterGold;
+    
+    display.innerHTML = counter;
+    local_counter = localStorage.setItem('counter', counter);
+    local_globalCounter = localStorage.setItem('global_counter', global_counter);
+    console.log(localStorage);
     update_level()
     console.log("Btn clicked");
 })
-    
+
 const scoreUp = document.querySelectorAll('.scoreUpdate');
 
 console.log(scoreUp);
 
-
-let counter = 0;
 let multiplier = 1;
+let counter = Number(localStorage.getItem('counter'));
 
-let counterBronze = 0;
-let counterSilver = 0;
-let counterGold = 0;
+let local_counter = localStorage.setItem('counter', counter);
+let local_globalCounter = localStorage.setItem('global_counter', global_counter);
 
-const multiplierBronze = 1;
-const multiplierSilver = 5;
-const multiplierGold = 10;
+let default_counter = 0;
 
-let bronzePrice = 10;
-let silverPrice = 30;
-let goldPrice = 40;
+let counterBronze = Number(localStorage.getItem('counter_bronze'));
+let counterSilver = Number(localStorage.getItem('counter_silver'));
+let counterGold = Number(localStorage.getItem('counter_gold'));
 
-let price_boost = 5;
+
+let local_counterBronze = localStorage.setItem('counter_bronze', counterBronze);
+let local_counterSilver = localStorage.setItem('counter_silver', counterSilver);
+let local_counterGold = localStorage.setItem('counter_gold', counterGold);
+
+let multiplierBronze = 1;
+let multiplierSilver = 5;
+let multiplierGold = 10;
+
+let default_bronzePrice = 10;
+let default_silverPrice = 30;
+let default_goldPrice = 40;
+
+let bronzePrice = Number(localStorage.getItem('bronze_price'));
+let silverPrice = Number(localStorage.getItem('silver_price'));
+let goldPrice = Number(localStorage.getItem('gold_price'));
+
+
+let local_bronzePrice = localStorage.setItem('bronze_price', bronzePrice);
+let local_silverPrice = localStorage.setItem('silver_price', silverPrice);
+let local_goldPrice = localStorage.setItem('gold_price', goldPrice);
+
+let default_price_boost = 5;
+let price_boost = Number(localStorage.getItem('price_boost'));
+let local_price_boost = localStorage.setItem('price_boost', price_boost);
 
 let menu;
-let interval;
-let intervalSpeed = 1000;
 
-function augmenterMultiplicateur(counterAdd, facteur) {
-    let counter = counterAdd + facteur;
+let interval;
+let default_intervalSpeed = 1000;
+let intervalSpeed = Number(localStorage.getItem('intervalSpeed'));
+let local_intervalSpeed = localStorage.setItem('intervalSpeed', intervalSpeed);
+
+function augmenterMultiplicateur(counter, facteur) {
+    counter += facteur;
     return counter;
 };
 
@@ -155,16 +196,13 @@ function AddActiveClass(btn) {
 };
 
 
-function BtnMultiply(BtnReference, price, priceText, textMulti, counterUnits, upMultiplicateur, scoreUpdate) {
+function BtnMultiply(BtnReference, price, default_price, priceText, textMulti, counterUnits, upMultiplicateur, scoreUpdate) {
     BtnReference.addEventListener('click', () => {
         if (counter < price) {
             mainMessage.innerHTML = "Vous n'avez pas assez de cookies !";
         } else {
             first_time_pressed(BtnReference, scoreUpdate);
-            console.log(upMultiplicateur, ' + ', counterUnits);
-            augmenterMultiplicateur(counterUnits, upMultiplicateur);
-            console.log(augmenterMultiplicateur(counterUnits, upMultiplicateur));
-            console.log(upMultiplicateur, ' + ', counterUnits);
+            counterUnits = augmenterMultiplicateur(counterUnits, upMultiplicateur);
             scoreUpdate.innerHTML = "+" + counterUnits;
             counter -= price;
             price += parseInt(price * (60/100));
@@ -188,9 +226,9 @@ function first_time_pressed(btnPressed, scoreUpdate) {
     }
 }
 
-BtnMultiply(bronzeBtn, bronzePrice, priceBronze,'Bronze', counterBronze, multiplierBronze, scoreUp[0]);
-BtnMultiply(silverBtn, silverPrice, priceSilver, 'Argent', counterSilver, multiplierSilver, scoreUp[1]);
-BtnMultiply(goldBtn, goldPrice, priceGold,'Or', counterGold, multiplierGold, scoreUp[2]);
+BtnMultiply(bronzeBtn, bronzePrice, default_bronzePrice , priceBronze,'Bronze', counterBronze, multiplierBronze, scoreUp[0]);
+BtnMultiply(silverBtn, silverPrice, default_silverPrice , priceSilver, 'Argent', counterSilver, multiplierSilver, scoreUp[1]);
+BtnMultiply(goldBtn, goldPrice, default_goldPrice , priceGold,'Or', counterGold, multiplierGold, scoreUp[2]);
 
 
 const ToggleBtn = document.getElementById("btn_container");
@@ -199,15 +237,31 @@ const purpleCircle = document.getElementById("purpleCircle");
 const btn_boost = document.getElementById("btnBoostAutoClick");
 const boostPrice = document.getElementById("boostPrice");
 
+if (price_boost == 0) {
+    price_boost = default_price_boost;
+    boostPrice.innerHTML = price_boost + " units";
+    local_price_boost = localStorage.setItem('price_boost', price_boost);
+} else {
+    boostPrice.innerHTML = price_boost + " units";
+}
+
 btn_boost.addEventListener('click', () => {
     if (price_boost > counter){
         mainMessage.innerHTML = "Vous n'avez pas assez de minerais pour activer l'auto-minage !";
     }else {
-        intervalSpeed =parseInt(intervalSpeed * (90/100));
+        if (intervalSpeed == 0) {
+            intervalSpeed = default_intervalSpeed;
+            intervalSpeed = parseInt(intervalSpeed * (90/100));
+            local_intervalSpeed = localStorage.setItem('intervalSpeed', intervalSpeed)
+        } else {
+            intervalSpeed = parseInt(intervalSpeed * (90/100));
+            local_intervalSpeed = localStorage.setItem('intervalSpeed', intervalSpeed)
+        }
         counter -= price_boost;
         display.innerHTML = counter;
         price_boost = parseInt(price_boost * (160/100));
-        boostPrice.innerHTML = price_boost + "units";
+        local_price_boost = localStorage.setItem('price_boost', price_boost);
+        boostPrice.innerHTML = price_boost + " units";
         let interval_activated = (interval != undefined);
         if(interval_activated) {
             clearInterval(interval)
@@ -224,9 +278,12 @@ ToggleBtn.addEventListener("click", () => {
     let interval_activated = (interval != undefined);
     if (counter < 10) {
         mainMessage.innerHTML = "Vous n'avez pas assez de cookies !";
-    }else{
+    } else {
         one.classList.toggle("active");
         purpleCircle.classList.toggle("active");
+        if (intervalSpeed == 0) {
+            intervalSpeed = default_intervalSpeed;
+        }
         if( !interval_activated) {
             interval = setInterval(clickButton, intervalSpeed);
             console.log('activate');
@@ -235,6 +292,7 @@ ToggleBtn.addEventListener("click", () => {
             console.log('desactivate');
             interval = undefined;
         }
+        first_time_pressed(ToggleBtn, btn_boost)
     }
 });
 
@@ -247,15 +305,19 @@ burgerBtn.addEventListener("click", () => {
     case true:
         menu = AddActiveClass(sideBar);
         menu = 1;
-        console.log('active');
-        console.log(menu);
-    break;
+        break;
     default: 
         sideBar.classList.remove("active");
         menu = undefined;
-        console.log('not active');
     }
 });
 
+display.innerHTML = counter;
 
 
+const resetBtn = document.getElementById('resetBtn');
+
+resetBtn.addEventListener('click', () => {
+    localStorage.clear();
+    window.location.reload();
+})

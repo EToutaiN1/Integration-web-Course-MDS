@@ -77,7 +77,12 @@
         }
         &#click{
             box-shadow: $innerShadow;
-            
+        }
+        &.reset{
+            padding: 0.7rem 1rem;
+        }
+        &#btnBoostAutoClick{
+            display: none;
         }
     }
     &:active{
@@ -322,7 +327,7 @@ label{
             position: absolute;
             font-size: 1.2rem;
             font-weight: 700;
-            animation: counterUp 0.5s ease;
+            // animation: counterUp 0.5s ease;
             display: none;
             &:nth-of-type(1){
                 left: 120%;
@@ -379,17 +384,16 @@ label{
     position: relative;
     @include flexCenter();
     .imgLevel{
-        display: none;
         width: 100%;
         opacity: 0;
-        transform: translateY(50%);
+        top: 50%;
         position: absolute;
         z-index: 0;
+        transform: translateY(-50%);
         transition: all 0.5s ease-out;
         &:first-of-type{
             display: block;
-            opacity: 1;
-            transform: translateY(0%);
+            top: 0;
         }
     }
 }
@@ -408,20 +412,21 @@ label{
     }
     .progressShadow{
         border-radius: 3rem;
+        box-shadow: $dropShadow;
+        padding: 0.2rem;
         .progress {
             background-color: $secondColor;
-            box-shadow: $dropShadow;
+            box-shadow: $innerShadow;
             justify-content: flex-start;
             border-radius: 3rem;
             align-items: center;
             position: relative;
-            padding: 0 0.2rem;
             display: flex;
             height: 1.5rem;
             width: 15rem;
             .progress-value {
                 border-radius: 3rem;
-                height: 1.4rem;
+                height: 1.3rem;
                 width: 0;
             }
         }
