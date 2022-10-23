@@ -42,7 +42,7 @@
         border-right: 0.1rem solid rgba($fontcolor, 0.1);
     }
     .rightContent{
-        padding: 10vh;
+        padding: 4vh 10vh 15vh 10vh;
         width: 60%;
         height: 100%;
         @include flexCenter();
@@ -50,7 +50,7 @@
         .MainWrapperRight{
             @include flexCenter();
             margin: 0 auto;
-            justify-content: space-around;
+            justify-content: space-between;
             flex-direction: column;
             height: 100%;
         }
@@ -177,9 +177,6 @@ label{
             width:50%;
             transform: translate(22px, -13px) rotatez(45deg);
         }
-        // &:checked + .menuWrapper{
-        //     transform: translateX(0%);
-        // }
     }
     span{
         position: relative;
@@ -204,24 +201,23 @@ label{
     }
 }
 
-.menuWrapper {
+.sideBar {
     background-color: $secondColor;
     box-shadow: $dropShadow;
     position: absolute;
-    left: 0;
+    left: -100%;
     top: 0;
     bottom: 0;
     width: 20%;
     z-index: 1000;
     padding: 3rem 1.5rem;
-    transition: all 0.5s ease-out;
-    transform: translateX(-100%);
+    transition: all 0.8s ease;
     display: flex; 
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     &.active{
-        transform: translateX(0);
+        left: 0;
     }
     .topBlock{
         display: flex;
@@ -229,6 +225,11 @@ label{
         justify-content: center;
         flex-direction: column;
         background-color: transparent;
+        .menuLogo{
+            img{
+                width: 5vw;
+            }
+        }
         .menuLink{
             margin-top: 2rem;
             background-color: transparent;
@@ -254,6 +255,8 @@ label{
         }
     }
     .btmBlock{
+        width: 80%;
+        text-align: center;
         .socialLink{
             padding-bottom: 1rem;
             margin-bottom: 1rem;
@@ -310,12 +313,63 @@ label{
     #mainMessage{
         text-align: center;
         font-weight: 400;
-
     }
-    #display{
-        font-size: 3rem;
-        font-weight: 700;
-        text-shadow: $dropShadow;
+    .score{
+        @include flexCenter();
+        flex-direction: column;
+        position: relative;
+        span{
+            position: absolute;
+            font-size: 1.2rem;
+            font-weight: 700;
+            animation: counterUp 0.5s ease;
+            display: none;
+            &:nth-of-type(1){
+                left: 120%;
+                top: 0%;
+                background: $bronzeGradient;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            &:nth-of-type(2){
+                left: 120%;
+                top: 25%;
+                background: $silverGradient;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            &:nth-of-type(3){
+                left: 120%;
+                top: 50%;
+                background: $goldGradient;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+        }
+        #display{
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: $dropShadow;
+        }
+    }
+}
+
+@keyframes counterUp {
+    from{
+        opacity: 0;
+        transform: translateY(1.5rem);
+    } 
+    20%{
+        
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to{
+        opacity: 0;
+        transform: translateY(-1.5rem);
     }
 }
 

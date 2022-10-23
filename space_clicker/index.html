@@ -15,45 +15,49 @@
 </head>
 
 <body>
-    <label for="check" id="burgerMenu">
-        <input type="checkbox" id="check">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
-
     <div class="menuWrapper">
-        <div class="topBlock">
-            <div class="menuLogo">
-                <img src="./img/logo Ewan.svg" alt="logo Ewan. T">
+        <label for="check" id="burgerMenu">
+            <input type="checkbox" id="check" hidden>
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav class="sideBar">
+            <div class="topBlock">
+                <div class="menuLogo">
+                    <a href="https://portfolio-ewan-toutain-2022.webflow.io/">    
+                        <img src="./img/logo Ewan.svg" alt="logo Ewan. T">
+                    </a>
+                </div>
+                <div class="menuLink">
+                    <ul>
+                        <li class="menuLinkItem">
+                            <img src="./img/components icon.svg" alt="components icon">
+                            <a href="#">Components</a>
+                        </li>
+                        <li class="menuLinkItem">
+                            <img src="./img/stat icon.svg" alt="stats icon">
+                            <a href="#">Stats</a>
+                        </li>
+                        <li class="menuLinkItem">
+                            <img src="./img/settings icon.svg" alt="settings icon">
+                            <a href="#">Paramètres</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="menuLink">
-                <ul>
-                    <li class="menuLinkItem">
-                        <img src="./img/components icon.svg" alt="components icon">
-                        <a href="#">Components</a>
-                    </li>
-                    <li class="menuLinkItem">
-                        <img src="./img/stat icon.svg" alt="stats icon">
-                        <a href="#">Stats</a>
-                    </li>
-                    <li class="menuLinkItem">
-                        <img src="./img/settings icon.svg" alt="settings icon">
-                        <a href="#">Paramètres</a>
-                    </li>
-                </ul>
+            <div class="btmBlock">
+                <div class="socialLink">
+                    <ul>
+                        <li class="social"><a href="#"><img src="./img/icon Github.svg" alt="icon Github"></a></li>
+                        <li class="social"><a href="#"><img src="./img/icon Malt.svg" alt="icon Malt"></a></li>
+                        <li class="social"><a href="#"><img src="./img/icon LinkedIn.svg" alt="icon LinkedIn"></a></li>
+                    </ul>
+                </div>
+                <p>© Ewan.T - 2022</p>
             </div>
-        </div>
-        <div class="btmBlock">
-            <div class="socialLink">
-                <ul>
-                    <li class="social"><a href="#"><img src="./img/icon Github.svg" alt="icon Github"></a></li>
-                    <li class="social"><a href="#"><img src="./img/icon Malt.svg" alt="icon Malt"></a></li>
-                    <li class="social"><a href="#"><img src="./img/icon LinkedIn.svg" alt="icon LinkedIn"></a></li>
-                </ul>
-            </div>
-            <p>© Ewan.T - 2022</p>
-        </div>
+        </nav>
     </div>
 
     <section id="section">
@@ -87,7 +91,7 @@
 
             <div class="btnDropshadow">
                 <button class="btnBoost" id="btnBoostAutoClick">
-                    Boost Auto-minage <span></span>
+                    Boost Auto-minage <span id="boostPrice">5 units</span>
                 </button>
             </div>
             <div class="toggleWrapper">
@@ -98,7 +102,7 @@
                         </span>
                     </div>
                 </div>
-                <p>Auto mining</p>
+                <p>Auto mining<br>(10 units)</p>
             </div>
         </div>
         <div class="rightContent">
@@ -113,7 +117,12 @@
             <div class="MainWrapperRight">
                 <div class="scoreWrapper">
                     <H1 id="mainMessage">Message</H1>
-                    <div id="display">0</div>
+                    <div class="score">
+                        <span class="scoreUpdate">+1</span>
+                        <span class="scoreUpdate">+5</span>
+                        <span class="scoreUpdate">+10</span>
+                        <div id="display">0</div>
+                    </div>
                 </div>
                 <div class="imgWrapper">
                     <img class="imgLevel" src="./img/Level 1.svg" alt="Level 1 Illustration">

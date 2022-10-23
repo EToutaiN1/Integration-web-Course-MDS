@@ -114,15 +114,28 @@ clickBtn.addEventListener('click', () => {
     counter += 0 + multiplier;
     global_counter += 0 + multiplier;
     display.innerHTML = counter;
+    
     update_level()
     console.log("Btn clicked");
 })
     
+const scoreUp = document.querySelectorAll('.scoreUpdate');
+
+console.log(scoreUp);
+
 
 let counter = 0;
 let multiplier = 1;
 
-let bronzePrice = 20;
+let counterBronze = 0;
+let counterSilver = 0;
+let counterGold = 0;
+
+const multiplierBronze = 1;
+const multiplierSilver = 5;
+const multiplierGold = 10;
+
+let bronzePrice = 10;
 let silverPrice = 30;
 let goldPrice = 40;
 
@@ -132,8 +145,9 @@ let menu;
 let interval;
 let intervalSpeed = 1000;
 
-function augmenterMultiplicateur(facteur) {
-    multiplier+= facteur;
+function augmenterMultiplicateur(counterAdd, facteur) {
+    let counter = counterAdd + facteur;
+    return counter;
 };
 
 function AddActiveClass(btn) {
@@ -141,46 +155,63 @@ function AddActiveClass(btn) {
 };
 
 
-function BtnMultiply(BtnReference, price, priceText, textMulti, upMultiplicateur) {
+function BtnMultiply(BtnReference, price, priceText, textMulti, counterUnits, upMultiplicateur, scoreUpdate) {
     BtnReference.addEventListener('click', () => {
         if (counter < price) {
             mainMessage.innerHTML = "Vous n'avez pas assez de cookies !";
         } else {
-            AddActiveClass(BtnReference);
-            augmenterMultiplicateur(upMultiplicateur);
+            first_time_pressed(BtnReference, scoreUpdate);
+            console.log(upMultiplicateur, ' + ', counterUnits);
+            augmenterMultiplicateur(counterUnits, upMultiplicateur);
+            console.log(augmenterMultiplicateur(counterUnits, upMultiplicateur));
+            console.log(upMultiplicateur, ' + ', counterUnits);
+            scoreUpdate.innerHTML = "+" + counterUnits;
             counter -= price;
             price += parseInt(price * (60/100));
             display.innerHTML = counter;
-            priceText.innerHTML = textMulti +' +' + multiplier;
+            priceText.innerHTML = textMulti +' +' + counterUnits;
             BtnReference.innerHTML = price +' units<br>';
             mainMessage.innerHTML = "Toujours plus, vous pouvez en amasser "+ upMultiplicateur + " de plus à chaque clique !"
         }
     })
 }
 
+let btnIsPressed;
 
-BtnMultiply(bronzeBtn, bronzePrice, priceBronze,'Bronze', 1);
-BtnMultiply(silverBtn, silverPrice, priceSilver, 'Argent', 5);
-BtnMultiply(goldBtn, goldPrice, priceGold,'Or', 10);
+function first_time_pressed(btnPressed, scoreUpdate) {
+    btnIsPressed = (btnPressed.classList.contains('active'))
+    console.log(btnIsPressed);
+    if(!btnIsPressed) {
+        AddActiveClass(btnPressed)
+        scoreUpdate.style.display = 'block';
+        btnIsPressed = true;
+    }
+}
+
+BtnMultiply(bronzeBtn, bronzePrice, priceBronze,'Bronze', counterBronze, multiplierBronze, scoreUp[0]);
+BtnMultiply(silverBtn, silverPrice, priceSilver, 'Argent', counterSilver, multiplierSilver, scoreUp[1]);
+BtnMultiply(goldBtn, goldPrice, priceGold,'Or', counterGold, multiplierGold, scoreUp[2]);
 
 
 const ToggleBtn = document.getElementById("btn_container");
 const one = document.getElementById("one");
 const purpleCircle = document.getElementById("purpleCircle");
 const btn_boost = document.getElementById("btnBoostAutoClick");
+const boostPrice = document.getElementById("boostPrice");
 
 btn_boost.addEventListener('click', () => {
     if (price_boost > counter){
         mainMessage.innerHTML = "Vous n'avez pas assez de minerais pour activer l'auto-minage !";
     }else {
         intervalSpeed =parseInt(intervalSpeed * (90/100));
-        price_boost *= (160/100);
-        console.log(intervalSpeed);
+        counter -= price_boost;
+        display.innerHTML = counter;
+        price_boost = parseInt(price_boost * (160/100));
+        boostPrice.innerHTML = price_boost + "units";
         let interval_activated = (interval != undefined);
         if(interval_activated) {
             clearInterval(interval)
             interval = setInterval(clickButton, intervalSpeed);
-            console.log('activate');
         }
     }
 });
@@ -207,20 +238,20 @@ ToggleBtn.addEventListener("click", () => {
     }
 });
 
-const burgerBtn = document.getElementById('burgerMenu')
-const menuWrapper = document.querySelectorAll('.menuWrapper')[0];
+const burgerBtn = document.getElementById('check')
+const sideBar = document.querySelector('.sideBar');
 
 burgerBtn.addEventListener("click", () => {
     let menuActivated = (menu != undefined)
     switch(!menuActivated){ 
     case true:
-        menu = AddActiveClass(menuWrapper);
+        menu = AddActiveClass(sideBar);
         menu = 1;
         console.log('active');
         console.log(menu);
     break;
     default: 
-        menuWrapper.classList.remove("active");
+        sideBar.classList.remove("active");
         menu = undefined;
         console.log('not active');
     }

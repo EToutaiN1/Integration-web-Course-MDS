@@ -28,7 +28,7 @@
   border-right: 0.1rem solid rgba(27, 27, 27, 0.1);
 }
 #section .rightContent {
-  padding: 10vh;
+  padding: 4vh 10vh 15vh 10vh;
   width: 60%;
   height: 100%;
   display: flex;
@@ -41,7 +41,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: column;
   height: 100%;
 }
@@ -182,64 +182,70 @@ label span:nth-of-type(3) {
   width: 75%;
 }
 
-.menuWrapper {
+.sideBar {
   background-color: #EEEEEE;
   box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
   position: absolute;
-  left: 0;
+  left: -100%;
   top: 0;
   bottom: 0;
   width: 20%;
   z-index: 1000;
   padding: 3rem 1.5rem;
-  transition: all 0.5s ease-out;
-  transform: translateX(-100%);
+  transition: all 0.8s ease;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
 }
-.menuWrapper.active {
-  transform: translateX(0);
+.sideBar.active {
+  left: 0;
 }
-.menuWrapper .topBlock {
+.sideBar .topBlock {
   display: flex;
   align-items: flex-end;
   justify-content: center;
   flex-direction: column;
   background-color: transparent;
 }
-.menuWrapper .topBlock .menuLink {
+.sideBar .topBlock .menuLogo img {
+  width: 5vw;
+}
+.sideBar .topBlock .menuLink {
   margin-top: 2rem;
   background-color: transparent;
 }
-.menuWrapper .topBlock .menuLink ul {
+.sideBar .topBlock .menuLink ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
-.menuWrapper .topBlock .menuLink ul li {
+.sideBar .topBlock .menuLink ul li {
   display: flex;
   align-items: center;
   justify-content: center;
   justify-content: flex-start;
 }
-.menuWrapper .topBlock .menuLink ul li a {
+.sideBar .topBlock .menuLink ul li a {
   padding: 0.7rem 1.2rem;
   cursor: pointer;
   color: #1b1b1b;
   text-decoration: none;
 }
-.menuWrapper .topBlock .menuLink ul li:hover {
+.sideBar .topBlock .menuLink ul li:hover {
   text-decoration: underline;
 }
-.menuWrapper .btmBlock .socialLink {
+.sideBar .btmBlock {
+  width: 80%;
+  text-align: center;
+}
+.sideBar .btmBlock .socialLink {
   padding-bottom: 1rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid rgba(27, 27, 27, 0.1);
 }
-.menuWrapper .btmBlock .socialLink ul {
+.sideBar .btmBlock .socialLink ul {
   list-style-type: none;
   display: flex;
   align-items: center;
@@ -293,12 +299,80 @@ label span:nth-of-type(3) {
   text-align: center;
   font-weight: 400;
 }
-.scoreWrapper #display {
+.scoreWrapper .score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.scoreWrapper .score span {
+  position: absolute;
+  font-size: 1.2rem;
+  font-weight: 700;
+  -webkit-animation: counterUp 0.5s ease;
+          animation: counterUp 0.5s ease;
+  display: none;
+}
+.scoreWrapper .score span:nth-of-type(1) {
+  left: 120%;
+  top: 0%;
+  background: linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.scoreWrapper .score span:nth-of-type(2) {
+  left: 120%;
+  top: 25%;
+  background: linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.scoreWrapper .score span:nth-of-type(3) {
+  left: 120%;
+  top: 50%;
+  background: linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.scoreWrapper .score #display {
   font-size: 3rem;
   font-weight: 700;
   text-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
 }
 
+@-webkit-keyframes counterUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+  }
+}
+
+@keyframes counterUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+  }
+}
 .imgWrapper {
   width: 20vw;
   margin: 5vh 0;
