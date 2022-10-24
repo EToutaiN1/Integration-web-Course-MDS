@@ -10,10 +10,6 @@ const priceGold = document.getElementsByClassName('price')[2];
 const imgLevel = document.querySelectorAll('.imgLevel');
 const progress_value = document.querySelector('.progress-value');
 
-window.addEventListener('load', ()=> {
-    imgLevel[0].style.opacity = '0';
-    update_level()
-})
 
 let global_counter = Number(localStorage.getItem('global_counter'));
 
@@ -111,28 +107,44 @@ function update_level(){
 }
 
 function update_score(counterUpdate) {
-    setTimeout(() => {counterUpdate.style.animation = "counterUp 0.5s ease";
-}, 500)
+    counterUpdate.style.display= 'block';
+    setTimeout(() => {counterUpdate.style.animation = "counterUp 0.6s ease";
+}, 600)
+setTimeout(()=> {
+    counterUpdate.style.display= 'none';
+}, 600)
 }
 
 clickBtn.addEventListener('click', () => {
     counter += 0 + multiplier;
     global_counter += 0 + multiplier;
 
-    update_score(scoreUp[0])
-    counter += 0 + counterBronze;
-    global_counter += 0 + counterBronze;
+    counterBronze = Number(localStorage.getItem('counter_bronze'));
+    counterSilver = Number(localStorage.getItem('counter_silver'));
+    counterGold = Number(localStorage.getItem('counter_gold'));
     
-    counter += 0 + counterSilver;
-    global_counter += 0 + counterSilver;
+    if (counterBronze !== 0){
+        update_score(scoreUp[0])
+        console.log(counterBronze);
+        counter += counterBronze;
+        global_counter += counterBronze;
+    }
+    if (counterSilver != 0){
+        update_score(scoreUp[1])
+        console.log(counterSilver);
+        counter += 0 + counterSilver;
+        global_counter += 0 + counterSilver;
+    }
+    if (counterGold != 0){
+        update_score(scoreUp[2])
+        console.log(counterGold);
+        counter += 0 + counterGold;
+        global_counter += 0 + counterGold;
+    }
 
-    counter += 0 + counterGold;
-    global_counter += 0 + counterGold;
-    
     display.innerHTML = counter;
     local_counter = localStorage.setItem('counter', counter);
     local_globalCounter = localStorage.setItem('global_counter', global_counter);
-    console.log(localStorage);
     update_level()
     console.log("Btn clicked");
 })
@@ -186,6 +198,28 @@ let default_intervalSpeed = 1000;
 let intervalSpeed = Number(localStorage.getItem('intervalSpeed'));
 let local_intervalSpeed = localStorage.setItem('intervalSpeed', intervalSpeed);
 
+let priceArray = [bronzePrice, silverPrice, goldPrice];
+
+let default_priceArray = [default_bronzePrice, default_silverPrice, default_goldPrice];
+
+for (let i = 0; i < priceArray.length; i++) {
+    if (priceArray[i] == 0){
+        priceArray[i] = default_priceArray[i];
+        console.log(priceArray);
+    }
+}
+
+window.addEventListener('load', ()=> {
+    imgLevel[0].style.opacity = '0';
+    update_level()
+    priceBronze.innerHTML =  'Bronze +' + counterBronze;
+    priceSilver.innerHTML =  'Silver +' + counterSilver;
+    priceGold.innerHTML = 'Gold +' + counterGold;
+    
+    bronzeBtn.innerHTML = priceArray[0] +' units<br>';
+    silverBtn.innerHTML = priceArray[1] +' units<br>';
+    goldBtn.innerHTML = priceArray[2] +' units<br>';
+})
 function augmenterMultiplicateur(counter, facteur) {
     counter += facteur;
     return counter;
@@ -195,21 +229,23 @@ function AddActiveClass(btn) {
     btn.classList.add("active");
 };
 
-
-function BtnMultiply(BtnReference, price, default_price, priceText, textMulti, counterUnits, upMultiplicateur, scoreUpdate) {
+function BtnMultiply(BtnReference, price, priceText, textMulti, localCounter, counterKey, counterUnits, upMultiplicateur, scoreUpdate) {
     BtnReference.addEventListener('click', () => {
         if (counter < price) {
-            mainMessage.innerHTML = "Vous n'avez pas assez de cookies !";
+            mainMessage.innerHTML = "You don't have enough minerals !";
         } else {
             first_time_pressed(BtnReference, scoreUpdate);
             counterUnits = augmenterMultiplicateur(counterUnits, upMultiplicateur);
             scoreUpdate.innerHTML = "+" + counterUnits;
             counter -= price;
             price += parseInt(price * (60/100));
+            localCounter = localStorage.setItem(counterKey, counterUnits);
+            console.log(counterUnits);
+            // update_value(localCounter, counterKey, counterUnits);
             display.innerHTML = counter;
             priceText.innerHTML = textMulti +' +' + counterUnits;
             BtnReference.innerHTML = price +' units<br>';
-            mainMessage.innerHTML = "Toujours plus, vous pouvez en amasser "+ upMultiplicateur + " de plus à chaque clique !"
+            mainMessage.innerHTML = "Always more, you can collect "+ upMultiplicateur + " more with each click!"
         }
     })
 }
@@ -226,9 +262,9 @@ function first_time_pressed(btnPressed, scoreUpdate) {
     }
 }
 
-BtnMultiply(bronzeBtn, bronzePrice, default_bronzePrice , priceBronze,'Bronze', counterBronze, multiplierBronze, scoreUp[0]);
-BtnMultiply(silverBtn, silverPrice, default_silverPrice , priceSilver, 'Argent', counterSilver, multiplierSilver, scoreUp[1]);
-BtnMultiply(goldBtn, goldPrice, default_goldPrice , priceGold,'Or', counterGold, multiplierGold, scoreUp[2]);
+BtnMultiply(bronzeBtn, priceArray[0], priceBronze,'Bronze',local_counterBronze, 'counter_bronze', counterBronze, multiplierBronze, scoreUp[0]);
+BtnMultiply(silverBtn, priceArray[1], priceSilver, 'Silver',local_counterSilver, 'counter_silver', counterSilver, multiplierSilver, scoreUp[1]);
+BtnMultiply(goldBtn, priceArray[2], priceGold,'Gold', local_counterGold, 'counter_gold', counterGold, multiplierGold, scoreUp[2]);
 
 
 const ToggleBtn = document.getElementById("btn_container");
@@ -247,7 +283,7 @@ if (price_boost == 0) {
 
 btn_boost.addEventListener('click', () => {
     if (price_boost > counter){
-        mainMessage.innerHTML = "Vous n'avez pas assez de minerais pour activer l'auto-minage !";
+        mainMessage.innerHTML = "You don't have enough minerals to activate self-mining!";
     }else {
         if (intervalSpeed == 0) {
             intervalSpeed = default_intervalSpeed;
@@ -277,7 +313,7 @@ function clickButton(){
 ToggleBtn.addEventListener("click", () => {
     let interval_activated = (interval != undefined);
     if (counter < 10) {
-        mainMessage.innerHTML = "Vous n'avez pas assez de cookies !";
+        mainMessage.innerHTML = "You don't have enough minerals !";
     } else {
         one.classList.toggle("active");
         purpleCircle.classList.toggle("active");

@@ -14,11 +14,12 @@
  $dropShadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
  $innerShadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
  
+ 
  @mixin flexCenter {
     display: flex;
     align-items: center;
     justify-content: center;
- }
+}
 
 * {
     margin: 0;
@@ -65,7 +66,13 @@
     transition: all 0.5s ease-out;
     position: relative;
     z-index: 5;
+    &#shadowBoost{
+        padding: 0;
+        display: grid;
+        place-items: center;
+    }
     .btnBoost{
+        font-size: clamp(0.5rem, 3vw, 0.8rem);
         background-color: $secondColor;
         padding: 1.2rem 1.9rem;
         border: none;
@@ -82,6 +89,7 @@
             padding: 0.7rem 1rem;
         }
         &#btnBoostAutoClick{
+            margin: 0.2rem;
             display: none;
         }
     }
@@ -93,6 +101,9 @@
 .toggleWrapper{
     @include flexCenter();
     flex-direction: column;
+    p{
+        font-size: clamp(0.6rem, 2vw, 0.9rem);
+    }
 }
 
 #borderToggleBtn{
@@ -161,7 +172,7 @@
 label{
     display:flex;
     flex-direction:column;
-    width:50px;
+    width: 3rem;
     position: fixed;
     left: 3rem;
     top: 3rem;
@@ -252,11 +263,11 @@ label{
                         color: $fontcolor;
                         text-decoration: none;
                     }
-                &:hover{
-                    text-decoration: underline;
-                }
+                    &:hover{
+                        text-decoration: underline;
                 }
             }
+        }
         }
     }
     .btmBlock{
@@ -282,32 +293,40 @@ label{
     flex-direction: column;
     gap: 1.5rem;
     margin-bottom: 5vh;
-    .btnItem{
+    width: 100%;
+    .ressourceBtn{
         display: flex;
-        align-items: center;
         flex-direction: column;
-        gap: 0.7rem;
-        .price{
-            font-weight: 700;
-            font-size: 0.9rem;
-            &#bronze{
-                background: $bronzeGradient;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-            &#silver{
-                background: $silverGradient;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-            &#gold{
-                background: $goldGradient;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
+        gap: 1.5rem;
+        width: 100%;
+        justify-content: space-evenly;
+    }
+}
+.btnItem{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.7rem;
+    .price{
+        font-weight: 700;
+        font-size: clamp(0.8rem, 2vw ,0.9rem);
+        &#bronze{
+            background: $bronzeGradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        &#silver{
+            background: $silverGradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        &#gold{
+            background: $goldGradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     }
 }
@@ -316,6 +335,7 @@ label{
     @include flexCenter();
     flex-direction: column;
     #mainMessage{
+        font-size: clamp(0.7rem, 2vw, 1.5rem);
         text-align: center;
         font-weight: 400;
     }
@@ -325,7 +345,7 @@ label{
         position: relative;
         span{
             position: absolute;
-            font-size: 1.2rem;
+            font-size: clamp(0.8rem, 2vw, 1rem);
             font-weight: 700;
             // animation: counterUp 0.5s ease;
             display: none;
@@ -355,7 +375,7 @@ label{
             }
         }
         #display{
-            font-size: 3rem;
+            font-size: clamp(2rem, 3vw,3rem);
             font-weight: 700;
             text-shadow: $dropShadow;
         }
@@ -409,6 +429,7 @@ label{
     h2{
         transform: rotate(90deg);
         text-align: center;
+        font-size: clamp(0.8rem, 1vw, 3rem);
     }
     .progressShadow{
         border-radius: 3rem;
@@ -423,7 +444,7 @@ label{
             position: relative;
             display: flex;
             height: 1.5rem;
-            width: 15rem;
+            width: clamp(7rem, 22vh, 14rem);
             .progress-value {
                 border-radius: 3rem;
                 height: 1.3rem;
@@ -434,5 +455,6 @@ label{
 }
 
 
-
 /* FOOTER */
+
+@import 'media-queries';

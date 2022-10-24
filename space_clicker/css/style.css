@@ -55,7 +55,13 @@
   position: relative;
   z-index: 5;
 }
+.btnDropshadow#shadowBoost {
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
 .btnDropshadow .btnBoost {
+  font-size: clamp(0.5rem, 3vw, 0.8rem);
   background-color: #EEEEEE;
   padding: 1.2rem 1.9rem;
   border: none;
@@ -73,6 +79,7 @@
   padding: 0.7rem 1rem;
 }
 .btnDropshadow .btnBoost#btnBoostAutoClick {
+  margin: 0.2rem;
   display: none;
 }
 .btnDropshadow:active {
@@ -84,6 +91,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.toggleWrapper p {
+  font-size: clamp(0.6rem, 2vw, 0.9rem);
 }
 
 #borderToggleBtn {
@@ -143,7 +153,7 @@
 label {
   display: flex;
   flex-direction: column;
-  width: 50px;
+  width: 3rem;
   position: fixed;
   left: 3rem;
   top: 3rem;
@@ -265,30 +275,39 @@ label span:nth-of-type(3) {
   flex-direction: column;
   gap: 1.5rem;
   margin-bottom: 5vh;
+  width: 100%;
 }
-.btnWrapper .btnItem {
+.btnWrapper .ressourceBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.btnItem {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 0.7rem;
 }
-.btnWrapper .btnItem .price {
+.btnItem .price {
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
-.btnWrapper .btnItem .price#bronze {
+.btnItem .price#bronze {
   background: linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.btnWrapper .btnItem .price#silver {
+.btnItem .price#silver {
   background: linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-.btnWrapper .btnItem .price#gold {
+.btnItem .price#gold {
   background: linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -302,6 +321,7 @@ label span:nth-of-type(3) {
   flex-direction: column;
 }
 .scoreWrapper #mainMessage {
+  font-size: clamp(0.7rem, 2vw, 1.5rem);
   text-align: center;
   font-weight: 400;
 }
@@ -314,7 +334,7 @@ label span:nth-of-type(3) {
 }
 .scoreWrapper .score span {
   position: absolute;
-  font-size: 1.2rem;
+  font-size: clamp(0.8rem, 2vw, 1rem);
   font-weight: 700;
   display: none;
 }
@@ -343,7 +363,7 @@ label span:nth-of-type(3) {
   background-clip: text;
 }
 .scoreWrapper .score #display {
-  font-size: 3rem;
+  font-size: clamp(2rem, 3vw, 3rem);
   font-weight: 700;
   text-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
 }
@@ -413,6 +433,7 @@ label span:nth-of-type(3) {
 .progressBarWrapper h2 {
   transform: rotate(90deg);
   text-align: center;
+  font-size: clamp(0.8rem, 1vw, 3rem);
 }
 .progressBarWrapper .progressShadow {
   border-radius: 3rem;
@@ -428,7 +449,7 @@ label span:nth-of-type(3) {
   position: relative;
   display: flex;
   height: 1.5rem;
-  width: 15rem;
+  width: clamp(7rem, 22vh, 14rem);
 }
 .progressBarWrapper .progressShadow .progress .progress-value {
   border-radius: 3rem;
@@ -436,4 +457,92 @@ label span:nth-of-type(3) {
   width: 0;
 }
 
-/* FOOTER *//*# sourceMappingURL=style.css.map */
+/* FOOTER */
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (max-width: 1024px) {
+  #section {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+  #section .leftContent {
+    width: 100%;
+    border-top: 0.1rem solid rgba(27, 27, 27, 0.1);
+    border-right: none;
+    padding: 4vh 0;
+  }
+  #section .leftContent .btnWrapper {
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 70vw;
+  }
+  #section .leftContent .btnWrapper .ressourceBtn {
+    flex-direction: row;
+  }
+  #section .leftContent .btnWrapper .ressourceBtn .btnBoost {
+    padding: 0.8rem 1.4rem;
+  }
+  #section .leftContent .AutoClickWrapper {
+    display: flex;
+  }
+  #section .leftContent .AutoClickWrapper .btnDropshadow {
+    height: 5.2rem;
+  }
+  #section .leftContent .AutoClickWrapper .toggleWrapper {
+    margin-top: -3vh;
+  }
+  #section .rightContent {
+    width: 100%;
+    padding: 3vh 10vw;
+    flex-direction: row-reverse;
+  }
+  .imgWrapper {
+    width: 24vw;
+  }
+  .sideBar {
+    width: 40%;
+  }
+  .sideBar .topBlock .menuLogo img {
+    width: 10vw;
+  }
+}
+.progressBarWrapper {
+  margin-top: 0vh;
+}
+
+/* Smartphones (portrait) ----------- */
+@media screen and (max-width: 768px) {
+  /* Styles */
+}
+/* Smartphones (landscape) ----------- */
+@media screen and (max-width: 480px) {
+  /* Styles */
+  .sideBar {
+    width: 100%;
+  }
+  .sideBar .topBlock {
+    width: 100%;
+  }
+  .sideBar .topBlock .menuLogo {
+    margin-right: 10vw;
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .sideBar .topBlock .menuLogo img {
+    width: 20vw;
+  }
+  .sideBar .topBlock .menuLink {
+    margin-top: 10vh;
+    width: 100%;
+    padding: 0 25vw;
+  }
+  .sideBar .topBlock .menuLink ul {
+    justify-content: center;
+  }
+  .imgWrapper {
+    width: 40vw;
+  }
+  .btnBoost {
+    padding: 0.6rem 1rem;
+  }
+}/*# sourceMappingURL=style.css.map */
