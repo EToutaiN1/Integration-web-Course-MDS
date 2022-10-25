@@ -494,7 +494,7 @@ label span:nth-of-type(3) {
     flex-direction: row-reverse;
   }
   .imgWrapper {
-    width: 24vw;
+    width: 18vw;
   }
   .sideBar {
     width: 40%;
@@ -507,9 +507,14 @@ label span:nth-of-type(3) {
   margin-top: 0vh;
 }
 
+/* Smartphones (portrait) ----------- */
+@media screen and (max-width: 768px) {
+  .imgWrapper {
+    width: 24vw;
+  }
+}
 /* Smartphones (landscape) ----------- */
 @media screen and (max-width: 480px) {
-  /* Styles */
   .sideBar {
     width: 100%;
   }

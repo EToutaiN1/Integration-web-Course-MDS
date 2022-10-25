@@ -36,7 +36,7 @@
         }
     }
     .imgWrapper{
-        width: 24vw;
+        width: 18vw;
     }
 
     .sideBar{
@@ -55,14 +55,15 @@
     margin-top: 0vh;
 }
 
-// /* Smartphones (portrait) ----------- */
-// @media screen and (max-width : 768px) {
-//     /* Styles */
-// }
+/* Smartphones (portrait) ----------- */
+@media screen and (max-width : 768px) {
+    .imgWrapper{
+        width: 24vw;
+    }
+}
 
 /* Smartphones (landscape) ----------- */
 @media screen and (max-width : 480px) {
-    /* Styles */
     .sideBar{
         width: 100%;
         .topBlock{

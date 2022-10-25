@@ -107,6 +107,9 @@ let priceArray = [bronzePrice, silverPrice, goldPrice];
 
 let objective_level = [200, 800, 2500, 6000, 15000, 35000, 100000, 250000, 600000, 1000000];
 
+// Display the counter
+
+display.innerHTML = counter;
 
 //  for Loop to reset the price on the first load
 
@@ -126,9 +129,6 @@ if (price_boost == 0) {
     boostPrice.innerHTML = price_boost + " units";
 }
 
-// Display the counter
-
-display.innerHTML = counter;
 
 // Trigger on click for the main Button
 
@@ -211,7 +211,7 @@ btn_boost.addEventListener('click', () => {
 
 ToggleBtn.addEventListener("click", () => {
     let interval_activated = (interval != undefined);
-    if (counter < 10) {
+    if (counter < 100) {
         mainMessage.innerHTML = "You don't have enough minerals !";
     } else {
         one.classList.toggle("active");
@@ -249,7 +249,7 @@ burgerBtn.addEventListener("click", () => {
             menu = undefined;
         }
 });
-    
+
     
 // Reset Btn
 
