@@ -1,6 +1,34 @@
 @charset "UTF-8";
-/* Mise en page général */
 /* variables */
+@-webkit-keyframes counterUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+  }
+}
+@keyframes counterUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1.5rem);
+  }
+}
+/* Mise en page général */
 * {
   margin: 0;
   padding: 0;
@@ -18,34 +46,8 @@
   width: 100%;
   background-color: #F0F0F3;
 }
-#section .leftContent {
-  height: 100%;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-right: 0.1rem solid rgba(27, 27, 27, 0.1);
-}
-#section .rightContent {
-  padding: 4vh 10vh 15vh 10vh;
-  width: 60%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-content: flex-start;
-}
-#section .rightContent .MainWrapperRight {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  justify-content: space-between;
-  flex-direction: column;
-  height: 100%;
-}
 
+/* Bouton */
 .btnDropshadow {
   display: inline-block;
   box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
@@ -95,8 +97,7 @@
 .toggleWrapper p {
   font-size: clamp(0.6rem, 2vw, 0.9rem);
 }
-
-#borderToggleBtn {
+.toggleWrapper #borderToggleBtn {
   box-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
   width: 5.625rem;
   height: 2.5rem;
@@ -104,7 +105,7 @@
   border-radius: 1.875rem;
   display: inline-block;
 }
-#borderToggleBtn #btn_container {
+.toggleWrapper #borderToggleBtn #btn_container {
   position: relative;
   width: 5.5rem;
   height: 2.4rem;
@@ -112,10 +113,11 @@
   box-shadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 1.875rem;
   cursor: pointer;
 }
-#borderToggleBtn #btn_container #one {
+.toggleWrapper #borderToggleBtn #btn_container #one {
   position: absolute;
   height: 2rem;
   width: 2rem;
@@ -126,10 +128,10 @@
   transition: all 0.3s ease;
   left: 0.325rem;
 }
-#borderToggleBtn #btn_container #one.active {
+.toggleWrapper #borderToggleBtn #btn_container #one.active {
   transform: translateX(145%);
 }
-#borderToggleBtn #btn_container #one #purpleCircle {
+.toggleWrapper #borderToggleBtn #btn_container #one #purpleCircle {
   height: 0.8rem;
   width: 0.8rem;
   background-color: #745FF2;
@@ -140,14 +142,10 @@
   transform: translate(-50%, -50%) scale(0);
   transition: all 0.3s ease-out;
 }
-#borderToggleBtn #btn_container #one #purpleCircle.active {
+.toggleWrapper #borderToggleBtn #btn_container #one #purpleCircle.active {
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* Import */
-/* Mixin */
-/* Titre */
-/* Bouton */
 /* Class fonctionnelles */
 /* HEADER */
 label {
@@ -210,18 +208,18 @@ label span:nth-of-type(3) {
   padding: 3rem 1.5rem;
   transition: all 0.8s ease;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  flex-direction: column;
 }
 .sideBar.active {
   left: 0;
 }
 .sideBar .topBlock {
   display: flex;
+  flex-direction: column;
   align-items: flex-end;
   justify-content: center;
-  flex-direction: column;
   background-color: transparent;
 }
 .sideBar .topBlock .menuLogo img {
@@ -270,6 +268,34 @@ label span:nth-of-type(3) {
 }
 
 /* MAIN */
+.btnContent {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-right: 0.1rem solid rgba(27, 27, 27, 0.1);
+}
+
+.displayContent {
+  padding: 4vh 10vh 15vh 10vh;
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-start;
+}
+.displayContent .MainWrapperRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  height: 100%;
+}
+
 .btnWrapper {
   display: flex;
   flex-direction: column;
@@ -287,8 +313,8 @@ label span:nth-of-type(3) {
 
 .btnItem {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   gap: 0.7rem;
 }
 .btnItem .price {
@@ -368,35 +394,6 @@ label span:nth-of-type(3) {
   text-shadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
 }
 
-@-webkit-keyframes counterUp {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-  20% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-1.5rem);
-  }
-}
-
-@keyframes counterUp {
-  from {
-    opacity: 0;
-    transform: translateY(1.5rem);
-  }
-  20% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-1.5rem);
-  }
-}
 .imgWrapper {
   width: 20vw;
   margin: 5vh 0;
@@ -443,11 +440,12 @@ label span:nth-of-type(3) {
 .progressBarWrapper .progressShadow .progress {
   background-color: #EEEEEE;
   box-shadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   justify-content: flex-start;
   border-radius: 3rem;
-  align-items: center;
   position: relative;
-  display: flex;
   height: 1.5rem;
   width: clamp(7rem, 22vh, 14rem);
 }
@@ -457,7 +455,7 @@ label span:nth-of-type(3) {
   width: 0;
 }
 
-/* FOOTER */
+/* Media queries */
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (max-width: 1024px) {
   #section {

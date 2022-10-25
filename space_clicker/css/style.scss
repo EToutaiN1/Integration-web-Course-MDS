@@ -1,25 +1,35 @@
- /* Mise en page général */
+/* variables */
 
- /* variables */
+$mainColor: #F0F0F3;
+$fontcolor: #1b1b1b;
+$btnBg: #D9D9D9;
+$secondColor: #EEEEEE;
 
- $mainColor: #F0F0F3;
- $fontcolor: #1b1b1b;
- $btnBg: #D9D9D9;
- $secondColor: #EEEEEE;
- 
- $bronzeGradient: linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%);
- $silverGradient: linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%);
- $goldGradient: linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%);
+$bronzeGradient: linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%);
+$silverGradient: linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%);
+$goldGradient: linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%);
 
- $dropShadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
- $innerShadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
- 
- 
- @mixin flexCenter {
+$dropShadow: -0.175rem -0.175rem 0.5rem #FFFFFF, 0.26rem 0.26rem 0.35rem rgba(174, 174, 192, 0.4);
+$innerShadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
+
+ //  Mixin
+
+@mixin flexCenter {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+@mixin flexCol {
+    display: flex;
+    flex-direction: column;
+}
+
+// Import
+
+@import '../css/keyframes';
+
+/* Mise en page général */
 
 * {
     margin: 0;
@@ -35,28 +45,9 @@
     max-height: 100vh;
     width: 100%;
     background-color: $mainColor;
-    .leftContent{
-        height: 100%;
-        width:  50%;
-        @include flexCenter();
-        flex-direction: column;
-        border-right: 0.1rem solid rgba($fontcolor, 0.1);
-    }
-    .rightContent{
-        padding: 4vh 10vh 15vh 10vh;
-        width: 60%;
-        height: 100%;
-        @include flexCenter();
-        justify-content: flex-start;
-        .MainWrapperRight{
-            @include flexCenter();
-            margin: 0 auto;
-            justify-content: space-between;
-            flex-direction: column;
-            height: 100%;
-        }
-    }
 }
+
+/* Bouton */
 
 .btnDropshadow{
     display: inline-block;
@@ -104,74 +95,62 @@
     p{
         font-size: clamp(0.6rem, 2vw, 0.9rem);
     }
-}
-
-#borderToggleBtn{
-    box-shadow: $dropShadow;
-    width: 5.625rem;
-    height: 2.5rem;
-    margin: 1.25rem;
-    border-radius: 1.875rem;
-    display: inline-block;
-    #btn_container {
-        position: relative;
-        width: 5.5rem;
-        height: 2.4rem;
-        background-color: $secondColor;
-        box-shadow: $innerShadow;
-        display: flex;
-        align-items: center;
+    #borderToggleBtn{
+        box-shadow: $dropShadow;
+        width: 5.625rem;
+        height: 2.5rem;
+        margin: 1.25rem;
         border-radius: 1.875rem;
-        cursor: pointer;
-        #one {
-            position: absolute;
-            height: 2rem;
-            width: 2rem;
-            background-color: #F0F0F3;
-            display: block;
+        display: inline-block;
+        #btn_container {
+            position: relative;
+            width: 5.5rem;
+            height: 2.4rem;
+            background-color: $secondColor;
+            box-shadow: $innerShadow;
+            @include flexCenter();
             border-radius: 1.875rem;
-            box-shadow: $dropShadow;
-            transition: all 0.3s ease;
-            left: 0.325rem;
-            &.active {
-                transform: translateX(145%);
-            }
-            #purpleCircle{
-                height: 0.8rem;
-                width: 0.8rem;
-                background-color: #745FF2;
+            cursor: pointer;
+            #one {
                 position: absolute;
-                border-radius: 1rem;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%) scale(0);
-                transition: all 0.3s ease-out;
-                &.active{
-                    transform: translate(-50%, -50%) scale(1);
+                height: 2rem;
+                width: 2rem;
+                background-color: #F0F0F3;
+                display: block;
+                border-radius: 1.875rem;
+                box-shadow: $dropShadow;
+                transition: all 0.3s ease;
+                left: 0.325rem;
+                &.active {
+                    transform: translateX(145%);
+                }
+                #purpleCircle{
+                    height: 0.8rem;
+                    width: 0.8rem;
+                    background-color: #745FF2;
+                    position: absolute;
+                    border-radius: 1rem;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%) scale(0);
+                    transition: all 0.3s ease-out;
+                    &.active{
+                        transform: translate(-50%, -50%) scale(1);
+                    }
                 }
             }
-        }
-    }   
+        }   
+    }
 }
 
 
-/* Import */
-
-/* Mixin */
-
-/* Titre */
-
-
-/* Bouton */
 
 /* Class fonctionnelles */
 
 /* HEADER */
 
-
 label{
-    display:flex;
-    flex-direction:column;
+    @include flexCol();
     width: 3rem;
     position: fixed;
     left: 3rem;
@@ -228,18 +207,16 @@ label{
     z-index: 1000;
     padding: 3rem 1.5rem;
     transition: all 0.8s ease;
-    display: flex; 
+    @include flexCol();
     align-items: center;
     justify-content: space-between;
-    flex-direction: column;
     &.active{
         left: 0;
     }
     .topBlock{
-        display: flex;
+        @include flexCol();
         align-items: flex-end;
         justify-content: center;
-        flex-direction: column;
         background-color: transparent;
         .menuLogo{
             img{
@@ -288,24 +265,44 @@ label{
 
 /* MAIN */
 
-.btnWrapper{
-    display: flex;
+
+.btnContent{
+    height: 100%;
+    width:  50%;
+    @include flexCenter();
     flex-direction: column;
+    border-right: 0.1rem solid rgba($fontcolor, 0.1);
+}
+.displayContent{
+    padding: 4vh 10vh 15vh 10vh;
+    width: 60%;
+    height: 100%;
+    @include flexCenter();
+    justify-content: flex-start;
+    .MainWrapperRight{
+        @include flexCol();
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+        height: 100%;
+    }
+}
+
+.btnWrapper{
+    @include flexCol();
     gap: 1.5rem;
     margin-bottom: 5vh;
     width: 100%;
     .ressourceBtn{
-        display: flex;
-        flex-direction: column;
+        @include flexCol();
         gap: 1.5rem;
         width: 100%;
         justify-content: space-evenly;
     }
 }
 .btnItem{
-    display: flex;
+    @include flexCol();
     align-items: center;
-    flex-direction: column;
     gap: 0.7rem;
     .price{
         font-weight: 700;
@@ -347,7 +344,6 @@ label{
             position: absolute;
             font-size: clamp(0.8rem, 2vw, 1rem);
             font-weight: 700;
-            // animation: counterUp 0.5s ease;
             display: none;
             &:nth-of-type(1){
                 left: 120%;
@@ -382,21 +378,6 @@ label{
     }
 }
 
-@keyframes counterUp {
-    from{
-        opacity: 0;
-        transform: translateY(1.5rem);
-    } 
-    20%{
-        
-        opacity: 1;
-        transform: translateY(0);
-    }
-    to{
-        opacity: 0;
-        transform: translateY(-1.5rem);
-    }
-}
 
 .imgWrapper {
     width: 20vw;
@@ -438,11 +419,10 @@ label{
         .progress {
             background-color: $secondColor;
             box-shadow: $innerShadow;
+            @include flexCenter();
             justify-content: flex-start;
             border-radius: 3rem;
-            align-items: center;
             position: relative;
-            display: flex;
             height: 1.5rem;
             width: clamp(7rem, 22vh, 14rem);
             .progress-value {
@@ -455,6 +435,6 @@ label{
 }
 
 
-/* FOOTER */
+/* Media queries */
 
 @import 'media-queries';

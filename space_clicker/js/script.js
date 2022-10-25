@@ -1,123 +1,140 @@
 const mainMessage = document.getElementById('mainMessage')
 const display = document.getElementById('display')
+
 const clickBtn = document.getElementById('click')
 const bronzeBtn = document.getElementById('bronzeBtn')
 const silverBtn = document.getElementById('silverBtn')
 const goldBtn = document.getElementById('goldBtn')
+
 const priceBronze = document.getElementsByClassName('price')[0];
 const priceSilver = document.getElementsByClassName('price')[1];
 const priceGold = document.getElementsByClassName('price')[2];
+
 const imgLevel = document.querySelectorAll('.imgLevel');
 const progress_value = document.querySelector('.progress-value');
+const scoreUp = document.querySelectorAll('.scoreUpdate');
 
+const ToggleBtn = document.getElementById("btn_container");
+const one = document.getElementById("one");
+const purpleCircle = document.getElementById("purpleCircle");
+
+const btn_boost = document.getElementById("btnBoostAutoClick");
+const boostPrice = document.getElementById("boostPrice");
+
+const burgerBtn = document.getElementById('check')
+const sideBar = document.querySelector('.sideBar');
+
+const resetBtn = document.getElementById('resetBtn');
+
+
+
+let btnIsPressed;
+let menu;
+let interval;
+
+// the value which are added for by default and for each minerals
+
+let addOne = 1;
+let addOneBronze = 1;
+let addOneSilver = 5;
+let addOneGold = 10;
+
+let default_counter = 0;
+
+// All the "local_" variables are to stock the values in the localStorage of the users
+
+// counter which is displayed on screen
+
+let counter = Number(localStorage.getItem('counter'));
+let local_counter = localStorage.setItem('counter', counter);
+
+// counter which count all the click since the launch of a game
+// it permits to change the levels as the game progressed
 
 let global_counter = Number(localStorage.getItem('global_counter'));
+let local_globalCounter = localStorage.setItem('global_counter', global_counter);
 
-let objective_level = [20, 30, 40, 500, 10000, 35000, 100000, 250000, 600000, 1000000];
+// counter which count how many mineral have been added to the click
+
+let counterBronze = Number(localStorage.getItem('counter_bronze'));
+let counterSilver = Number(localStorage.getItem('counter_silver'));
+let counterGold = Number(localStorage.getItem('counter_gold'));
+
+let local_counterBronze = localStorage.setItem('counter_bronze', counterBronze);
+let local_counterSilver = localStorage.setItem('counter_silver', counterSilver);
+let local_counterGold = localStorage.setItem('counter_gold', counterGold);
+
+// Default prices of each minerals
+
+let default_bronzePrice = 80;
+let default_silverPrice = 500;
+let default_goldPrice = 2000;
+
+//price of each minerals
+
+let bronzePrice = Number(localStorage.getItem('bronze_price'));
+let silverPrice = Number(localStorage.getItem('silver_price'));
+let goldPrice = Number(localStorage.getItem('gold_price'));
+
+let local_bronzePrice = localStorage.setItem('bronze_price', bronzePrice);
+let local_silverPrice = localStorage.setItem('silver_price', silverPrice);
+let local_goldPrice = localStorage.setItem('gold_price', goldPrice);
+
+// default price of the boost of the auto-clicker
+
+let default_price_boost = 1000;
+
+// price of the boost of the auto-clicker
+
+let price_boost = Number(localStorage.getItem('price_boost'));
+let local_price_boost = localStorage.setItem('price_boost', price_boost);
+
+// default value of the interval speed of the auto-clicker  
+
+let default_intervalSpeed = 1000;
+
+// value of the interval speed of the auto-clicker
+
+let intervalSpeed = Number(localStorage.getItem('intervalSpeed'));
+let local_intervalSpeed = localStorage.setItem('intervalSpeed', intervalSpeed);
+
+// array of the default_price and price of the minerals
+
+let default_priceArray = [default_bronzePrice, default_silverPrice, default_goldPrice];
+let priceArray = [bronzePrice, silverPrice, goldPrice];
+
+// The value of the differents levels
+
+let objective_level = [200, 800, 2500, 6000, 15000, 35000, 100000, 250000, 600000, 1000000];
 
 
-function reset_width_level(level){
-    let sum = 0;
-    for (let index = 0; index < level; index++) {
-        sum += objective_level[index];
-    }
-    return sum;
-}
+//  for Loop to reset the price on the first load
 
-
-function reset_level(){
-    imgLevel.forEach((img)=> {
-        img.style.opacity = '0';
-        img.style.display = 'none';
-        img.style.top = '50%';
-    })
-    progress_value.style.background = 'none';
-}
-function update_level(){
-    if ( (global_counter-reset_width_level(0)) <= objective_level[0]){
-        reset_level()
-        progress_value.style.width = ((global_counter-reset_width_level(0))/objective_level[0]) * 100 + '%';
-        imgLevel[0].style.display = 'block';
-        progress_value.style.background = '#B6CFD1';
-        imgLevel[0].style.opacity = '1';
-    }
-    else if( (global_counter-reset_width_level(1)) <= objective_level[1]){
-        reset_level()
-        progress_value.style.width = ((global_counter-reset_width_level(1))/objective_level[1]) * 100 + '%';
-        imgLevel[1].style.display = 'block';
-        imgLevel[1].style.opacity = '1';
-        progress_value.style.background = '#B6CFD1';
-    } 
-    else if( (global_counter-reset_width_level(2)) <= objective_level[2]){
-        reset_level()
-        progress_value.style.width = ((global_counter-reset_width_level(2))/objective_level[2]) * 100 + '%';
-        imgLevel[2].style.display = 'block';
-        imgLevel[2].style.opacity = '1';
-        progress_value.style.background = 'linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%)';
-    }
-    else if( (global_counter-reset_width_level(3)) <= objective_level[3]){
-        reset_level()
-        progress_value.style.width = ((global_counter-reset_width_level(3))/objective_level[3]) * 100 + '%';
-        imgLevel[3].style.display = 'block';
-        imgLevel[3].style.opacity = '1';
-        progress_value.style.background = 'linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%)';
-    } 
-    else if( (global_counter-reset_width_level(4)) <= objective_level[4]){
-        reset_level()
-        progress_value.style.width = ((global_counter-reset_width_level(4))/objective_level[4]) * 100 + '%';
-        imgLevel[4].style.display = 'block';
-        imgLevel[4].style.opacity = '1';
-        progress_value.style.background = 'linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%)';
-    }
-    else if( (global_counter-reset_width_level(5)) <= objective_level[5]){
-        reset_level()
-        progress_value.style.width = ((global_counter-reset_width_level(5))/objective_level[5]) * 100 + '%';
-        imgLevel[5].style.display = 'block';
-        imgLevel[5].style.opacity = '1';
-        progress_value.style.background = 'linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%)';
-    } 
-    else if( (global_counter-reset_width_level(6)) <= objective_level[6]){
-        reset_level()
-        progress_value.style.width = ((global_counter-reset_width_level(6))/objective_level[6]) * 100 + '%';
-        imgLevel[6].style.display = 'block';
-        imgLevel[6].style.opacity = '1';
-        progress_value.style.background = 'linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%)';
-    }
-    else if( (global_counter-reset_width_level(7)) <= objective_level[7]){
-        reset_level()
-        progress_value.style.width = ((global_counter-reset_width_level(7))/objective_level[7]) * 100 + '%';
-        imgLevel[7].style.display = 'block';
-        imgLevel[7].style.opacity = '1';
-        progress_value.style.background = 'linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%)';
-    } 
-    else if( (global_counter-reset_width_level(8)) <= objective_level[8]){
-        reset_level()
-        progress_value.style.width = ((global_counter-reset_width_level(8))/objective_level[8]) * 100 + '%';
-        imgLevel[8].style.display = 'block';
-        imgLevel[8].style.opacity = '1';
-        progress_value.style.background = 'linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%)';
-    }
-    else {
-        reset_level()
-        progress_value.style.width = ((global_counter-reset_width_level(9))/objective_level[9]) * 100 + '%';
-        imgLevel[9].style.display = 'block';
-        imgLevel[9].style.opacity = '1';
-        progress_value.style.background = 'linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%)';
+for (let i = 0; i < priceArray.length; i++) {
+    if (priceArray[i] == 0){
+        priceArray[i] = default_priceArray[i];
     }
 }
 
-function update_score(counterUpdate) {
-    counterUpdate.style.display= 'block';
-    setTimeout(() => {counterUpdate.style.animation = "counterUp 0.6s ease";
-}, 600)
-setTimeout(()=> {
-    counterUpdate.style.display= 'none';
-}, 600)
+// if condition to reset the price of the boost of the auto-clicker 
+
+if (price_boost == 0) {
+    price_boost = default_price_boost;
+    boostPrice.innerHTML = price_boost + " units";
+    local_price_boost = localStorage.setItem('price_boost', price_boost);
+} else {
+    boostPrice.innerHTML = price_boost + " units";
 }
+
+// Display the counter
+
+display.innerHTML = counter;
+
+// Trigger on click for the main Button
 
 clickBtn.addEventListener('click', () => {
-    counter += 0 + multiplier;
-    global_counter += 0 + multiplier;
+    counter += 0 + addOne;
+    global_counter += 0 + addOne;
 
     counterBronze = Number(localStorage.getItem('counter_bronze'));
     counterSilver = Number(localStorage.getItem('counter_silver'));
@@ -147,67 +164,9 @@ clickBtn.addEventListener('click', () => {
     local_globalCounter = localStorage.setItem('global_counter', global_counter);
     update_level()
     console.log("Btn clicked");
-})
+});
 
-const scoreUp = document.querySelectorAll('.scoreUpdate');
-
-console.log(scoreUp);
-
-let multiplier = 1;
-let counter = Number(localStorage.getItem('counter'));
-
-let local_counter = localStorage.setItem('counter', counter);
-let local_globalCounter = localStorage.setItem('global_counter', global_counter);
-
-let default_counter = 0;
-
-let counterBronze = Number(localStorage.getItem('counter_bronze'));
-let counterSilver = Number(localStorage.getItem('counter_silver'));
-let counterGold = Number(localStorage.getItem('counter_gold'));
-
-
-let local_counterBronze = localStorage.setItem('counter_bronze', counterBronze);
-let local_counterSilver = localStorage.setItem('counter_silver', counterSilver);
-let local_counterGold = localStorage.setItem('counter_gold', counterGold);
-
-let multiplierBronze = 1;
-let multiplierSilver = 5;
-let multiplierGold = 10;
-
-let default_bronzePrice = 10;
-let default_silverPrice = 30;
-let default_goldPrice = 40;
-
-let bronzePrice = Number(localStorage.getItem('bronze_price'));
-let silverPrice = Number(localStorage.getItem('silver_price'));
-let goldPrice = Number(localStorage.getItem('gold_price'));
-
-
-let local_bronzePrice = localStorage.setItem('bronze_price', bronzePrice);
-let local_silverPrice = localStorage.setItem('silver_price', silverPrice);
-let local_goldPrice = localStorage.setItem('gold_price', goldPrice);
-
-let default_price_boost = 5;
-let price_boost = Number(localStorage.getItem('price_boost'));
-let local_price_boost = localStorage.setItem('price_boost', price_boost);
-
-let menu;
-
-let interval;
-let default_intervalSpeed = 1000;
-let intervalSpeed = Number(localStorage.getItem('intervalSpeed'));
-let local_intervalSpeed = localStorage.setItem('intervalSpeed', intervalSpeed);
-
-let priceArray = [bronzePrice, silverPrice, goldPrice];
-
-let default_priceArray = [default_bronzePrice, default_silverPrice, default_goldPrice];
-
-for (let i = 0; i < priceArray.length; i++) {
-    if (priceArray[i] == 0){
-        priceArray[i] = default_priceArray[i];
-        console.log(priceArray);
-    }
-}
+// Trigger to update all the information on the load of the page
 
 window.addEventListener('load', ()=> {
     imgLevel[0].style.opacity = '0';
@@ -220,66 +179,8 @@ window.addEventListener('load', ()=> {
     silverBtn.innerHTML = priceArray[1] +' units<br>';
     goldBtn.innerHTML = priceArray[2] +' units<br>';
 })
-function augmenterMultiplicateur(counter, facteur) {
-    counter += facteur;
-    return counter;
-};
 
-function AddActiveClass(btn) {
-    btn.classList.add("active");
-};
-
-function BtnMultiply(BtnReference, price, priceText, textMulti, localCounter, counterKey, counterUnits, upMultiplicateur, scoreUpdate) {
-    BtnReference.addEventListener('click', () => {
-        if (counter < price) {
-            mainMessage.innerHTML = "You don't have enough minerals !";
-        } else {
-            first_time_pressed(BtnReference, scoreUpdate);
-            counterUnits = augmenterMultiplicateur(counterUnits, upMultiplicateur);
-            scoreUpdate.innerHTML = "+" + counterUnits;
-            counter -= price;
-            price += parseInt(price * (60/100));
-            localCounter = localStorage.setItem(counterKey, counterUnits);
-            console.log(counterUnits);
-            // update_value(localCounter, counterKey, counterUnits);
-            display.innerHTML = counter;
-            priceText.innerHTML = textMulti +' +' + counterUnits;
-            BtnReference.innerHTML = price +' units<br>';
-            mainMessage.innerHTML = "Always more, you can collect "+ upMultiplicateur + " more with each click!"
-        }
-    })
-}
-
-let btnIsPressed;
-
-function first_time_pressed(btnPressed, scoreUpdate) {
-    btnIsPressed = (btnPressed.classList.contains('active'))
-    console.log(btnIsPressed);
-    if(!btnIsPressed) {
-        AddActiveClass(btnPressed)
-        scoreUpdate.style.display = 'block';
-        btnIsPressed = true;
-    }
-}
-
-BtnMultiply(bronzeBtn, priceArray[0], priceBronze,'Bronze',local_counterBronze, 'counter_bronze', counterBronze, multiplierBronze, scoreUp[0]);
-BtnMultiply(silverBtn, priceArray[1], priceSilver, 'Silver',local_counterSilver, 'counter_silver', counterSilver, multiplierSilver, scoreUp[1]);
-BtnMultiply(goldBtn, priceArray[2], priceGold,'Gold', local_counterGold, 'counter_gold', counterGold, multiplierGold, scoreUp[2]);
-
-
-const ToggleBtn = document.getElementById("btn_container");
-const one = document.getElementById("one");
-const purpleCircle = document.getElementById("purpleCircle");
-const btn_boost = document.getElementById("btnBoostAutoClick");
-const boostPrice = document.getElementById("boostPrice");
-
-if (price_boost == 0) {
-    price_boost = default_price_boost;
-    boostPrice.innerHTML = price_boost + " units";
-    local_price_boost = localStorage.setItem('price_boost', price_boost);
-} else {
-    boostPrice.innerHTML = price_boost + " units";
-}
+// Trigger Boost auto-click
 
 btn_boost.addEventListener('click', () => {
     if (price_boost > counter){
@@ -301,14 +202,12 @@ btn_boost.addEventListener('click', () => {
         let interval_activated = (interval != undefined);
         if(interval_activated) {
             clearInterval(interval)
-            interval = setInterval(clickButton, intervalSpeed);
+            interval = setInterval(click_button, intervalSpeed);
         }
     }
 });
 
-function clickButton(){
-    clickBtn.click()
-}
+// Trigger Auto-click
 
 ToggleBtn.addEventListener("click", () => {
     let interval_activated = (interval != undefined);
@@ -317,11 +216,15 @@ ToggleBtn.addEventListener("click", () => {
     } else {
         one.classList.toggle("active");
         purpleCircle.classList.toggle("active");
+
+        // reset the interval speed to its default value on the first click
         if (intervalSpeed == 0) {
             intervalSpeed = default_intervalSpeed;
         }
+
+        // Verify if an interval is already setup to avoid duplication
         if( !interval_activated) {
-            interval = setInterval(clickButton, intervalSpeed);
+            interval = setInterval(click_button, intervalSpeed);
             console.log('activate');
         } else {
             clearInterval(interval)
@@ -332,28 +235,167 @@ ToggleBtn.addEventListener("click", () => {
     }
 });
 
-const burgerBtn = document.getElementById('check')
-const sideBar = document.querySelector('.sideBar');
+// Trigger Side Bar Animation 
 
 burgerBtn.addEventListener("click", () => {
     let menuActivated = (menu != undefined)
     switch(!menuActivated){ 
-    case true:
-        menu = AddActiveClass(sideBar);
-        menu = 1;
-        break;
-    default: 
-        sideBar.classList.remove("active");
-        menu = undefined;
-    }
+        case true:
+            menu = add_active_class(sideBar);
+            menu = 1;
+            break;
+            default: 
+            sideBar.classList.remove("active");
+            menu = undefined;
+        }
 });
-
-display.innerHTML = counter;
-
-
-const resetBtn = document.getElementById('resetBtn');
+    
+    
+// Reset Btn
 
 resetBtn.addEventListener('click', () => {
     localStorage.clear();
     window.location.reload();
 })
+
+// function to reset the width of the progress bar & the global progression to only see the progression of the current level
+
+function reset_width_level(level){
+    let sum = 0;
+    for (let index = 0; index < level; index++) {
+        sum += objective_level[index];
+    }
+    return sum;
+}
+
+// function to reset the style for each level
+
+function reset_level(){
+    imgLevel.forEach((img)=> {
+        img.style.opacity = '0';
+        img.style.display = 'none';
+        img.style.top = '50%';
+    })
+    progress_value.style.background = 'none';
+}
+
+// function to update the style of each level at each stage
+
+function style_current_level(valueLevel, bgProgressBar) {
+    reset_level()
+
+    // Faire augmenter la progress bar au fur et à mesure de chaque niveau tout en enlevant la somme des clicks des niveaux précédents
+    progress_value.style.width = ((global_counter-reset_width_level(valueLevel))/objective_level[valueLevel]) * 100 + '%';
+
+    imgLevel[valueLevel].style.display = 'block';
+    imgLevel[valueLevel].style.opacity = '1';
+    progress_value.style.background = bgProgressBar;
+}
+
+// function to change the style at each step of the game
+
+function update_level(){
+    if ( (global_counter-reset_width_level(0)) <= objective_level[0]){
+        style_current_level(0, '#B6CFD1');
+    }
+    else if( (global_counter-reset_width_level(1)) <= objective_level[1]){
+        style_current_level(1, '#B6CFD1');
+    } 
+    else if( (global_counter-reset_width_level(2)) <= objective_level[2]){
+        style_current_level(2, 'linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%)');
+    }
+    else if( (global_counter-reset_width_level(3)) <= objective_level[3]){
+        style_current_level(3, 'linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%)');
+    } 
+    else if( (global_counter-reset_width_level(4)) <= objective_level[4]){
+        style_current_level(4, 'linear-gradient(103.85deg, #6A3805 0%, #AD8A56 100%)');
+    }
+    else if( (global_counter-reset_width_level(5)) <= objective_level[5]){
+        style_current_level(5, 'linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%)');
+    } 
+    else if( (global_counter-reset_width_level(6)) <= objective_level[6]){
+        style_current_level(6, 'linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%)');
+    }
+    else if( (global_counter-reset_width_level(7)) <= objective_level[7]){
+        style_current_level(7, 'linear-gradient(103.85deg, #D7D7D7 0%, #B4B4B4 100%)');
+    } 
+    else if( (global_counter-reset_width_level(8)) <= objective_level[8]){
+        style_current_level(8, 'linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%)');
+    }
+    else {
+        style_current_level(9, 'linear-gradient(103.85deg, #CFB94E 0%, #E6C300 100%)');
+    }
+}
+
+// function to animate the score of each minerals near the main counter
+
+function update_score(counterUpdate) {
+    counterUpdate.style.display= 'block';
+
+    setTimeout(() => {counterUpdate.style.animation = "counterUp 0.6s ease";
+    }, 600)
+
+    setTimeout(()=> {
+        counterUpdate.style.display= 'none';
+    }, 600)
+}
+
+// function to increase the number which is added for each minerals
+
+function increase_added_minerals(counter, facteur) {
+    counter += facteur;
+    return counter;
+};
+
+function add_active_class(btn) {
+    btn.classList.add("active");
+};
+
+// function to manage all the event linked to increase the number which is added for each minerals
+
+function btn_add_minerals(BtnReference, price, priceText, textMulti, localCounter, counterKey, counterUnits, upMultiplicateur, scoreUpdate) {
+    BtnReference.addEventListener('click', () => {
+        if (counter < price) {
+            mainMessage.innerHTML = "You don't have enough minerals !";
+        } else {
+            first_time_pressed(BtnReference, scoreUpdate);
+
+            // Increase the minerals which is added and store it in local Storage
+            counterUnits = increase_added_minerals(counterUnits, upMultiplicateur);
+            localCounter = localStorage.setItem(counterKey, counterUnits);
+
+            // remove the price of the increase from the meter and increase the price for the next click
+            counter -= price;
+            price += parseInt(price * (60/100));
+
+            // Display all information changes directly in the HTML page
+            scoreUpdate.innerHTML = "+" + counterUnits;
+            display.innerHTML = counter;
+            priceText.innerHTML = textMulti +' +' + counterUnits;
+            BtnReference.innerHTML = price +' units<br>';
+            mainMessage.innerHTML = "Always more, you can collect "+ upMultiplicateur + " more with each click!"
+        }
+    })
+}
+
+//function to verify if it is the first time a button is pressed
+
+function first_time_pressed(btnPressed, scoreUpdate) {
+    btnIsPressed = (btnPressed.classList.contains('active'))
+    console.log(btnIsPressed);
+    if(!btnIsPressed) {
+        add_active_class(btnPressed)
+        scoreUpdate.style.display = 'block';
+        btnIsPressed = true;
+    }
+}
+
+function click_button(){
+    clickBtn.click()
+}
+
+// Called function
+
+btn_add_minerals(bronzeBtn, priceArray[0], priceBronze,'Bronze',local_counterBronze, 'counter_bronze', counterBronze, addOneBronze, scoreUp[0]);
+btn_add_minerals(silverBtn, priceArray[1], priceSilver, 'Silver',local_counterSilver, 'counter_silver', counterSilver, addOneSilver, scoreUp[1]);
+btn_add_minerals(goldBtn, priceArray[2], priceGold,'Gold', local_counterGold, 'counter_gold', counterGold, addOneGold, scoreUp[2]);

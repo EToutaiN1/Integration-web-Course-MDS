@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <!-- /Burger Icon -->
     <div class="menuWrapper">
         <label for="check" id="burgerMenu">
             <input type="checkbox" id="check" hidden>
@@ -23,6 +24,7 @@
             <span></span>
         </label>
 
+        <!-- Side Bar Menu -->
         <nav class="sideBar">
             <div class="topBlock">
                 <div class="menuLogo">
@@ -60,9 +62,12 @@
         </nav>
     </div>
 
+
     <section id="section">
-        <div class="leftContent">
+        <!-- Block with all the button -->
+        <div class="btnContent">
             <div class="btnWrapper">
+                <!-- Reset Progression button -->
                 <div class="btnItem">
                     <div class="btnDropshadow">
                         <button class="btnBoost reset" id="resetBtn">
@@ -71,39 +76,45 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- Minerals Button -->
                 <div class="ressourceBtn">
+                    <!-- Bronze Button -->
                     <div class="btnItem">
                         <p class="price" id="bronze"></p>
                         <div class="btnDropshadow">
-                            <button class="btnBoost" id="bronzeBtn">
-                                
+                            <button class="btnBoost" id="bronzeBtn">  
                             </button>
                         </div>
                     </div>
+                    
+                    <!-- Silver Button -->
                     <div class="btnItem">
                         <p class="price" id="silver"></p>
                         <div class="btnDropshadow">
                             <button class="btnBoost" id="silverBtn">
-                                
                             </button>
                         </div>
                     </div>
+                    
+                    <!-- Gold Button -->
                     <div class="btnItem">
                         <p class="price" id="gold"></p>
                         <div class="btnDropshadow">
                             <button class="btnBoost" id="goldBtn">
-                                
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="AutoClickWrapper">
+                <!-- Booster for the auto-click -->
                 <div class="btnDropshadow" id="shadowBoost">
                     <button class="btnBoost" id="btnBoostAutoClick">
                         Boost Auto-minage <br><span id="boostPrice"></span>
                     </button>
                 </div>
+                <!-- Toggle Button to activate and desactivate the auto-click -->
                 <div class="toggleWrapper">
                     <div id="borderToggleBtn">
                         <div id="btn_container">
@@ -116,7 +127,11 @@
                 </div>
             </div>
         </div>
-        <div class="rightContent">
+
+        <!-- Block with all the counter and image displayed -->
+
+        <div class="displayContent">
+            <!-- Progress Bar -->
             <div class="progressBarWrapper">
                 <div class="progressShadow">
                     <div class="progress">
@@ -126,6 +141,7 @@
                 <h2>Progression Level</h2>
             </div>
             <div class="MainWrapperRight">
+                <!-- Message & counter block -->
                 <div class="scoreWrapper">
                     <H1 id="mainMessage">Click to collect ressources !</H1>
                     <div class="score">
@@ -135,6 +151,7 @@
                         <div id="display">0</div>
                     </div>
                 </div>
+                <!-- Image for each level -->
                 <div class="imgWrapper">
                     <img class="imgLevel" src="./img/Level 1.svg" alt="Level 1 Illustration">
                     <img class="imgLevel" src="./img/Level 2.svg" alt="Level 2 Illustration">
@@ -147,6 +164,7 @@
                     <img class="imgLevel" src="./img/Level 9.svg" alt="Level 9 Illustration">
                     <img class="imgLevel" src="./img/Level 10.svg" alt="Level 10 Illustration">
                 </div>
+                <!-- Main click button -->
                 <div class="ClickBtnWrapper">
                     <div class="btnItem">
                         <div class="btnDropshadow">
@@ -157,7 +175,6 @@
             </div>
         </div>
     </section>
-
     <script src="./js/script.js"></script>
 </body>
 
