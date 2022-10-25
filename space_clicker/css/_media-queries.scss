@@ -3,9 +3,8 @@
     #section{
         flex-direction: column-reverse;
         gap: 1rem;
-        .leftContent{
+        .btnContent{
             width: 100%;
-            
             border-top: 0.1rem solid rgba($fontcolor, 0.1);
             border-right: none;
             padding: 4vh 0;
@@ -30,7 +29,7 @@
                 }
             }
         }
-        .rightContent{
+        .displayContent{
             width: 100%;
             padding: 3vh 10vw;
             flex-direction: row-reverse;

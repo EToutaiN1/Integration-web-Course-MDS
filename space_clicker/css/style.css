@@ -462,33 +462,33 @@ label span:nth-of-type(3) {
     flex-direction: column-reverse;
     gap: 1rem;
   }
-  #section .leftContent {
+  #section .btnContent {
     width: 100%;
     border-top: 0.1rem solid rgba(27, 27, 27, 0.1);
     border-right: none;
     padding: 4vh 0;
   }
-  #section .leftContent .btnWrapper {
+  #section .btnContent .btnWrapper {
     flex-direction: column-reverse;
     align-items: center;
     width: 70vw;
   }
-  #section .leftContent .btnWrapper .ressourceBtn {
+  #section .btnContent .btnWrapper .ressourceBtn {
     flex-direction: row;
   }
-  #section .leftContent .btnWrapper .ressourceBtn .btnBoost {
+  #section .btnContent .btnWrapper .ressourceBtn .btnBoost {
     padding: 0.8rem 1.4rem;
   }
-  #section .leftContent .AutoClickWrapper {
+  #section .btnContent .AutoClickWrapper {
     display: flex;
   }
-  #section .leftContent .AutoClickWrapper .btnDropshadow {
+  #section .btnContent .AutoClickWrapper .btnDropshadow {
     height: 5.2rem;
   }
-  #section .leftContent .AutoClickWrapper .toggleWrapper {
+  #section .btnContent .AutoClickWrapper .toggleWrapper {
     margin-top: -3vh;
   }
-  #section .rightContent {
+  #section .displayContent {
     width: 100%;
     padding: 3vh 10vw;
     flex-direction: row-reverse;
