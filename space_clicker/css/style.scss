@@ -205,7 +205,7 @@ label{
     bottom: 0;
     width: 20%;
     z-index: 1000;
-    padding: 3rem 1.5rem;
+    padding: 3rem 2.5rem;
     transition: all 0.8s ease;
     @include flexCol();
     align-items: center;
@@ -218,6 +218,7 @@ label{
         align-items: flex-end;
         justify-content: center;
         background-color: transparent;
+        width: 100%;
         .menuLogo{
             img{
                 width: 5vw;
@@ -248,7 +249,7 @@ label{
         }
     }
     .btmBlock{
-        width: 80%;
+        width: 100%;
         text-align: center;
         .socialLink{
             padding-bottom: 1rem;
