@@ -507,10 +507,6 @@ label span:nth-of-type(3) {
   margin-top: 0vh;
 }
 
-/* Smartphones (portrait) ----------- */
-@media screen and (max-width: 768px) {
-  /* Styles */
-}
 /* Smartphones (landscape) ----------- */
 @media screen and (max-width: 480px) {
   /* Styles */
