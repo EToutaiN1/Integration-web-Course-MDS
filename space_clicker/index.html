@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to the space ! you must collect resources in order to develop your base and be able to return to Earth, Good luck...">
+    <meta name="description"
+        content="Welcome to the space ! you must collect resources in order to develop your base and be able to return to Earth, Good luck...">
     <link rel="stylesheet" href="css/style.css">
     <link rel='icon' href='img/favicon space clicker.png' type='image/x-icon' />
     <title>Space Clicker 🚀</title>
@@ -13,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body>
@@ -53,9 +55,13 @@
             <div class="btmBlock">
                 <div class="socialLink">
                     <ul>
-                        <li class="social"><a href="https://github.com/EToutaiN1/Integration-web-Course-MDS/tree/main/space_clicker"><img src="./img/icon Github.svg" alt="icon Github"></a></li>
-                        <li class="social"><a href="https://www.malt.fr/profile/ewantoutain"><img src="./img/icon Malt.svg" alt="icon Malt"></a></li>
-                        <li class="social"><a href="https://www.linkedin.com/in/ewan-toutain/"><img src="./img/icon LinkedIn.svg" alt="icon LinkedIn"></a></li>
+                        <li class="social"><a
+                                href="https://github.com/EToutaiN1/Integration-web-Course-MDS/tree/main/space_clicker"><img
+                                    src="./img/icon Github.svg" alt="icon Github"></a></li>
+                        <li class="social"><a href="https://www.malt.fr/profile/ewantoutain"><img
+                                    src="./img/icon Malt.svg" alt="icon Malt"></a></li>
+                        <li class="social"><a href="https://www.linkedin.com/in/ewan-toutain/"><img
+                                    src="./img/icon LinkedIn.svg" alt="icon LinkedIn"></a></li>
                     </ul>
                 </div>
                 <p>© Ewan.T - 2022</p>
@@ -84,11 +90,11 @@
                     <div class="btnItem">
                         <p class="price" id="bronze"></p>
                         <div class="btnDropshadow">
-                            <button class="btnBoost" id="bronzeBtn">  
+                            <button class="btnBoost" id="bronzeBtn">
                             </button>
                         </div>
                     </div>
-                    
+
                     <!-- Silver Button -->
                     <div class="btnItem">
                         <p class="price" id="silver"></p>
@@ -97,7 +103,7 @@
                             </button>
                         </div>
                     </div>
-                    
+
                     <!-- Gold Button -->
                     <div class="btnItem">
                         <p class="price" id="gold"></p>
@@ -125,6 +131,17 @@
                         </div>
                     </div>
                     <p>Auto mining<br>(100 units)</p>
+                </div>
+            </div>
+            <div class="btnItem">
+                <div class="btnDropshadow music">
+                    <button class="btnBoost music">
+                        <audio src="music/music_space_clicker.mp3" id="music-bg"></audio>
+                        <img src="img/audio-wave-static.svg" alt="audio wave icon" id="audio-waved-static">
+                        <lottie-player src="https://lottie.host/7a2de7c9-a8a3-4339-ab91-85526e6493e7/zJ80ohq8hE.json"
+                            background="transparent" speed="1" style="width: 2.5rem; height: 2.5rem;" loop autoplay id="audio-waved-animated">
+                        </lottie-player>
+                    </button>
                 </div>
             </div>
         </div>

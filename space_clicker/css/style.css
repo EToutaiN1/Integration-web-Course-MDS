@@ -84,6 +84,13 @@
   margin: 0.2rem;
   display: none;
 }
+.btnDropshadow .btnBoost.music img {
+  width: 2rem;
+  height: 2rem;
+}
+.btnDropshadow.music {
+  margin-top: 1rem;
+}
 .btnDropshadow:active {
   transform: scale(0.95);
 }

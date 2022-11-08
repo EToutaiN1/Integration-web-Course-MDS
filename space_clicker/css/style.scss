@@ -38,6 +38,8 @@ $innerShadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset
     font-family: 'Space Mono', monospace;
 }
 
+
+
 #section{
     @include flexCenter();
     gap: 4rem;
@@ -83,6 +85,15 @@ $innerShadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset
             margin: 0.2rem;
             display: none;
         }
+        &.music{
+            img{
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+    &.music{
+        margin-top: 1rem;
     }
     &:active{
         transform: scale(0.95);

@@ -26,6 +26,34 @@ const sideBar = document.querySelector('.sideBar');
 
 const resetBtn = document.getElementById('resetBtn');
 
+const musicBg = document.getElementById('music-bg');
+const waveStatic= document.getElementById('audio-waved-static');
+const waveAnimated = document.getElementById('audio-waved-animated');
+const musicBtn = document.querySelector(".music")
+
+
+musicBtn.addEventListener('click', ()=> {
+        musicBg.classList.toggle('active')
+        if(musicBg.classList.contains('active')) {
+            waveStatic.style.display = 'none';
+            waveAnimated.style.display = 'block';
+            console.log('play');
+            playAudio(musicBg);
+        } else {
+            console.log('pause');
+            waveStatic.style.display = 'block';
+            waveAnimated.style.display = 'none';
+            pauseAudio(musicBg);
+        }
+})
+
+function playAudio(sound) {
+    sound.play();
+  }
+  
+  function pauseAudio(sound) {
+    sound.pause();
+  }
 
 
 let btnIsPressed;
