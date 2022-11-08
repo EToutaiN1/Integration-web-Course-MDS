@@ -4,12 +4,32 @@
         transform: translateY(1.5rem);
     } 
     20%{
-        
         opacity: 1;
         transform: translateY(0);
     }
     to{
         opacity: 0;
         transform: translateY(-1.5rem);
+    }
+}
+
+@keyframes opacityToZero {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes rotatePickaxe{
+    0%{
+        transform: rotateZ(90deg);
+    }
+    30%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(90deg);
     }
 }

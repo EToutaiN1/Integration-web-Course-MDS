@@ -17,7 +17,16 @@
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
-<body>
+<body onload="onLoad()">
+
+    <img src="img/original_pickaxe.svg" alt="original_pickaxe" class="circleCursor">
+
+    <div class="loader-wrapper">
+        <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_3vNNXU.json" background="transparent"
+            speed="1" style="width: 300px; height: 300px;" loop autoplay class="loader-animation"></lottie-player>
+        <div class="blockBg-loader"></div>
+    </div>
+
     <!-- /Burger Icon -->
     <div class="menuWrapper">
         <label for="check" id="burgerMenu">
@@ -139,7 +148,8 @@
                         <audio src="music/music_space_clicker.mp3" id="music-bg" loop></audio>
                         <img src="img/audio-wave-static.svg" alt="audio wave icon" id="audio-waved-static">
                         <lottie-player src="https://lottie.host/7a2de7c9-a8a3-4339-ab91-85526e6493e7/zJ80ohq8hE.json"
-                            background="transparent" speed="1" style="width: 2.5rem; height: 2.5rem;" loop autoplay id="audio-waved-animated">
+                            background="transparent" speed="1" style="width: 2.5rem; height: 2.5rem;" loop autoplay
+                            id="audio-waved-animated">
                         </lottie-player>
                     </button>
                 </div>

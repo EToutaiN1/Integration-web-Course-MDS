@@ -1,5 +1,14 @@
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (max-width : 1024px) {
+
+    .circleCursor{
+        display: none;
+    }
+
+    html{
+        cursor: default;
+    }
+    
     #section{
         flex-direction: column-reverse;
         gap: 1rem;
@@ -54,6 +63,7 @@
 .progressBarWrapper{
     margin-top: 0vh;
 }
+
 
 /* Smartphones (portrait) ----------- */
 @media screen and (max-width : 768px) {

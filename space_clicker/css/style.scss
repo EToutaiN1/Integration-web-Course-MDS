@@ -38,7 +38,27 @@ $innerShadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset
     font-family: 'Space Mono', monospace;
 }
 
+html{
+    cursor: none !important;
+}
 
+button, a, input, label{
+    cursor: none;
+}
+
+.circleCursor {
+    position: fixed;
+    display: inline-block;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+    left: 20px;
+    right: 0;
+    z-index: 10000;
+    transition: transform .4s ease, opacity .4s ease;
+    pointer-events: none;
+    transform: scale(1);
+  }
 
 #section{
     @include flexCenter();
@@ -72,7 +92,6 @@ $innerShadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset
         border-radius: 1rem;
         transition: all 0.5s ease;
         &:hover{
-            cursor: pointer;
             box-shadow: $innerShadow;
         }
         &#click{
@@ -121,7 +140,6 @@ $innerShadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset
             box-shadow: $innerShadow;
             @include flexCenter();
             border-radius: 1.875rem;
-            cursor: pointer;
             #one {
                 position: absolute;
                 height: 2rem;
@@ -167,7 +185,6 @@ label{
     left: 3rem;
     top: 3rem;
     z-index: 1001;
-    cursor:pointer;
     input[type="checkbox"]{
         display:none;
         &:checked ~ span:nth-of-type(1){
@@ -248,7 +265,6 @@ label{
                     justify-content: flex-start;
                     a{
                         padding: 0.7rem 1.2rem;
-                        cursor: pointer;
                         color: $fontcolor;
                         text-decoration: none;
                     }
@@ -277,6 +293,40 @@ label{
 
 /* MAIN */
 
+// Loader animation
+
+.loader-wrapper{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 1;
+    z-index: 1001;
+    transition: all 1s ease-out 1.3s;
+    display: grid;
+    place-items: center;
+    
+    .loader-animation{
+        position: absolute;
+        z-index: 10000;    
+        width: 100%;
+        height: 100vh;
+        opacity: 1;
+        transition: all 0.7s ease-out;
+        }
+    .blockBg-loader{
+        transform-origin: 50% 0%;
+        background-color: $secondColor;
+        position: absolute;
+        z-index: 9999;    
+        width: 100%;
+        height: 100vh;
+        
+    }
+}
 
 .btnContent{
     height: 100%;

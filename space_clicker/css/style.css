@@ -28,12 +28,72 @@
     transform: translateY(-1.5rem);
   }
 }
+@-webkit-keyframes opacityToZero {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes opacityToZero {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes rotatePickaxe {
+  0% {
+    transform: rotateZ(90deg);
+  }
+  30% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(90deg);
+  }
+}
+@keyframes rotatePickaxe {
+  0% {
+    transform: rotateZ(90deg);
+  }
+  30% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(90deg);
+  }
+}
 /* Mise en page général */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Space Mono", monospace;
+}
+
+html {
+  cursor: none !important;
+}
+
+button, a, input, label {
+  cursor: none;
+}
+
+.circleCursor {
+  position: fixed;
+  display: inline-block;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  left: 20px;
+  right: 0;
+  z-index: 10000;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  pointer-events: none;
+  transform: scale(1);
 }
 
 #section {
@@ -71,7 +131,6 @@
   transition: all 0.5s ease;
 }
 .btnDropshadow .btnBoost:hover {
-  cursor: pointer;
   box-shadow: inset -0.175rem -0.175rem 0.175rem rgba(255, 255, 255, 0.7), inset 0.26rem 0.26rem 0.175rem rgba(174, 174, 192, 0.2);
 }
 .btnDropshadow .btnBoost#click {
@@ -122,7 +181,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 1.875rem;
-  cursor: pointer;
 }
 .toggleWrapper #borderToggleBtn #btn_container #one {
   position: absolute;
@@ -163,7 +221,6 @@ label {
   left: 3rem;
   top: 3rem;
   z-index: 1001;
-  cursor: pointer;
 }
 label input[type=checkbox] {
   display: none;
@@ -251,7 +308,6 @@ label span:nth-of-type(3) {
 }
 .sideBar .topBlock .menuLink ul li a {
   padding: 0.7rem 1.2rem;
-  cursor: pointer;
   color: #1b1b1b;
   text-decoration: none;
 }
@@ -276,6 +332,37 @@ label span:nth-of-type(3) {
 }
 
 /* MAIN */
+.loader-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 1;
+  z-index: 1001;
+  transition: all 1s ease-out 1.3s;
+  display: grid;
+  place-items: center;
+}
+.loader-wrapper .loader-animation {
+  position: absolute;
+  z-index: 10000;
+  width: 100%;
+  height: 100vh;
+  opacity: 1;
+  transition: all 0.7s ease-out;
+}
+.loader-wrapper .blockBg-loader {
+  transform-origin: 50% 0%;
+  background-color: #EEEEEE;
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+  height: 100vh;
+}
+
 .btnContent {
   height: 100%;
   width: 50%;
@@ -475,6 +562,12 @@ label span:nth-of-type(3) {
 /* Media queries */
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (max-width: 1024px) {
+  .circleCursor {
+    display: none;
+  }
+  html {
+    cursor: default;
+  }
   #section {
     flex-direction: column-reverse;
     gap: 1rem;

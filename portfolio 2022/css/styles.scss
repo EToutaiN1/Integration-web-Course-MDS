@@ -177,7 +177,7 @@ a{
         height: auto;
         transition: all ease-in-out 0.4s;
         &.active{
-          transform: translateX(10px);  
+            transform: translateX(10px);  
         }
     }
  }
