@@ -463,6 +463,10 @@ label span:nth-of-type(3) {
   width: 0;
 }
 
+#audio-waved-animated {
+  display: none;
+}
+
 /* Media queries */
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (max-width: 1024px) {
