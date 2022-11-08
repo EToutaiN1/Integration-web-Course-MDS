@@ -338,6 +338,11 @@ label{
             background-clip: text;
         }
     }
+    &.music{
+        position: absolute;
+        left: 2rem;
+        bottom: 2rem;
+    }
 }
 
 .scoreWrapper{
