@@ -220,6 +220,8 @@ ToggleBtn.addEventListener("click", () => {
         // reset the interval speed to its default value on the first click
         if (intervalSpeed == 0) {
             intervalSpeed = default_intervalSpeed;
+            counter -= 100;
+            global_counter -= 100;
         }
 
         // Verify if an interval is already setup to avoid duplication
