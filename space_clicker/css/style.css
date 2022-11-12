@@ -86,8 +86,8 @@ button, a, input, label {
   position: fixed;
   display: inline-block;
   border-radius: 50%;
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   left: 20px;
   right: 0;
   z-index: 10000;
@@ -560,11 +560,15 @@ label span:nth-of-type(3) {
 }
 
 /* Media queries */
+/* PC small height screen ----------- */
+@media only screen and (max-height: 650px) {
+  .ressourceBtn {
+    flex-direction: row !important;
+    gap: 1rem;
+  }
+}
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (max-width: 1024px) {
-  .circleCursor {
-    display: none;
-  }
   html {
     cursor: default;
   }

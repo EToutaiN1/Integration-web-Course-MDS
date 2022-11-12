@@ -1,9 +1,17 @@
+/* PC small height screen ----------- */
+@media only screen and (max-height : 650px) {
+    .ressourceBtn{
+        flex-direction: row !important;
+        gap: 1rem;
+    }
+}
+
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (max-width : 1024px) {
 
-    .circleCursor{
-        display: none;
-    }
+    // .circleCursor{
+    //     display: none;
+    // }
 
     html{
         cursor: default;
