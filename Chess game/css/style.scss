@@ -78,6 +78,16 @@ li {
         margin: 10vh 0;
         .player-block{
             height: 30vh;
+            .pieces-taken-block{
+                position: relative;
+                width: 100%;
+                height: 4rem;
+                .piece-taken{
+                    position: absolute;
+                    left: 0;
+
+                }
+            }
         }
     }
 }
