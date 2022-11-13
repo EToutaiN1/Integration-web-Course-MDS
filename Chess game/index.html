@@ -8,15 +8,24 @@
     <meta name="description" content="The best chess game in the world !">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="favicon.ico" />
+    
+    <!-- <link rel='icon' href='img/favicon space clicker.png' type='image/x-icon' /> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <title>Chess Game</title>
 </head>
 
-<body>
+<body onload="onLoad()">
+    <div class="loader-wrapper">
+        <lottie-player src="https://lottie.host/e3fdfd14-adff-498b-bf91-47bcc0009ce5/UvhCoWEb7v.json"
+            background="transparent" speed="1" style="width: 30vw; height: 100%;" autoplay
+            class="loader-animation"></lottie-player>
+        <div class="blockBg-loader"></div>
+    </div>
     <section>
         <div class="logo-ewan-t">
             <img src="img/logo-Ewan-T-black.svg" alt="logo Ewan T.">

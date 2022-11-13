@@ -10,6 +10,22 @@
 
 /* Import */
 /* Mixin */
+@-webkit-keyframes opacityToZero {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes opacityToZero {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 /* Titre */
 /* Bouton */
 /* Class fonctionnelles */
@@ -78,6 +94,37 @@ li {
 /* HEADER */
 /* MAIN */
 /* FOOTER */
+.loader-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 1;
+  z-index: 1001;
+  transition: all 1s ease-out 1.3s;
+  display: grid;
+  place-items: center;
+}
+.loader-wrapper .loader-animation {
+  position: absolute;
+  z-index: 10000;
+  width: 100%;
+  height: 100vh;
+  opacity: 1;
+  transition: all 0.7s ease-out;
+}
+.loader-wrapper .blockBg-loader {
+  transform-origin: 50% 0%;
+  background-color: #F2F2F2;
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+  height: 100vh;
+}
+
 .logo-ewan-t {
   position: absolute;
   top: 2rem;
@@ -174,6 +221,7 @@ li {
   margin-right: 50px;
 }
 
+/* iPads (portrait and landscape) ----------- */
 @media (max-width: 650px) {
   #tog {
     margin-bottom: 70px;

@@ -1,5 +1,22 @@
-const Case = document.querySelectorAll('.box');
+let LoaderPage;
+let hidePage;
 
+function onLoad() {
+    LoaderPage = setTimeout(showPage, 5500);
+    hidePage = setTimeout(hideLoader, 6500);
+}
+
+function showPage() {
+    document.querySelector(".loader-animation").style.opacity = "0";
+    document.querySelector(".blockBg-loader").style.animation = "opacityToZero 500ms 1 ease 500ms";
+}
+
+function hideLoader() {
+    document.querySelector(".loader-animation").style.display = "none";
+    document.querySelector(".loader-wrapper").style.display = "none";
+}
+
+const Case = document.querySelectorAll('.box');
 
 // Inserting the Images
 function insertImage() {
