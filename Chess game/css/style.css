@@ -8,8 +8,8 @@
   font-family: "Josefin Sans", "Lato", sans-serif;
 }
 
-/* Import */
 /* Mixin */
+/* Import */
 @-webkit-keyframes opacityToZero {
   0% {
     opacity: 1;
@@ -26,6 +26,72 @@
     opacity: 0;
   }
 }
+.theme-section {
+  position: relative;
+}
+.theme-section h1 {
+  width: 100%;
+  text-align: center;
+  font-size: clamp(2rem, 2.5vw, 4rem);
+  font-weight: bolder;
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+.theme-section p {
+  font-size: clamp(1rem, 1.4vw, 2rem);
+  position: absolute;
+  left: 50%;
+  top: 13%;
+  transform: translateX(-50%);
+}
+
+.blue-side {
+  background: linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%);
+  height: 100%;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red-side {
+  background: linear-gradient(110.73deg, #EEA7A7 0%, #B02D30 100.08%);
+  height: 100%;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.piece-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  width: 90%;
+  height: 50%;
+}
+.piece-wrapper .piece-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.piece-wrapper .piece-item .img-piece {
+  position: absolute;
+  height: 7rem;
+  z-index: 2;
+}
+.piece-wrapper .piece-item .img-piece.shadow {
+  z-index: 1;
+  transition: all ease 0.3s;
+  opacity: 0;
+}
+
 /* Titre */
 /* Bouton */
 /* Class fonctionnelles */
@@ -232,5 +298,23 @@ li {
   }
   .allimg {
     width: 7vw;
+  }
+  .main-wrapper {
+    flex-direction: column;
+  }
+  h1 {
+    font-size: clamp(1.2rem, 1.5vw, 2rem);
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  p {
+    top: 63%;
+    transform: translate(-50%);
+  }
+  .blue-side {
+    width: 100vw;
+  }
+  .red-side {
+    width: 100vw;
   }
 }/*# sourceMappingURL=style.css.map */

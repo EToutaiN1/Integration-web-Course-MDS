@@ -18,4 +18,24 @@
     .allimg {
         width: 7vw;
     }
+
+    .main-wrapper{
+        flex-direction: column;
+    }
+
+    h1{
+        font-size: clamp(1.2rem, 1.5vw, 2rem);
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    p{
+        top: 63%;
+        transform: translate(-50%);
+    }
+    .blue-side{
+        width: 100vw;
+    }
+    .red-side{
+        width: 100vw;
+    }
 }

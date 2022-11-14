@@ -2,14 +2,23 @@
 
 /* variables */
 
+$main-color: #1C1C1C;
+$bg-color: #F2F2F2;
+
+$blue-piece-color: #3F4C6B;
+
+$light-red-gradient: linear-gradient(110.73deg, #EEA7A7 0%, #B02D30 100.08%);
+$light-blue-gradient: linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%);
+$red-gradient: linear-gradient(125.43deg, #780206 -3.89%, #FF6B6B 85.41%);
+$blue-gradient: linear-gradient(117.79deg, #83A4D4 -59.42%, #B6FBFF 84.55%);
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Josefin Sans', 'Lato', sans-serif;
 }
-
- /* Import */
 
 /* Mixin */
 
@@ -23,8 +32,12 @@
     display: flex;
     flex-direction: column;
 }
+ /* Import */
 
 @import '../css/keyframes';
+@import'../css/page';
+
+
 
 /* Titre */
 
