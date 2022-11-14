@@ -1,6 +1,6 @@
 .theme-section{
     position: relative;
-    h1{
+    .heading-theme{
         width: 100%;
         text-align: center;
         font-size: clamp(2rem, 2.5vw, 4rem);
@@ -11,12 +11,13 @@
         transform: translateX(-50%);
         margin: 0;
     }
-    p{
+    .p-theme{
         font-size: clamp(1rem, 1.4vw, 2rem);
         position: absolute;
         left: 50%;
         top: 13%;
         transform: translateX(-50%);
+        text-align: center;
     }
 }
 

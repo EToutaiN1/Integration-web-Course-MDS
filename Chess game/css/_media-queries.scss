@@ -1,9 +1,9 @@
 /* iPads (portrait and landscape) ----------- */
-@media only screen and (max-width : 1024px) {
+@media screen and (max-width : 1024px) {
     
 }
 
-@media (max-width:650px){
+@media screen and (max-width: 650px){
 
     #tog {
         margin-bottom: 70px;
@@ -11,25 +11,57 @@
     }
 
     .box {
-        width: 11vw;
-        height: 11vw;
+        width: 8vw;
+        height: 8vw;
     }
 
     .allimg {
-        width: 7vw;
+        width: 5vw;
     }
 
     .main-wrapper{
-        flex-direction: column;
+        flex-direction: column !important;
     }
+
+    .sidebar-wrapper{
+        height: 100%;
+        @include flexCenter();
+        .sidebar{
+            position: relative;
+            padding: 1.7vw;
+            border: 0.3rem solid black;
+            background: white;
+            ul{
+                gap: 1rem;
+                display: flex;
+                flex-direction: row;
+                img{
+                    width: 2.5vw;
+                }
+            }
+            .sidebar-shadow{
+                z-index: -2;
+                width: 107%;
+                height: 102%;
+                padding: 1rem;
+                position: absolute;
+                border: 0.3rem solid black;
+                left: 0.8rem;
+                top: 0.8rem;
+            }
+        }
+    }
+    
+
+    // Theme Page
 
     h1{
         font-size: clamp(1.2rem, 1.5vw, 2rem);
-        top: 50%;
+        top: 45%;
         transform: translate(-50%, -50%);
     }
     p{
-        top: 63%;
+        top: 55%;
         transform: translate(-50%);
     }
     .blue-side{

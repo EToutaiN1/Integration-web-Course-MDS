@@ -16,43 +16,6 @@ function hideLoader() {
     document.querySelector(".loader-wrapper").style.display = "none";
 }
 
-const pieceWrapper = document.querySelectorAll('.piece-wrapper');
-
-const blueShadow = document.querySelectorAll('.blue');
-const redShadow = document.querySelectorAll('.red');
-
-console.log(blueShadow);
-
-pieceWrapper[0].addEventListener('mouseover', () => {
-    for (let i = 0; i < blueShadow.length; i++) {
-        blueShadow[i].style.transitionDelay = `${i}00ms`;
-        blueShadow[i].style.transform = 'translate(20%, -20%)'
-        blueShadow[i].style.opacity = '1'
-    }
-})
-
-pieceWrapper[1].addEventListener('mouseover', () => {
-    for (let i = 0; i < redShadow.length; i++) {
-        redShadow[i].style.transitionDelay = `${i}00ms`;
-        redShadow[i].style.transform = 'translate(20%, -20%)'
-        redShadow[i].style.opacity = '1'
-    }
-})
-
-pieceWrapper[0].addEventListener('mouseout', () => {
-    blueShadow.forEach(shadow =>{
-        shadow.style.transform = 'translate(0%, 0%)'
-        shadow.style.opacity = '0'
-    })
-})
-
-pieceWrapper[1].addEventListener('mouseout', () => {
-    redShadow.forEach(shadow =>{
-        shadow.style.transform = 'translate(0%, 0%)'
-        shadow.style.opacity = '0'
-    })
-})
-
 
 const Case = document.querySelectorAll('.box');
 
@@ -71,122 +34,9 @@ function insertImage() {
         }
     })
 }
-
-const Pieces = document.querySelectorAll('.allimg');
-const takenByRed = document.getElementById('red-taken');
-const takenByBlue = document.getElementById('blue-taken');
-
-function verif(color, piece) {
-    if(inventory.color.piece - verifInventory.color.piece !== 0) {
-        let dif = inventory.color.piece - verifInventory.color.piece;
-        for (let i = 0; i < dif; i++) {
-            takenByBlue.innerHTML = `<img class='piece-taken allpawn' src="img/RPawn.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);">`
-            console.log("a Red pawn taken");
-        }
-    }
-}
-
-function insertPieceTaken() {
-    VerificationPieces()
-    console.log(verifInventory != inventory);
-    if(verifInventory != inventory){
-        if(inventory.red.RPawn - verifInventory.red.RPawn !== 0) {
-            let dif = inventory.red.RPawn - verifInventory.red.RPawn;
-            for (let i = 0; i < dif; i++) {
-                takenByBlue.innerHTML = `<img class='piece-taken allpawn' src="img/RPawn.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);">`
-                console.log("a Red pawn taken");
-            }
-        } else if (inventory.blue.BPawn - verifInventory.blue.BPawn !== 0) {
-            let dif = inventory.blue.BPawn - verifInventory.blue.BPawn;
-            for (let i = 0; i < dif; i++) {
-                takenByRed.innerHTML = `<img class='piece-taken allpawn' src="img/BPawn.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);>`
-                console.log("a Blue pawn taken");
-            }
-        }else if (inventory.red.RBrook - verifInventory.red.RBrook !== 0) {
-            let dif = inventory.red.RBrook - verifInventory.red.RBrook;
-            for (let i = 0; i < dif; i++) {
-                takenByRed.innerHTML = `<img class='piece-taken allpawn' src="img/RBrook.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);>`
-                console.log("a Red pawn taken");
-            }
-        }else if (inventory.blue.BBrook - verifInventory.blue.BBrook !== 0) {
-            let dif = inventory.blue.BBrook - verifInventory.blue.BBrook;
-            for (let i = 0; i < dif; i++) {
-                takenByRed.innerHTML = `<img class='piece-taken allpawn' src="img/BBrook.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);>`
-                console.log("a Blue pawn taken");
-            }
-        }else if (inventory.red.RKnight - verifInventory.red.RKnight !== 0) {
-            let dif = inventory.red.RKnight - verifInventory.red.RKnight;
-            for (let i = 0; i < dif; i++) {
-                takenByRed.innerHTML = `<img class='piece-taken allpawn' src="img/RKnight.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);>`
-                console.log("a Red pawn taken");
-            }
-        }else if (inventory.blue.BKnight - verifInventory.blue.BKnight !== 0) {
-            let dif = inventory.blue.BKnight - verifInventory.blue.BKnight;
-            for (let i = 0; i < dif; i++) {
-                takenByRed.innerHTML = `<img class='piece-taken allpawn' src="img/BKnight.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);>`
-                console.log("a Blue pawn taken");
-            }
-        }else if (inventory.red.RBishop - verifInventory.red.RBishop !== 0) {
-            let dif = inventory.red.RBishop - verifInventory.red.RBishop;
-            for (let i = 0; i < dif; i++) {
-                takenByRed.innerHTML = `<img class='piece-taken allpawn' src="img/RBishop.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);>`
-                console.log("a Red pawn taken");
-            }
-        }else if (inventory.blue.BBishop - verifInventory.blue.BBishop !== 0) {
-            let dif = inventory.blue.BBishop - verifInventory.blue.BBishop;
-            for (let i = 0; i < dif; i++) {
-                takenByRed.innerHTML = `<img class='piece-taken allpawn' src="img/BBishop.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);>`
-                console.log("a Blue pawn taken");
-            }
-        }else if (inventory.red.RQueen - verifInventory.red.RQueen !== 0) {
-            let dif = inventory.red.RQueen - verifInventory.red.RQueen;
-            for (let i = 0; i < dif; i++) {
-                takenByRed.innerHTML = `<img class='piece-taken allpawn' src="img/RQueen.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);>`
-                console.log("a Red pawn taken");
-            }
-        }else if (inventory.blue.BQueen - verifInventory.blue.BQueen !== 0) {
-            let dif = inventory.blue.BQueen - verifInventory.blue.BQueen;
-            for (let i = 0; i < dif; i++) {
-                takenByRed.innerHTML = `<img class='piece-taken allpawn' src="img/BQueen.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);>`
-                console.log("a Blue pawn taken");
-            }
-        }else if (inventory.red.RKing - verifInventory.red.RKing !== 0) {
-            let dif = inventory.red.RKing - verifInventory.red.RKing;
-            for (let i = 0; i < dif; i++) {
-                takenByRed.innerHTML = `<img class='piece-taken allpawn' src="img/RKing.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);>`
-                console.log("a Red pawn taken");
-            }
-        }else if (inventory.blue.BKing - verifInventory.blue.BKing !== 0) {
-            let dif = inventory.blue.BKing - verifInventory.blue.BKing;
-            for (let i = 0; i < dif; i++) {
-                takenByRed.innerHTML = `<img class='piece-taken allpawn' src="img/BKing.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);>`
-                console.log("a Blue pawn taken");
-            }
-        }
-        console.log(verifInventory);
-    }
-
-    inventory = verifInventory;
-    verifInventory = resetInventory;
-    Pieces.forEach(piece => {
-        if (piece.innerText.length !== 0) {
-            if (piece.innerText == 'RPawn') {
-                // pieceImg = piece.innerText
-                // arr = Array.from(pieceImg)
-                // console.log(arr);
-            }else if(piece.innerText == 'BPawn') {
-                takenByBlue.innerHTML = `<img class='piece-taken allpawn' src="img/${piece.innerText}.svg" alt="">`
-            } else {
-                takenByRed.innerHTML = `<img class='piece-taken' src="img/${piece.innerText}.svg" alt="">`
-                takenByBlue.innerHTML = `<img class='piece-taken' src="img/${piece.innerText}.svg" alt="">`
-            }
-        }
-    })
-}
-
 let inventory = {
     blue:{
-        BPawn: 10,
+        BPawn: 8,
         BBrook: 2,
         BKnight: 2,
         BBishop: 2,
@@ -194,7 +44,7 @@ let inventory = {
         BKing: 1
     },
     red:{
-        RPawn: 10,
+        RPawn: 8,
         RBrook: 2,
         RKnight: 2,
         RBishop: 2,
@@ -241,59 +91,63 @@ let resetInventory = {
     }
 }
 
+const Pieces = document.querySelectorAll('.allimg');
+const takenByRed = document.getElementById('red-taken');
+const takenByBlue = document.getElementById('blue-taken');
+
+
+function verif(color, piece, blockTaken) {
+
+    let vInventory = inventory[`${color}`][`${piece}`];
+    let vInventoryVerif = verifInventory[`${color}`][`${piece}`];
+    
+    console.log(vInventory);
+    console.log(vInventoryVerif);
+
+    if(vInventory - vInventoryVerif !== 0) {
+        let dif = vInventory - vInventoryVerif;
+        console.log(dif);
+        for (let i = 0; i < dif; i++) {
+            blockTaken.innerHTML = `<img class='piece-taken allpawn' src="img/${piece}.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);">`
+        }
+    }
+    vInventory;
+    vInventoryVerif;
+
+}
+    
+let piecesRed = Object.keys(inventory.red);
+let piecesBlue = Object.keys(inventory.blue);
+    
+function insertPieceTaken() {
+    VerificationPieces()
+    if(verifInventory != inventory){
+        
+        for (let key in piecesRed) {
+            verif('red', piecesRed[key], takenByBlue)
+            console.log(piecesRed[key]);
+        }
+        
+        for (let key in piecesBlue) {
+            verif('blue', piecesBlue[key], takenByRed)
+            console.log(piecesBlue[key]);
+        }
+
+        inventory = verifInventory;
+        verifInventory = resetInventory;
+    }   
+}
 function VerificationPieces(){
     Case.forEach(piece => {
-        
-            if (piece.innerHTML == 'BPawn'){
-                verifInventory.blue.BPawn += 1;
-            } 
-            
-            else if (piece.innerHTML == 'BBrook') {
-                verifInventory.blue.BBrook += 1;
+            for (let key in piecesRed) {
+                if (piece.innerHTML == piecesRed[key]) {
+                    verifInventory.red[piecesRed[key]] += 1;
+                }
             }
-
-            else if (piece.innerHTML == 'BKnight') {
-                verifInventory.blue.BKnight += 1;
-            }
-
-            else if (piece.innerHTML == 'BBishop') {
-                verifInventory.blue.BBishop += 1;
-            }
-
-            else if (piece.innerHTML == 'BQueen') {
-                verifInventory.blue.BQueen += 1;
-            }
-
-            else if (piece.innerHTML == 'BKing') {
-                verifInventory.blue.BKing += 1;
-            }
-
-            else if (piece.innerHTML == 'RPawn') {
-                verifInventory.red.RPawn += 1;
-            }
-
-            else if (piece.innerHTML == 'RBrook') {
-                verifInventory.red.RBrook += 1;
-            }
-
-            else if (piece.innerHTML == 'RKnight') {
-                verifInventory.red.RKnight += 1;
-            }
-
-            else if (piece.innerHTML == 'RBishop') {
-                verifInventory.red.RBishop += 1;
-            }
-
-            else if (piece.innerHTML == 'RQueen') {
-                verifInventory.red.RQueen += 1;
-            }
-
-            else if (piece.innerHTML == 'RKing') {
-                verifInventory.red.RKing += 1;
-            }
-    
-            else{
-                console.log('not in inventory !');
+            for (let key in piecesBlue) {
+                if (piece.innerHTML == piecesBlue[key]) {
+                    verifInventory.blue[piecesBlue[key]] += 1;
+                }
             }
         }
     )
@@ -375,16 +229,15 @@ Case.forEach(item => {
                 if (i.style.background == 'pink') {
                     pinkId = i.id
                     pinkText = i.innerText
-
                     document.getElementById(pinkId).innerText = '';
                     console.log(document.getElementById(pinkId).innerText);
                     item.innerText = pinkText
-                    insertPieceTaken()
                     coloring()
                     insertImage()
                     tog = tog + 1
                 }
             })
+            insertPieceTaken()
         }
 
         getId = item.id

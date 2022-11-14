@@ -29,7 +29,7 @@
 .theme-section {
   position: relative;
 }
-.theme-section h1 {
+.theme-section .heading-theme {
   width: 100%;
   text-align: center;
   font-size: clamp(2rem, 2.5vw, 4rem);
@@ -40,12 +40,13 @@
   transform: translateX(-50%);
   margin: 0;
 }
-.theme-section p {
+.theme-section .p-theme {
   font-size: clamp(1rem, 1.4vw, 2rem);
   position: absolute;
   left: 50%;
   top: 13%;
   transform: translateX(-50%);
+  text-align: center;
 }
 
 .blue-side {
@@ -246,12 +247,15 @@ li {
 }
 .sidebar-wrapper .sidebar {
   position: relative;
-  padding: 1rem;
+  padding: 1.7vw;
   border: 0.3rem solid black;
   background: white;
 }
 .sidebar-wrapper .sidebar ul {
   gap: 2rem;
+}
+.sidebar-wrapper .sidebar ul img {
+  width: 2.5vw;
 }
 .sidebar-wrapper .sidebar .sidebar-shadow {
   z-index: -2;
@@ -288,27 +292,57 @@ li {
 }
 
 /* iPads (portrait and landscape) ----------- */
-@media (max-width: 650px) {
+@media screen and (max-width: 650px) {
   #tog {
     margin-bottom: 70px;
   }
   .box {
-    width: 11vw;
-    height: 11vw;
+    width: 8vw;
+    height: 8vw;
   }
   .allimg {
-    width: 7vw;
+    width: 5vw;
   }
   .main-wrapper {
-    flex-direction: column;
+    flex-direction: column !important;
+  }
+  .sidebar-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sidebar-wrapper .sidebar {
+    position: relative;
+    padding: 1.7vw;
+    border: 0.3rem solid black;
+    background: white;
+  }
+  .sidebar-wrapper .sidebar ul {
+    gap: 1rem;
+    display: flex;
+    flex-direction: row;
+  }
+  .sidebar-wrapper .sidebar ul img {
+    width: 2.5vw;
+  }
+  .sidebar-wrapper .sidebar .sidebar-shadow {
+    z-index: -2;
+    width: 107%;
+    height: 102%;
+    padding: 1rem;
+    position: absolute;
+    border: 0.3rem solid black;
+    left: 0.8rem;
+    top: 0.8rem;
   }
   h1 {
     font-size: clamp(1.2rem, 1.5vw, 2rem);
-    top: 50%;
+    top: 45%;
     transform: translate(-50%, -50%);
   }
   p {
-    top: 63%;
+    top: 55%;
     transform: translate(-50%);
   }
   .blue-side {

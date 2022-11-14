@@ -32,11 +32,12 @@ $blue-gradient: linear-gradient(117.79deg, #83A4D4 -59.42%, #B6FBFF 84.55%);
     display: flex;
     flex-direction: column;
 }
- /* Import */
+/* Import */
 
 @import '../css/keyframes';
 @import'../css/page';
 
+// https://www.scaler.com/topics/javascript/import-js-file-in-js/
 
 
 /* Titre */
@@ -200,11 +201,14 @@ li {
     @include flexCenter();
     .sidebar{
         position: relative;
-        padding: 1rem;
+        padding: 1.7vw;
         border: 0.3rem solid black;
         background: white;
         ul{
             gap: 2rem;
+            img{
+                width: 2.5vw;
+            }
         }
         .sidebar-shadow{
             z-index: -2;
@@ -242,5 +246,7 @@ li {
     margin-right: 50px;
 
 }
+
+// Media Queries
 
 @import '../css/media-queries';
