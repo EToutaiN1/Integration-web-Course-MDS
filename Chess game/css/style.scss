@@ -131,11 +131,11 @@ li {
     
     .loader-animation{
         position: absolute;
-        z-index: 10000;    
-        width: 100%;
-        height: 100vh;
+        z-index: 10000;
         opacity: 1;
         transition: all 0.7s ease-out;
+        width: 30vw; 
+        height: 100%;
         }
     .blockBg-loader{
         transform-origin: 50% 0%;

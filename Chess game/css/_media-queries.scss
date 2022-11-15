@@ -1,6 +1,12 @@
 /* iPads (portrait and landscape) ----------- */
 @media screen and (max-width : 1024px) {
-    
+    .player-block{
+        height: 20vh;
+    }
+
+    .loader-animation{
+        width: 50vw; 
+    }
 }
 
 @media screen and (max-width: 650px){
@@ -20,7 +26,15 @@
     }
 
     .main-wrapper{
-        flex-direction: column !important;
+        flex-direction: column;
+    }
+
+    .loader-animation{
+        width: 70vw; 
+    }
+
+    .player-block{
+        height: 10vh;
     }
 
     .sidebar-wrapper{

@@ -178,10 +178,10 @@ li {
 .loader-wrapper .loader-animation {
   position: absolute;
   z-index: 10000;
-  width: 100%;
-  height: 100vh;
   opacity: 1;
   transition: all 0.7s ease-out;
+  width: 30vw;
+  height: 100%;
 }
 .loader-wrapper .blockBg-loader {
   transform-origin: 50% 0%;
@@ -292,6 +292,14 @@ li {
 }
 
 /* iPads (portrait and landscape) ----------- */
+@media screen and (max-width: 1024px) {
+  .player-block {
+    height: 20vh;
+  }
+  .loader-animation {
+    width: 50vw;
+  }
+}
 @media screen and (max-width: 650px) {
   #tog {
     margin-bottom: 70px;
@@ -305,6 +313,12 @@ li {
   }
   .main-wrapper {
     flex-direction: column !important;
+  }
+  .loader-animation {
+    width: 70vw;
+  }
+  .player-block {
+    height: 10vh;
   }
   .sidebar-wrapper {
     height: 100%;
