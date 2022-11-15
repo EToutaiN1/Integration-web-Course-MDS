@@ -25,10 +25,10 @@ function insertImage() {
         
         if (image.innerText.length !== 0) {
             if (image.innerText == 'RPawn' || image.innerText == 'BPawn') {
-                image.innerHTML = `${image.innerText} <img class='allimg allpawn' src="img/${image.innerText}.svg" alt="">`
+                image.innerHTML = `${image.innerText} <img class='allimg allpawn' src="../img/${image.innerText}.svg" alt="">`
                 image.style.cursor = 'pointer'
             } else {
-                image.innerHTML = `${image.innerText} <img class='allimg' src="img/${image.innerText}.svg" alt="">`
+                image.innerHTML = `${image.innerText} <img class='allimg' src="../img/${image.innerText}.svg" alt="">`
                 image.style.cursor = 'pointer'
             }
         }
@@ -72,6 +72,7 @@ let verifInventory = {
     }
 }
 
+
 let resetInventory = {
     blue:{
         BPawn: 0,
@@ -91,6 +92,9 @@ let resetInventory = {
     }
 }
 
+// let counterTakenRed = 0;
+// let counterTakenBlue = 0;
+
 const Pieces = document.querySelectorAll('.allimg');
 const takenByRed = document.getElementById('red-taken');
 const takenByBlue = document.getElementById('blue-taken');
@@ -107,15 +111,17 @@ function verif(color, piece, blockTaken) {
     if(vInventory - vInventoryVerif !== 0) {
         let dif = vInventory - vInventoryVerif;
         console.log(dif);
-        for (let i = 0; i < dif; i++) {
-            blockTaken.innerHTML = `<img class='piece-taken allpawn' src="img/${piece}.svg" alt="" style="transform: scale(0.5) translateX(${i-1}rem);">`
+        if(color == 'red'){
+            blockTaken.innerHTML += `<img class='piece-taken allpawn' src="../img/${piece}.svg" alt="" style="transform: scale(0.5);">`
+        } else{
+            blockTaken.innerHTML += `<img class='piece-taken allpawn' src="../img/${piece}.svg" alt="" style="transform: scale(0.5);">`
         }
     }
     vInventory;
     vInventoryVerif;
-
 }
-    
+
+
 let piecesRed = Object.keys(inventory.red);
 let piecesBlue = Object.keys(inventory.blue);
     
@@ -136,9 +142,7 @@ function insertPieceTaken() {
         }
 
         updateInventory()
-        console.log(inventory);
         fnResetInventory()
-        console.log(verifInventory);
     }
 }
 
@@ -188,10 +192,10 @@ insertImage()
 
 //Coloring
 
-function coloring() {
+function coloring(bgColor) {
 
-    Case.forEach(color => {
-        getId = color.id
+    Case.forEach(Cases => {
+        getId = Cases.id
         arr = Array.from(getId)
         arr.shift()
         aside = eval(arr.pop())
@@ -199,14 +203,14 @@ function coloring() {
         a = aside + aup
 
         if (a % 2 == 0) {
-            color.style.background = 'linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)'
+            Cases.style.background = `${bgColor}`
         }
         if (a % 2 !== 0) {
-            color.style.background = '#F2F2F2'
+            Cases.style.background = '#F2F2F2'
         }
     })
 }
-coloring()
+coloring('linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)')
 
 //function to not remove the same team element
 
@@ -261,7 +265,7 @@ Case.forEach(item => {
                     console.log(document.getElementById(pinkId).innerText);
                     item.innerText = pinkText
                     insertPieceTaken()
-                    coloring()
+                    coloring('linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)')
                     insertImage()
                     tog = tog + 1
                 }
@@ -592,7 +596,7 @@ Case.forEach(hathiTest => {
                     if (hathiTest2.style.background == 'green' && hathiTest2.innerText.length == 0) {
                         document.getElementById(pinkId).innerText = ''
                         hathiTest2.innerText = pinkText
-                        coloring()
+                        coloring('linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)')
                         insertImage()
                     }
                 })
@@ -607,7 +611,139 @@ Case.forEach(ee => {
     ee.addEventListener('click', function () {
         z = z + 1
         if (z % 2 == 0 && ee.style.background !== 'green') {
-            coloring()
+            coloring('linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)')
         }
     })
 })
+
+const btnToggleColor = document.getElementById('toggle-chessboard-color')
+const redToggleCase = document.querySelector('.toggle-color-case.red-bg')
+const blueToggleCase = document.querySelector('.toggle-color-case.blue-bg')
+
+btnToggleColor.addEventListener('click',() =>{
+    if (redToggleCase.classList.contains('active')) {
+        redToggleCase.classList.remove('active')
+        blueToggleCase.classList.add('active')
+        coloring('linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)')
+    } else{
+        blueToggleCase.classList.remove('active')
+        redToggleCase.classList.add('active')
+        coloring('linear-gradient(110.73deg, #EEA7A7 0%, #B02D30 100.08%)')
+    }
+})
+
+// // Set the date we're counting down to
+// var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+
+// // Update the count down every 1 second
+// var x = setInterval(function() {
+
+//   // Get today's date and time
+// var now = new Date().getTime();
+
+//   // Find the distance between now and the count down date
+// var distance = countDownDate - now;
+
+//   // Time calculations for days, hours, minutes and seconds
+//   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+//   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+//   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+//   // Display the result in the element with id="demo"
+//   document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+//   + minutes + "m " + seconds + "s ";
+
+//   // If the count down is finished, write some text
+//   if (distance < 0) {
+//     clearInterval(x);
+//     document.getElementById("demo").innerHTML = "EXPIRED";
+//   }
+// }, 1000);
+
+
+
+
+
+let mode = localStorage.getItem("mode");
+
+//Forçage démarrage en mode light
+localStorage.setItem("mode","light");
+mode = "light"
+
+switchMode();
+
+const current_mode = document.getElementById("dark_mode");
+current_mode.addEventListener("click", setLocalStorage);
+
+function setLocalStorage() {
+    if (mode === "dark"){
+        localStorage.setItem("mode","light");
+        mode = "light";
+    } else if(mode === "light"){
+        localStorage.setItem("mode","dark");
+        mode = "dark";
+    } else {
+        localStorage.setItem("mode","light");
+        mode = "light";
+    }
+    switchMode();
+}
+
+function switchMode() {
+    //console.log("SWITCH");
+
+    const body = Array.from(document.querySelectorAll('body'));
+    const h1= Array.from(document.querySelectorAll("h1"));
+    const h2= Array.from(document.querySelectorAll("h2"));
+    const text = Array.from(document.querySelectorAll('p'));
+    const li = Array.from(document.querySelectorAll('.li'));
+    const logoWhite = Array.from(document.querySelectorAll('.logo-dark'))
+    const logoBlack = Array.from(document.querySelectorAll('.logo-light'))
+    const chessBoard = Array.from(document.querySelectorAll('.chess-board'))
+    const shadowChessBoard = Array.from(document.querySelectorAll('.border-bg-chess-board'))
+    const sidebar = Array.from(document.querySelectorAll('.sidebar'))
+    const shadowSidebar = Array.from(document.querySelectorAll('.sidebar-shadow'))
+    const blackIcon = Array.from(document.querySelectorAll('.black-icon'))
+    const whiteIcon = Array.from(document.querySelectorAll('.white-icon'))
+
+    switch (mode){
+        case "light":
+
+            body ? body.forEach(el => el.style.cssText += "background: #F2F2F2") : null;
+            h1 ? h1.forEach(el => el.style.cssText += "color: #1C1C1C") : null;
+            h2 ? h2.forEach(el => el.style.cssText += "color: #1C1C1C") : null;
+            text ? text.forEach(el => el.style.cssText += "color: #1C1C1C") : null;
+            li ? li.forEach(el => el.style.cssText += "color: #1C1C1C") : null;
+            chessBoard ? chessBoard.forEach(el => el.style.cssText += "border-color: #1C1C1C; background: #1C1C1C") : null;
+            shadowChessBoard ? shadowChessBoard.forEach(el => el.style.cssText += "border-color: #1C1C1C") : null;
+            sidebar ? sidebar.forEach(el => el.style.cssText += "border-color: #1C1C1C; background: #F2F2F2") : null;
+            shadowSidebar ? shadowSidebar.forEach(el => el.style.cssText += "border-color: #1C1C1C") : null;
+            logoWhite ? logoWhite.forEach(el => el.style.cssText += 'display: none') : null;
+            logoBlack ? logoBlack.forEach(el => el.style.cssText += 'display: block') : null;
+            whiteIcon ? whiteIcon.forEach(el => el.style.cssText += 'display: none') : null;
+            blackIcon ? blackIcon.forEach(el => el.style.cssText += 'display: block') : null;
+            
+            break;
+            
+            case "dark":
+                body ? body.forEach(el => el.style.cssText += "background: #1C1C1C") : null;
+                h1 ? h1.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
+                h2 ? h2.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
+                text ? text.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
+                li ? li.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
+                chessBoard ? chessBoard.forEach(el => el.style.cssText += "border-color: #F2F2F2; background: #F2F2F2") : null;
+                shadowChessBoard ? shadowChessBoard.forEach(el => el.style.cssText += "border-color: #F2F2F2") : null;
+                sidebar ? sidebar.forEach(el => el.style.cssText += "border-color: #F2F2F2; background: #1C1C1C") : null;
+                shadowSidebar ? shadowSidebar.forEach(el => el.style.cssText += "border-color: #F2F2F2") : null;
+                logoWhite ? logoWhite.forEach(el => el.style.cssText += 'display: block') : null;
+                logoBlack ? logoBlack.forEach(el => el.style.cssText += 'display: none') : null;
+                whiteIcon ? whiteIcon.forEach(el => el.style.cssText += 'display: block') : null;
+                blackIcon ? blackIcon.forEach(el => el.style.cssText += 'display: none') : null;
+                
+            break;
+
+        default:
+            break;
+    }
+}

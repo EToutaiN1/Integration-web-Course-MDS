@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The best chess game in the world !">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="favicon.ico" />
 
-    <!-- <link rel='icon' href='img/favicon space clicker.png' type='image/x-icon' /> -->
+    <!-- <link rel='icon' href='../img/favicon space clicker.png' type='image/x-icon' /> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <title>Chess Game</title>
+    <title>Chess Game ♟</title>
 </head>
 
 <body onload="onLoad()">
@@ -28,10 +28,10 @@
     </div>
     <section>
         <div class="logo-ewan-t">
-            <img src="img/logo-Ewan-T-black.svg" alt="logo Ewan T.">
+            <img src="../img/logo-Ewan-T-black.svg" alt="logo Ewan T.">
         </div>
         <div class="container">
-            <h3 id="tog">Red's Turn</h3>
+            <h1 id="tog">Red's Turn</h1>
             <div class="main-wrapper">
                 <div class="player-wrapper">
                     <div class="player-block first">
@@ -157,10 +157,14 @@
                 <div class="sidebar-wrapper">
                     <div class="sidebar">
                         <ul>
-                            <li><a href="page/theme.html"><img src="img/plus-icon.svg" alt="plus icon"></a></li>
-                            <li><a href="page/theme.html"><img src="img/refresh-icon.svg" alt="refresh icon"></a></li>
-                            <li><a href="#"><img src="img/moon-icon.svg" alt="moon icon"></a></li>
-                            <li><a href="#"><img src="img/help-icon.svg" alt="help icon"></a></li>
+                            <li><a href="../theme.html"><img src="../img/plus-icon.svg" alt="plus icon"></a></li>
+                            <li><a href="../theme.html"><img src="../img/refresh-icon.svg" alt="refresh icon"></a></li>
+                            <li><a href="#"><img src="../img/moon-icon.svg" alt="moon icon"></a></li>
+                            <li id="toggle-chessboard-color">
+                                <div class="toggle-color-case red-bg"></div>
+                                <div class="toggle-color-case blue-bg active"></div>
+                            </li>
+                            <li><a href="#"><img src="../img/help-icon.svg" alt="help icon"></a></li>
                         </ul>
                         <div class="sidebar-shadow"></div>
                     </div>
@@ -170,6 +174,6 @@
     </section>
 
 </body>
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
 
 </html>

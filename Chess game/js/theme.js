@@ -34,3 +34,4 @@ pieceWrapper[1].addEventListener('mouseout', () => {
         shadow.style.opacity = '0'
     })
 })
+

@@ -100,6 +100,7 @@ body {
   display: grid;
   place-items: center;
   overflow-x: hidden;
+  background: #F2F2F2;
 }
 
 h1 {
@@ -140,7 +141,6 @@ li {
 .main-wrapper .player-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
   margin: 10vh 0;
 }
@@ -151,9 +151,12 @@ li {
   position: relative;
   width: 100%;
   height: 4rem;
+  margin-left: -1rem;
+  display: grid;
+  grid-template-columns: repeat(8, 1rem);
+  grid-template-rows: repeat(2, 3rem);
 }
 .main-wrapper .player-wrapper .player-block .pieces-taken-block .piece-taken {
-  position: absolute;
   left: 0;
 }
 .main-wrapper .player-wrapper .player-block .pieces-taken-block .piece-taken.allpawn {
@@ -204,6 +207,7 @@ li {
   margin: 0;
   width: 4.5vw;
   height: 4.5vw;
+  transition: all 0.4s ease;
 }
 
 .chess-board {
@@ -251,13 +255,40 @@ li {
   position: relative;
   padding: 1.7vw;
   border: 0.3rem solid black;
-  background: white;
+  background: #F2F2F2;
 }
 .sidebar-wrapper .sidebar ul {
   gap: 2rem;
 }
 .sidebar-wrapper .sidebar ul img {
   width: clamp(1.5rem, 2vw, 3rem);
+}
+.sidebar-wrapper .sidebar ul #toggle-chessboard-color {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+.sidebar-wrapper .sidebar ul #toggle-chessboard-color .toggle-color-case {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border: 0.2rem solid #000000;
+  box-shadow: 0px 0px 0.9rem rgba(0, 0, 0, 0.25);
+  top: 0;
+  left: 0;
+  z-index: 4;
+  transition: all ease-in 0.4s;
+}
+.sidebar-wrapper .sidebar ul #toggle-chessboard-color .toggle-color-case.red-bg {
+  transform: translate(-0.4rem, -0.4rem);
+  background: linear-gradient(110.73deg, #EEA7A7 0%, #B02D30 100.08%);
+}
+.sidebar-wrapper .sidebar ul #toggle-chessboard-color .toggle-color-case.blue-bg {
+  transform: translate(0.4rem, 0.4rem);
+  background: linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%);
+}
+.sidebar-wrapper .sidebar ul #toggle-chessboard-color .toggle-color-case.active {
+  z-index: 5;
 }
 .sidebar-wrapper .sidebar .sidebar-shadow {
   z-index: -2;
@@ -301,18 +332,28 @@ li {
 @media screen and (max-width: 1024px) {
   .logo-ewan-t {
     position: absolute;
-    bottom: 2rem;
-    right: 5rem;
+    bottom: 1.3rem;
+    right: 1.3rem;
   }
   .logo-ewan-t img {
-    width: 5rem;
+    width: 4rem;
+  }
+  .allimg {
+    width: 2vw;
+    position: relative;
+    bottom: 0px;
+  }
+  .box {
+    width: 5vw;
+    height: 5vw;
   }
   .main-wrapper {
-    justify-content: flex-end;
+    justify-content: center;
     flex-direction: column;
+    gap: 5vh;
   }
   .main-wrapper .player-wrapper {
-    margin: 5vh 0;
+    margin: 2vh 0;
     flex-direction: row;
     width: 80%;
   }
@@ -383,7 +424,9 @@ li {
     width: 5vw;
   }
   .main-wrapper {
+    justify-content: space-around;
     flex-direction: column;
+    padding: 10vh 0 5vh 0;
   }
   .main-wrapper .player-wrapper {
     margin: 1vh 0;
@@ -419,14 +462,24 @@ li {
     left: 0.8rem;
     top: 0.8rem;
   }
+  .sidebar-wrapper .chess-board .letter-chessboard {
+    top: -5vh;
+  }
+  .sidebar-wrapper .chess-board .letter-chessboard li {
+    font-size: 5vw;
+    font-weight: 700;
+  }
+  .sidebar-wrapper .chess-board .number-chessboard {
+    left: -5vh;
+  }
+  .sidebar-wrapper .chess-board .number-chessboard li {
+    font-size: 5vw;
+    font-weight: 700;
+  }
   h1 {
     font-size: clamp(1.2rem, 1.5vw, 2rem);
     top: 45%;
     transform: translate(-50%, -50%);
-  }
-  p {
-    top: 55%;
-    transform: translate(-50%);
   }
   .blue-side {
     width: 100vw;
