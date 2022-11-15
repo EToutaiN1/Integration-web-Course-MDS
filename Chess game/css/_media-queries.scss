@@ -1,12 +1,87 @@
 /* iPads (portrait and landscape) ----------- */
 @media screen and (max-width : 1024px) {
-    .player-block{
-        height: 20vh;
+
+    .logo-ewan-t{
+        position: absolute;
+        bottom: 2rem;
+        right: 5rem;
+        img{
+            width: 5rem;
+        }
     }
 
-    .loader-animation{
-        width: 50vw; 
+    .main-wrapper{
+        justify-content: flex-end;
+        flex-direction: column;
+        .player-wrapper{
+            margin: 5vh 0;
+            flex-direction: row;
+            width: 80%;
+            .player-block{
+                h2{
+                    font-size: clamp(1rem, 2vw, 2.5rem);
+                }
+                .player-time{
+                    font-size: clamp(0.7rem, 1.5vw, 2rem);
+                }
+            }
+        }
     }
+    
+    .chess-board{
+        .letter-chessboard{
+            top: -5vh;
+            li{
+                font-size: 3vw;
+                font-weight: 700;
+            }
+        }
+        .number-chessboard{
+            left: -5vh;
+            li{
+                font-size: 3vw;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .loader-wrapper{
+        .loader-animation{
+            width: 50vw; 
+        }
+    }
+
+    .sidebar-wrapper{
+        height: auto;
+        .sidebar{
+            position: relative;
+            padding: 1rem;
+            border: 0.3rem solid black;
+            background: white;
+            ul{
+                gap: 2rem;
+                display: flex;
+                flex-direction: row;
+                img{
+                    width: 3vw;
+                }
+            }
+            .sidebar-shadow{
+                width: 103%;
+                height: 107%;
+                padding: 1.5rem;
+                position: absolute;
+                border: 0.3rem solid black;
+                left: 0.8rem;
+                top: 0.8rem;
+            }
+        }
+    }
+}
+
+#tog{
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 @media screen and (max-width: 650px){
@@ -27,37 +102,39 @@
 
     .main-wrapper{
         flex-direction: column;
+        .player-wrapper{
+            margin: 1vh 0;
+            height: auto;
+            .player-block{
+            }
+        }
     }
 
-    .loader-animation{
-        width: 70vw; 
+    .loader-wrapper{
+        .loader-animation{
+            width: 70vw; 
+        }
     }
 
-    .player-block{
-        height: 10vh;
-    }
 
     .sidebar-wrapper{
         height: 100%;
         @include flexCenter();
         .sidebar{
-            position: relative;
-            padding: 1.7vw;
-            border: 0.3rem solid black;
-            background: white;
+            padding: 1rem;
             ul{
-                gap: 1rem;
+                gap: 2rem;
                 display: flex;
                 flex-direction: row;
                 img{
-                    width: 2.5vw;
+                    width: 4vw;
                 }
             }
             .sidebar-shadow{
                 z-index: -2;
                 width: 107%;
                 height: 102%;
-                padding: 1rem;
+                padding: 1.5rem;
                 position: absolute;
                 border: 0.3rem solid black;
                 left: 0.8rem;

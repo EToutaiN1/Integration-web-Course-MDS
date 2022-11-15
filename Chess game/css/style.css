@@ -138,7 +138,6 @@ li {
   flex-direction: row;
 }
 .main-wrapper .player-wrapper {
-  height: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -146,7 +145,7 @@ li {
   margin: 10vh 0;
 }
 .main-wrapper .player-wrapper .player-block {
-  height: 30vh;
+  height: auto;
 }
 .main-wrapper .player-wrapper .player-block .pieces-taken-block {
   position: relative;
@@ -156,6 +155,9 @@ li {
 .main-wrapper .player-wrapper .player-block .pieces-taken-block .piece-taken {
   position: absolute;
   left: 0;
+}
+.main-wrapper .player-wrapper .player-block .pieces-taken-block .piece-taken.allpawn {
+  height: 4rem;
 }
 
 /* HEADER */
@@ -181,7 +183,7 @@ li {
   opacity: 1;
   transition: all 0.7s ease-out;
   width: 30vw;
-  height: 100%;
+  height: auto;
 }
 .loader-wrapper .blockBg-loader {
   transform-origin: 50% 0%;
@@ -255,7 +257,7 @@ li {
   gap: 2rem;
 }
 .sidebar-wrapper .sidebar ul img {
-  width: 2.5vw;
+  width: clamp(1.5rem, 2vw, 3rem);
 }
 .sidebar-wrapper .sidebar .sidebar-shadow {
   z-index: -2;
@@ -270,6 +272,10 @@ li {
 
 #tog {
   margin: 10px 0px;
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  transform: translateX(-50%);
 }
 
 .allimg {
@@ -293,13 +299,78 @@ li {
 
 /* iPads (portrait and landscape) ----------- */
 @media screen and (max-width: 1024px) {
-  .player-block {
-    height: 20vh;
+  .logo-ewan-t {
+    position: absolute;
+    bottom: 2rem;
+    right: 5rem;
   }
-  .loader-animation {
+  .logo-ewan-t img {
+    width: 5rem;
+  }
+  .main-wrapper {
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+  .main-wrapper .player-wrapper {
+    margin: 5vh 0;
+    flex-direction: row;
+    width: 80%;
+  }
+  .main-wrapper .player-wrapper .player-block h2 {
+    font-size: clamp(1rem, 2vw, 2.5rem);
+  }
+  .main-wrapper .player-wrapper .player-block .player-time {
+    font-size: clamp(0.7rem, 1.5vw, 2rem);
+  }
+  .chess-board .letter-chessboard {
+    top: -5vh;
+  }
+  .chess-board .letter-chessboard li {
+    font-size: 3vw;
+    font-weight: 700;
+  }
+  .chess-board .number-chessboard {
+    left: -5vh;
+  }
+  .chess-board .number-chessboard li {
+    font-size: 3vw;
+    font-weight: 700;
+  }
+  .loader-wrapper .loader-animation {
     width: 50vw;
   }
+  .sidebar-wrapper {
+    height: auto;
+  }
+  .sidebar-wrapper .sidebar {
+    position: relative;
+    padding: 1rem;
+    border: 0.3rem solid black;
+    background: white;
+  }
+  .sidebar-wrapper .sidebar ul {
+    gap: 2rem;
+    display: flex;
+    flex-direction: row;
+  }
+  .sidebar-wrapper .sidebar ul img {
+    width: 3vw;
+  }
+  .sidebar-wrapper .sidebar .sidebar-shadow {
+    width: 103%;
+    height: 107%;
+    padding: 1.5rem;
+    position: absolute;
+    border: 0.3rem solid black;
+    left: 0.8rem;
+    top: 0.8rem;
+  }
 }
+#tog {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 @media screen and (max-width: 650px) {
   #tog {
     margin-bottom: 70px;
@@ -312,13 +383,14 @@ li {
     width: 5vw;
   }
   .main-wrapper {
-    flex-direction: column !important;
+    flex-direction: column;
   }
-  .loader-animation {
+  .main-wrapper .player-wrapper {
+    margin: 1vh 0;
+    height: auto;
+  }
+  .loader-wrapper .loader-animation {
     width: 70vw;
-  }
-  .player-block {
-    height: 10vh;
   }
   .sidebar-wrapper {
     height: 100%;
@@ -327,24 +399,21 @@ li {
     justify-content: center;
   }
   .sidebar-wrapper .sidebar {
-    position: relative;
-    padding: 1.7vw;
-    border: 0.3rem solid black;
-    background: white;
+    padding: 1rem;
   }
   .sidebar-wrapper .sidebar ul {
-    gap: 1rem;
+    gap: 2rem;
     display: flex;
     flex-direction: row;
   }
   .sidebar-wrapper .sidebar ul img {
-    width: 2.5vw;
+    width: 4vw;
   }
   .sidebar-wrapper .sidebar .sidebar-shadow {
     z-index: -2;
     width: 107%;
     height: 102%;
-    padding: 1rem;
+    padding: 1.5rem;
     position: absolute;
     border: 0.3rem solid black;
     left: 0.8rem;

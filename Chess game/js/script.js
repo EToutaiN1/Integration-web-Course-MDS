@@ -121,6 +121,8 @@ let piecesBlue = Object.keys(inventory.blue);
     
 function insertPieceTaken() {
     VerificationPieces()
+    console.log(verifInventory);
+
     if(verifInventory != inventory){
         
         for (let key in piecesRed) {
@@ -133,28 +135,54 @@ function insertPieceTaken() {
             console.log(piecesBlue[key]);
         }
 
-        inventory = verifInventory;
-        verifInventory = resetInventory;
-    }   
+        updateInventory()
+        console.log(inventory);
+        fnResetInventory()
+        console.log(verifInventory);
+    }
 }
+
+function updateInventory() {
+        for (let key in piecesRed) {
+            inventory.red[piecesRed[key]] = verifInventory.red[piecesRed[key]];
+        }
+        
+        for (let key in piecesBlue) {
+            inventory.blue[piecesBlue[key]] = verifInventory.blue[piecesBlue[key]];
+        }
+}
+
+function fnResetInventory() {
+        for (let key in piecesRed) {
+            verifInventory.red[piecesRed[key]] = 0;
+        }
+        
+        for (let key in piecesBlue) {
+            verifInventory.blue[piecesBlue[key]] = 0;
+        }
+}
+
 function VerificationPieces(){
     Case.forEach(piece => {
-            for (let key in piecesRed) {
-                if (piece.innerHTML == piecesRed[key]) {
-                    verifInventory.red[piecesRed[key]] += 1;
+        if(piece.innerText.length !== 0){
+            if(Array.from(piece.innerText)[0] == 'R'){
+                for (let key in piecesRed) {
+                    if (piece.innerText == piecesRed[key]) {
+                        verifInventory.red[piecesRed[key]] += 1;
+                    }
                 }
             }
-            for (let key in piecesBlue) {
-                if (piece.innerHTML == piecesBlue[key]) {
-                    verifInventory.blue[piecesBlue[key]] += 1;
+            if(Array.from(piece.innerText)[0] == 'B'){
+                for (let key in piecesBlue) {
+                    if (piece.innerText == piecesBlue[key]) {
+                        verifInventory.blue[piecesBlue[key]] += 1;
+                    }
                 }
             }
         }
-    )
+    })
     console.log(verifInventory);
-}
-
-VerificationPieces()
+} 
 
 insertImage()
 
@@ -232,12 +260,12 @@ Case.forEach(item => {
                     document.getElementById(pinkId).innerText = '';
                     console.log(document.getElementById(pinkId).innerText);
                     item.innerText = pinkText
+                    insertPieceTaken()
                     coloring()
                     insertImage()
                     tog = tog + 1
                 }
             })
-            insertPieceTaken()
         }
 
         getId = item.id
