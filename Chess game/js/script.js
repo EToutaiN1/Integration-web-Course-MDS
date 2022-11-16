@@ -72,7 +72,6 @@ let verifInventory = {
     }
 }
 
-
 let resetInventory = {
     blue:{
         BPawn: 0,
@@ -211,6 +210,25 @@ function coloring(bgColor) {
     })
 }
 coloring('linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)')
+
+function switchModeCases() {
+    Case.forEach(Cases => {
+        getId = Cases.id
+        arr = Array.from(getId)
+        arr.shift()
+        aside = eval(arr.pop())
+        aup = eval(arr.shift())
+        a = aside + aup
+
+        if (a % 2 !== 0 && mode === "light" ) {
+            Cases.style.background = '#F2F2F2'
+        } 
+
+        if (a % 2 !== 0 && mode === "dark" ) {
+            Cases.style.background = '#1C1C1C'
+        } 
+    })
+}
 
 //function to not remove the same team element
 
@@ -688,6 +706,7 @@ function setLocalStorage() {
         mode = "light";
     }
     switchMode();
+    switchModeCases();
 }
 
 function switchMode() {
@@ -709,7 +728,8 @@ function switchMode() {
 
     switch (mode){
         case "light":
-
+            
+            switchModeCases()
             body ? body.forEach(el => el.style.cssText += "background: #F2F2F2") : null;
             h1 ? h1.forEach(el => el.style.cssText += "color: #1C1C1C") : null;
             h2 ? h2.forEach(el => el.style.cssText += "color: #1C1C1C") : null;
@@ -723,10 +743,10 @@ function switchMode() {
             logoBlack ? logoBlack.forEach(el => el.style.cssText += 'display: block') : null;
             whiteIcon ? whiteIcon.forEach(el => el.style.cssText += 'display: none') : null;
             blackIcon ? blackIcon.forEach(el => el.style.cssText += 'display: block') : null;
-            
             break;
             
             case "dark":
+                switchModeCases()
                 body ? body.forEach(el => el.style.cssText += "background: #1C1C1C") : null;
                 h1 ? h1.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
                 h2 ? h2.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
@@ -740,7 +760,7 @@ function switchMode() {
                 logoBlack ? logoBlack.forEach(el => el.style.cssText += 'display: none') : null;
                 whiteIcon ? whiteIcon.forEach(el => el.style.cssText += 'display: block') : null;
                 blackIcon ? blackIcon.forEach(el => el.style.cssText += 'display: none') : null;
-                
+
             break;
 
         default:

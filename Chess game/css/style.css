@@ -305,8 +305,8 @@ li {
   margin: 10px 0px;
   position: absolute;
   top: 5%;
-  left: 10%;
-  transform: translateX(-50%);
+  left: 20%;
+  transform: translateX(0%);
 }
 
 .allimg {
@@ -339,7 +339,7 @@ li {
     width: 4rem;
   }
   .allimg {
-    width: 2vw;
+    width: 3vw;
     position: relative;
     bottom: 0px;
   }
@@ -395,7 +395,7 @@ li {
     flex-direction: row;
   }
   .sidebar-wrapper .sidebar ul img {
-    width: 3vw;
+    width: 2rem;
   }
   .sidebar-wrapper .sidebar .sidebar-shadow {
     width: 103%;
@@ -406,15 +406,21 @@ li {
     left: 0.8rem;
     top: 0.8rem;
   }
-}
-#tog {
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-@media screen and (max-width: 650px) {
   #tog {
-    margin-bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media screen and (max-width: 650px) {
+  .logo-ewan-t {
+    display: none;
+  }
+  .logo-ewan-t img {
+    width: 4rem;
+  }
+  #tog {
+    margin-bottom: 0px;
+    top: 2%;
   }
   .box {
     width: 8vw;
@@ -450,31 +456,39 @@ li {
     flex-direction: row;
   }
   .sidebar-wrapper .sidebar ul img {
-    width: 4vw;
+    width: 1.5rem;
   }
   .sidebar-wrapper .sidebar .sidebar-shadow {
     z-index: -2;
-    width: 107%;
-    height: 102%;
+    width: 103%;
+    height: 107%;
     padding: 1.5rem;
     position: absolute;
     border: 0.3rem solid black;
     left: 0.8rem;
     top: 0.8rem;
   }
-  .sidebar-wrapper .chess-board .letter-chessboard {
+  .chess-board {
+    border: 4px solid black;
+  }
+  .chess-board .letter-chessboard {
     top: -5vh;
   }
-  .sidebar-wrapper .chess-board .letter-chessboard li {
+  .chess-board .letter-chessboard li {
     font-size: 5vw;
     font-weight: 700;
   }
-  .sidebar-wrapper .chess-board .number-chessboard {
+  .chess-board .number-chessboard {
     left: -5vh;
   }
-  .sidebar-wrapper .chess-board .number-chessboard li {
+  .chess-board .number-chessboard li {
     font-size: 5vw;
     font-weight: 700;
+  }
+  .chess-board .border-bg-chess-board {
+    border: 4px inset black;
+    left: 1rem;
+    top: 1rem;
   }
   h1 {
     font-size: clamp(1.2rem, 1.5vw, 2rem);

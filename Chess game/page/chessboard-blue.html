@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The best chess game in the world !">
     <link rel="stylesheet" href="../css/style.css">
+    
     <link rel="icon" href="favicon.ico" />
+    <link rel='icon' href='../img/favicon-light-mode.png' type='image/x-icon' media="(prefers-color-scheme: light)" />
+    <link rel='icon' href='../img/favicon-dark-mode.png' type='image/x-icon' media="(prefers-color-scheme: dark)" />
 
-    <!-- <link rel='icon' href='img/favicon space clicker.png' type='image/x-icon' /> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -27,10 +29,12 @@
         <div class="blockBg-loader"></div>
     </div>
     <section>
-        <div class="logo-ewan-t">
-            <img src="../img/logo-Ewan-T-black.svg" alt="logo Ewan T." class="logo-light">
-            <img src="../img/logo-Ewan-T-white.svg" alt="logo Ewan T." class="logo-dark">
-        </div>
+        <a href="https://portfolio-ewan-toutain.webflow.io/" class="logo-ewan-t">
+            <img src="../img/logo-Ewan-T-black.svg" alt="logo Ewan T." title="site of an amazing developer..."
+                class="logo-light">
+            <img src="../img/logo-Ewan-T-white.svg" alt="logo Ewan T." title="site of an amazing developer..."
+                class="logo-dark">
+        </a>
         <div class="container">
             <h1 id="tog">Red's Turn</h1>
             <div class="main-wrapper">
@@ -158,19 +162,23 @@
                 <div class="sidebar-wrapper">
                     <div class="sidebar">
                         <ul>
-                            <li><a href="../page/theme.html"><img src="../img/plus-icon.svg" alt="plus icon" class="black-icon"><img
-                                        src="../img/plus-icon-white.svg" alt="plus icon" class="white-icon"></a></li>
-                            <li><a href="../page/theme.html"><img src="../img/refresh-icon.svg" alt="refresh icon" class="black-icon"><img
-                                        src="../img/refresh-icon-white.svg" alt="refresh icon" class="white-icon"></a>
+                            <li><a href="../theme.html" title="New party"><img src="../img/plus-icon.svg"
+                                        alt="plus icon" class="black-icon"><img src="../img/plus-icon-white.svg"
+                                        alt="plus icon" class="white-icon"></a></li>
+                            <li><a href="../theme.html" title="Refresh"><img src="../img/refresh-icon.svg"
+                                        alt="refresh icon" class="black-icon"><img src="../img/refresh-icon-white.svg"
+                                        alt="refresh icon" class="white-icon"></a>
                             </li>
-                            <li id="toggle-chessboard-color">
+                            <li id="toggle-chessboard-color" title="Switch color">
                                 <div class="toggle-color-case red-bg"></div>
                                 <div class="toggle-color-case blue-bg active"></div>
                             </li>
-                            <li><a href="#" id="dark_mode"><img src="../img/moon-icon.svg" alt="moon icon" class="black-icon"><img
-                                        src="../img/sun-icon-white.svg" alt="moon icon" class="white-icon"></a></li>
-                            <li><a href="#"><img src="../img/help-icon.svg" alt="help icon" class="black-icon"><img
-                                        src="../img/help-icon-white.svg" alt="help icon" class="white-icon"></a></li>
+                            <li><a href="#" id="dark_mode" title="Switch light/dark"><img src="../img/moon-icon.svg"
+                                        alt="moon icon" class="black-icon"><img src="../img/sun-icon-white.svg"
+                                        alt="moon icon" class="white-icon"></a></li>
+                            <li><a href="#" title="Help"><img src="../img/help-icon.svg" alt="help icon"
+                                        class="black-icon"><img src="../img/help-icon-white.svg" alt="help icon"
+                                        class="white-icon"></a></li>
                         </ul>
                         <div class="sidebar-shadow"></div>
                     </div>
