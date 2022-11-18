@@ -14,18 +14,17 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
+    
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <title>Chess Game ♟</title>
 </head>
 
 <body onload="onLoad()">
     <div class="loader-wrapper">
-        <lottie-player src="https://lottie.host/e3fdfd14-adff-498b-bf91-47bcc0009ce5/UvhCoWEb7v.json"
-            background="transparent" speed="1" autoplay class="loader-animation">
-        </lottie-player>
+        <div class="loader-animation" id="loader-animation"></div>
         <div class="blockBg-loader"></div>
     </div>
     <section>
@@ -176,7 +175,7 @@
                             <li><a href="#" id="dark_mode" title="Switch light/dark"><img src="../img/moon-icon.svg"
                                         alt="moon icon" class="black-icon"><img src="../img/sun-icon-white.svg"
                                         alt="moon icon" class="white-icon"></a></li>
-                            <li><a href="#" title="About"><img src="../img/help-icon.svg" alt="help icon"
+                            <li><a href="./about.html" title="About"><img src="../img/help-icon.svg" alt="help icon"
                                         class="black-icon"><img src="../img/help-icon-white.svg" alt="help icon"
                                         class="white-icon"></a></li>
                         </ul>
@@ -186,6 +185,32 @@
             </div>
         </div>
     </section>
+
+    <!-- <div class="popup-wrapper">
+        <div class="popup-block">
+            <div class="animation-popup-block">
+
+                <img src="#" alt="">
+            </div>
+            <H2 id="popup-heading">Congratulations, the Red won !</H2>
+            <div class="popup-btn-wrapper">
+                <div class="main-btn">
+                    <a href="../theme.html">
+                        Restart
+                        <img src="../img/refresh-icon.svg" alt="">
+                    </a>
+                    <div class="bg-border-btn"></div>
+                </div>
+
+                <div class="main-btn">
+                    <a href="../theme.html">
+                        Change color
+                    </a>
+                    <div class="bg-border-btn"></div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 </body>
 <script src="../js/script.js"></script>
 

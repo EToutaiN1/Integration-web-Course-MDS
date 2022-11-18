@@ -16,6 +16,15 @@ function hideLoader() {
     document.querySelector(".loader-wrapper").style.display = "none";
 }
 
+const popUpWrapper = document.querySelector('.popup-wrapper');
+const popUpBlock = document.querySelector('.popup-block');
+const popUpHeading = document.getElementById('popup-heading');
+
+
+function shopPopUp(){
+
+}
+
 
 const Case = document.querySelectorAll('.box');
 
@@ -767,3 +776,21 @@ function switchMode() {
             break;
     }
 }
+
+
+let animation = bodymovin.loadAnimation({
+
+    container: document.getElementById('loader-animation'),
+    
+    path: '../img/loader-chess-game.json',
+    
+    renderer: 'svg',
+    
+    loop: true,
+    
+    autoplay: true,
+    
+    name: "Loader Animation",
+    
+}); 
+
