@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
 </head>
 
 <body onload="onLoad()">
@@ -22,8 +22,7 @@
     <img src="img/original_pickaxe.svg" alt="original_pickaxe" class="circleCursor">
 
     <div class="loader-wrapper">
-        <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_3vNNXU.json" background="transparent"
-            speed="1" style="width: 300px; height: 300px;" loop autoplay class="loader-animation"></lottie-player>
+        <div class="loader-animation" id="loader-animation"></div>
         <div class="blockBg-loader"></div>
     </div>
 
@@ -147,10 +146,7 @@
                     <button class="btnBoost music">
                         <audio src="music/music_space_clicker.mp3" id="music-bg" loop></audio>
                         <img src="img/audio-wave-static.svg" alt="audio wave icon" id="audio-waved-static">
-                        <lottie-player src="https://lottie.host/7a2de7c9-a8a3-4339-ab91-85526e6493e7/zJ80ohq8hE.json"
-                            background="transparent" speed="1" style="width: 2.5rem; height: 2.5rem;" loop autoplay
-                            id="audio-waved-animated">
-                        </lottie-player>
+                        <div id="audio-waved-animated"></div>
                     </button>
                 </div>
             </div>

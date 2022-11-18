@@ -31,6 +31,8 @@ const waveStatic= document.getElementById('audio-waved-static');
 const waveAnimated = document.getElementById('audio-waved-animated');
 const musicBtn = document.querySelector(".music")
 
+const loaderAnimation = document.getElementById("loader-animation");
+
 // Loader animation
 
 let LoaderPage;
@@ -42,12 +44,12 @@ function onLoad() {
 }
 
 function showPage() {
-    document.querySelector(".loader-animation").style.opacity = "0";
+    loaderAnimation.style.opacity = "0";
     document.querySelector(".blockBg-loader").style.animation = "opacityToZero 1500ms 1 ease 700ms";
 }
 
 function hideLoader() {
-    document.querySelector(".loader-animation").style.display = "none";
+    loaderAnimation.style.display = "none";
     document.querySelector(".loader-wrapper").style.display = "none";
 }
 
@@ -490,3 +492,35 @@ function click_button(){
 btn_add_minerals(bronzeBtn, priceArray[0], priceBronze,'Bronze',local_counterBronze, 'counter_bronze', counterBronze, addOneBronze, scoreUp[0]);
 btn_add_minerals(silverBtn, priceArray[1], priceSilver, 'Silver',local_counterSilver, 'counter_silver', counterSilver, addOneSilver, scoreUp[1]);
 btn_add_minerals(goldBtn, priceArray[2], priceGold,'Gold', local_counterGold, 'counter_gold', counterGold, addOneGold, scoreUp[2]);
+
+let animationLoader = bodymovin.loadAnimation({
+
+    container: loaderAnimation,
+    
+    path: 'img/loader-space-rocket.json',
+    
+    renderer: 'svg',
+    
+    loop: true,
+    
+    autoplay: true,
+    
+    name: "Loader Animation",
+    
+}); 
+
+let animationAudioWaved = bodymovin.loadAnimation({
+
+    container: waveAnimated,
+    
+    path: 'img/animation-audio-wave.json',
+    
+    renderer: 'svg',
+    
+    loop: true,
+    
+    autoplay: true,
+    
+    name: "audio wave Animation",
+    
+}); 

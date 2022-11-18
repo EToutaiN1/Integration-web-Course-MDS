@@ -313,10 +313,10 @@ label{
         position: absolute;
         z-index: 10000;    
         width: 100%;
-        height: 100vh;
+        height: 60vh;
         opacity: 1;
         transition: all 0.7s ease-out;
-        }
+    }
     .blockBg-loader{
         transform-origin: 50% 0%;
         background-color: $secondColor;
@@ -503,6 +503,8 @@ label{
 
 #audio-waved-animated{
     display: none;
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 

@@ -4,6 +4,17 @@
         flex-direction: row !important;
         gap: 1rem;
     }
+    #audio-waved-static{
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+    #audio-waved-animated{
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+
+
+
 }
 
 /* iPads (portrait and landscape) ----------- */
@@ -78,6 +89,20 @@
     .imgWrapper{
         width: 24vw;
     }
+    #audio-waved-static{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    #audio-waved-animated{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    .btnBoost{
+        &.music{
+            padding: 0.6rem 1rem;
+        }
+    }
+
 }
 
 /* Smartphones (landscape) ----------- */

@@ -350,7 +350,7 @@ label span:nth-of-type(3) {
   position: absolute;
   z-index: 10000;
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   opacity: 1;
   transition: all 0.7s ease-out;
 }
@@ -557,6 +557,8 @@ label span:nth-of-type(3) {
 
 #audio-waved-animated {
   display: none;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 /* Media queries */
@@ -565,6 +567,14 @@ label span:nth-of-type(3) {
   .ressourceBtn {
     flex-direction: row !important;
     gap: 1rem;
+  }
+  #audio-waved-static {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  #audio-waved-animated {
+    width: 1.2rem;
+    height: 1.2rem;
   }
 }
 /* iPads (portrait and landscape) ----------- */
@@ -625,6 +635,17 @@ label span:nth-of-type(3) {
 @media screen and (max-width: 768px) {
   .imgWrapper {
     width: 24vw;
+  }
+  #audio-waved-static {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  #audio-waved-animated {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .btnBoost.music {
+    padding: 0.6rem 1rem;
   }
 }
 /* Smartphones (landscape) ----------- */
