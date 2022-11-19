@@ -10,6 +10,19 @@
         }
     }
 
+    .loader-wrapper{
+        .loader-animation{
+            width: 50vw; 
+        }
+    }
+
+    #tog{
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+    }
+
     .allimg {
         width: 3vw;
         position: relative;
@@ -21,6 +34,7 @@
         height: 5vw;
     }
 
+    
     .main-wrapper{
         justify-content: center;
         flex-direction: column;
@@ -61,11 +75,6 @@
         }
     }
 
-    .loader-wrapper{
-        .loader-animation{
-            width: 50vw; 
-        }
-    }
 
     .sidebar-wrapper{
         height: auto;
@@ -102,21 +111,11 @@
             }
         }
     }
-    #tog{
-        left: 50%;
-        transform: translateX(-50%);
-        
-    width: 100%;
-    text-align: center;
-    }
+    
 }
 
 
 @media screen and (max-width: 650px){
-
-    .container{
-        width: 95vw;
-    }
 
     .logo-ewan-t{
         display: none;
@@ -134,6 +133,10 @@
         margin-bottom: 0px;
         top: 2%;
 
+    }
+
+    .container{
+        width: 95vw;
     }
 
     .box {

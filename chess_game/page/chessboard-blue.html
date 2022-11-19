@@ -22,11 +22,13 @@
     <title>Chess Game ♟</title>
 </head>
 
-<body onload="">
-    <!-- <div class="loader-wrapper">
+<body onload="onLoad()">
+
+    <!-- Loader -->
+    <div class="loader-wrapper">
         <div class="loader-animation" id="loader-animation"></div>
         <div class="blockBg-loader"></div>
-    </div> -->
+    </div>
     <section>
         <a href="https://portfolio-ewan-toutain.webflow.io/" class="logo-ewan-t">
             <img src="../img/logo-Ewan-T-black.svg" alt="logo Ewan T." title="site of an amazing developer..."
@@ -37,6 +39,7 @@
         <div class="container">
             <h1 id="tog">Red's Turn</h1>
             <div class="main-wrapper">
+                <!-- Player Block -->
                 <div class="player-wrapper">
                     <div class="player-block first">
                         <H2>Red's Team</H2>
@@ -52,6 +55,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Chess board -->
                 <div class="chess-board blue">
                     <ul class="li letter-chessboard">
                         <li>A</li>
@@ -158,6 +163,8 @@
                     </ul>
                     <div class="border-bg-chess-board"></div>
                 </div>
+
+                <!-- Side bar -->
                 <div class="sidebar-wrapper">
                     <div class="sidebar">
                         <ul>
@@ -186,6 +193,7 @@
         </div>
     </section>
 
+    <!-- Pop-Up Checkmate -->
     <div class="popup-wrapper">
         <div class="popup-block">
             <div class="animation-popup-block">

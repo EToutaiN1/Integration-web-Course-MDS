@@ -1,20 +1,23 @@
-// let LoaderPage;
-// let hidePage;
+// Loader Animation
 
-// function onLoad() {
-//     LoaderPage = setTimeout(showPage, 5000);
-//     hidePage = setTimeout(hideLoader, 6000);
-// }
+let LoaderPage;
+let hidePage;
 
-// function showPage() {
-//     document.querySelector(".loader-animation").style.opacity = "0";
-//     document.querySelector(".blockBg-loader").style.animation = "opacityToZero 500ms 1 ease 500ms";
-// }
+function onLoad() {
+    animation.play()
+    LoaderPage = setTimeout(showPage, 4800);
+    hidePage = setTimeout(hideLoader, 5500);
+}
 
-// function hideLoader() {
-//     document.querySelector(".loader-animation").style.display = "none";
-//     document.querySelector(".loader-wrapper").style.display = "none";
-// }
+function showPage() {
+    document.querySelector(".loader-animation").style.opacity = "0";
+    document.querySelector(".blockBg-loader").style.animation = "opacityToZero 500ms 1 ease 500ms";
+}
+
+function hideLoader() {
+    document.querySelector(".loader-animation").style.display = "none";
+    document.querySelector(".loader-wrapper").style.display = "none";
+}
 
 let animation = bodymovin.loadAnimation({
 
@@ -24,14 +27,15 @@ let animation = bodymovin.loadAnimation({
     
     renderer: 'svg',
     
-    loop: 1,
+    loop: false,
     
-    autoplay: true,
-    
+    autoplay: false,
     
     name: "Loader Animation",
     
 });
+
+// Setup Mode Light/dark
 
 let mode = localStorage.getItem("mode");
 
@@ -39,9 +43,10 @@ let mode = localStorage.getItem("mode");
 localStorage.setItem("mode","light");
 mode = "light"
 
+
 const Case = document.querySelectorAll('.box');
 
-// Inserting the Images
+// Inserting the Images of each pieces
 function insertImage() {
     Case.forEach(image => {
         
@@ -56,6 +61,9 @@ function insertImage() {
         }
     })
 }
+
+// Inventories of all pieces
+
 let inventory = {
     blue:{
         BPawn: 8,
@@ -120,18 +128,14 @@ const Pieces = document.querySelectorAll('.allimg');
 const takenByRed = document.getElementById('red-taken');
 const takenByBlue = document.getElementById('blue-taken');
 
+// function to verif which piece has been taken
 
 function verif(color, piece, blockTaken) {
 
     let vInventory = inventory[`${color}`][`${piece}`];
     let vInventoryVerif = verifInventory[`${color}`][`${piece}`];
-    
-    console.log(vInventory);
-    console.log(vInventoryVerif);
 
     if(vInventory - vInventoryVerif !== 0) {
-        let dif = vInventory - vInventoryVerif;
-        console.log(dif);
         if(color == 'red'){
             blockTaken.innerHTML += `<img class='piece-taken allpawn' src="../img/${piece}.svg" alt="" style="transform: scale(0.5);">`
         } else{
@@ -146,6 +150,9 @@ function verif(color, piece, blockTaken) {
 let piecesRed = Object.keys(inventory.red);
 let piecesBlue = Object.keys(inventory.blue);
     
+
+// function to insert the piece leaving
+
 function insertPieceTaken() {
     VerificationPieces()
     console.log(verifInventory);
@@ -167,6 +174,8 @@ function insertPieceTaken() {
     }
 }
 
+// Function to update the inventory of all pieces
+
 function updateInventory() {
         for (let key in piecesRed) {
             inventory.red[piecesRed[key]] = verifInventory.red[piecesRed[key]];
@@ -177,6 +186,8 @@ function updateInventory() {
         }
 }
 
+// Function to reset the inventory at the end of the verification
+
 function fnResetInventory() {
         for (let key in piecesRed) {
             verifInventory.red[piecesRed[key]] = 0;
@@ -186,6 +197,8 @@ function fnResetInventory() {
             verifInventory.blue[piecesBlue[key]] = 0;
         }
 }
+
+// Function to verify if a piece has been taken in adding it in inventory object
 
 function VerificationPieces(){
     Case.forEach(piece => {
@@ -216,6 +229,9 @@ insertImage()
 let greenGradient = 'linear-gradient(110.73deg, rgb(167, 238, 195) 0%, rgb(45, 176, 129) 100.08%)'
 
 let pinkGradient = 'linear-gradient(110.73deg, rgb(220, 127, 194) 0%, rgb(241, 197, 232) 100.08%)'
+
+// Function to color the cases of the chessboard
+
 function coloring(bgColor) {
 
     Case.forEach(Cases => {
@@ -238,6 +254,8 @@ function coloring(bgColor) {
     })
 }
 coloring('linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)')
+
+// function to switch the color to white or black of half of the cases of the chessboard 
 
 function switchModeCases() {
     Case.forEach(Cases => {
@@ -284,9 +302,6 @@ function reddish() {
                     if (a % 2 !== 0 && pinkColor == greenColor) {
                         case2.style.background = 'rgb(100, 75, 43)'
                     }
-                    // if (pinkColor == greenColor) {
-                    //     case2.style.background = 'rgb(253, 60, 60)'
-                    // }
                 }
             })
         }
@@ -299,20 +314,12 @@ function add_active_class(btn) {
     btn.classList.add("active");
 };
 
-// function first_time_moved(btnMoved) {
-//     btnIsMoved = (btnMoved.classList.contains('active'))
-//     console.log(btnIsMoved);
-//     if(!btnIsMoved) {
-//         add_active_class(btnMoved)
-//         btnIsMoved = true;
-//     }
-// }
-
 const chessBoard = document.querySelector('.chess-board');
 
 const firstPlayerTime = document.getElementById('firstPlayerTime')
 const secondPlayerTime = document.getElementById('secondPlayerTime')
 
+// initialize variable for both player's timer
 
 let default_counterFirstTimer = 900;
 let counterFirstTimer = Number(localStorage.getItem('counterFirstTimer'));
@@ -328,11 +335,13 @@ let intervalSecondPlayer;
 counterFirstTimer = default_counterFirstTimer
 counterSecondTimer = default_counterSecondTimer
 
+// function to activate the first timer
+
 function activateTimerFirst(){
     intervalFirstPlayer = undefined
     // Verify if an interval is already setup to avoid duplication
     let interval_activated = (intervalFirstPlayer != undefined);
-
+    
     if( !interval_activated) {
         intervalFirstPlayer = setInterval(()=>{
             result = parseInt(counterFirstTimer / 60) + ':' + counterFirstTimer % 60;
@@ -352,6 +361,8 @@ function activateTimerFirst(){
         intervalFirstPlayer = undefined;
     }
 }
+
+// function to activate the second timer
 
 function activateTimerSecond(){
     intervalSecondPlayer = undefined;
@@ -399,6 +410,8 @@ Case.forEach(item => {
                     
                     tog+=1
                     
+                    // condition to activate or desactivate the timer according to player's turn
+
                     if(chessBoard.classList.contains('blue')){
                         
                         if (tog % 2 == 0) {
@@ -736,7 +749,7 @@ Case.forEach(item => {
             }
         }
         
-        // Toggling the turn
+        // Toggling the turn according to which pieces we choose
         
         if(chessBoard.classList.contains('blue')){
             
@@ -766,6 +779,7 @@ Case.forEach(item => {
         reddish()
 
         // winning()
+        // function to activate when there is checkmate 
 
         numOfKings = 0
 
@@ -777,7 +791,6 @@ Case.forEach(item => {
 
         if (numOfKings == 1) {
             setTimeout(() => {
-                // console.log(`${toggle}`) 
                 if (tog % 2 !== 0) {
                     showPopUp('red')
                     
@@ -796,6 +809,8 @@ const popUpHeading = document.getElementById('popup-heading');
 
 const checkmateBlueWrapper = document.getElementById('checkmate-blue')
 const checkmateRedWrapper = document.getElementById('checkmate-red')
+
+// Initialisation of the checkmate animation
 
 let checkmateBlue = bodymovin.loadAnimation({
 
@@ -827,6 +842,8 @@ let checkmateRed = bodymovin.loadAnimation({
     
     name: "Checkmate red Animation",
 });
+
+// function to shop the checkmate's pop-up when a checkmate or a timer is done
 
 function showPopUp(color){
     popUpWrapper.style.display += 'grid';
@@ -866,6 +883,9 @@ Case.forEach(movingCase => {
                         movingCase2.innerText = pinkText
                         coloring('linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)')
                         insertImage()
+
+                        // condition to activate or desactivate the timer according to player's turn
+
                         if(chessBoard.classList.contains('blue')){
                         
                             if (tog % 2 == 0) {
@@ -914,6 +934,8 @@ const btnToggleColor = document.getElementById('toggle-chessboard-color')
 const redToggleCase = document.querySelector('.toggle-color-case.red-bg')
 const blueToggleCase = document.querySelector('.toggle-color-case.blue-bg')
 
+// button which permit to change the theme color while a party
+
 btnToggleColor.addEventListener('click',() =>{
     if (redToggleCase.classList.contains('active')) {
         redToggleCase.classList.remove('active')
@@ -926,6 +948,8 @@ btnToggleColor.addEventListener('click',() =>{
     }
 })
 
+
+// Initialisation of the sun/moon animation
 
 let animationSunMoon = bodymovin.loadAnimation({
     
@@ -943,6 +967,7 @@ let animationSunMoon = bodymovin.loadAnimation({
 }); 
 
 
+// trigger to activate a certain part if the animation according to the mode of the page
 
 animationSunMoon.goToAndStop(30, true);
 
@@ -978,7 +1003,7 @@ function setLocalStorage() {
     switchModeCases();
 }
 
-
+// Function to switch between Light & dark mode
 
 function switchMode() {
     //console.log("SWITCH");
