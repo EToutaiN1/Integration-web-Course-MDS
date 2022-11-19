@@ -3,10 +3,10 @@
 
     .logo-ewan-t{
         position: absolute;
-        bottom: 1.3rem;
-        right: 1.3rem;
+        top: 2.5rem;
+        right: 2.5rem;
         img{
-            width: 4rem;
+            width: 6rem;
         }
     }
 
@@ -31,12 +31,16 @@
             width: 80%;
             .player-block{
                 h2{
-                    font-size: clamp(1rem, 2vw, 2.5rem);
+                    font-size: clamp(1.2rem, 2vw, 2.5rem);
                 }
                 .player-time{
-                    font-size: clamp(0.7rem, 1.5vw, 2rem);
+                    font-size: clamp(1.4rem, 1.5vw, 2rem);
                 }
             }
+        }
+        &.theme{
+            flex-direction: row;
+            gap: 0;
         }
     }
     
@@ -71,17 +75,26 @@
             border: 0.3rem solid black;
             background: white;
             ul{
-                gap: 2rem;
+                gap: 1.5rem;
                 display: flex;
                 flex-direction: row;
-                img{
-                    width: 2rem;
+                align-items: center;
+                li{
+                    width: 1.5rem;
+                }
+                #toggle-chessboard-color{
+                    position: relative;
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    .toggle-color-case{
+                        border: 0.15rem solid #000000;;
+                    }
                 }
             }
             .sidebar-shadow{
                 width: 103%;
                 height: 107%;
-                padding: 1.5rem;
+                padding: 1.2rem;
                 position: absolute;
                 border: 0.3rem solid black;
                 left: 0.8rem;
@@ -92,16 +105,28 @@
     #tog{
         left: 50%;
         transform: translateX(-50%);
+        
+    width: 100%;
+    text-align: center;
     }
 }
 
 
 @media screen and (max-width: 650px){
 
+    .container{
+        width: 95vw;
+    }
+
     .logo-ewan-t{
         display: none;
         img{
             width: 4rem;
+        }
+        &.about{
+            display: block;
+            top: 1.3rem;
+            right: 1.3rem;
         }
     }
 
@@ -141,9 +166,9 @@
         height: 100%;
         @include flexCenter();
         .sidebar{
-            padding: 1rem;
+            padding: 0.7rem;
             ul{
-                gap: 2rem;
+                gap: 1.4rem;
                 display: flex;
                 flex-direction: row;
                 img{
@@ -189,10 +214,22 @@
 
     // Theme Page
 
-    h1{
+    .main-wrapper{
+        &.theme{
+            flex-direction: column;
+            padding: 0;
+        }
+
+    }
+    .theme-section{
+        .heading-theme{
         font-size: clamp(1.2rem, 1.5vw, 2rem);
-        top: 45%;
+        top: 50%;
         transform: translate(-50%, -50%);
+        }
+        .p-theme{
+            top: 53%;
+        }
     }
     .blue-side{
         width: 100vw;
@@ -200,4 +237,47 @@
     .red-side{
         width: 100vw;
     }
+
+    
+    .piece-wrapper{
+        width: 70%;
+        row-gap: 4rem;
+        .piece-item{
+            .img-piece{
+                height: 5rem;
+            }
+        }
+    }
+
+    // About page
+
+    .main-wrapper{
+        .content-about{
+            .img-about-wrapper{
+                gap: 2rem;
+                img{
+                    height: 10vh;
+                }
+            }
+            H1{
+                font-size: clamp(2rem, 2vw, 3rem);
+            }
+            p{
+                font-size: clamp(0.9rem, 2vw, 2rem);
+                line-height: 1.5;
+            }
+            .main-btn{
+                .bg-border-btn{
+                    left: 0.7rem;
+                    top: 0.7rem;
+                }
+            }
+        }
+        .copyright{
+            font-size: clamp(0.7rem, 2vw, 2rem);
+            line-height: 1.3;
+        }
+    }
+
 }
+

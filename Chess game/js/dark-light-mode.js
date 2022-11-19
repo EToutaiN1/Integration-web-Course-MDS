@@ -59,21 +59,21 @@ export function switchMode() {
             
             break;
             
-            case "dark":
-                body ? body.forEach(el => el.style.cssText += "background: #1C1C1C") : null;
-                h1 ? h1.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
-                h2 ? h2.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
-                text ? text.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
-                li ? li.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
-                chessBoard ? chessBoard.forEach(el => el.style.cssText += "border-color: #F2F2F2; background: #F2F2F2") : null;
-                shadowChessBoard ? shadowChessBoard.forEach(el => el.style.cssText += "border-color: #F2F2F2") : null;
-                sidebar ? sidebar.forEach(el => el.style.cssText += "border-color: #F2F2F2; background: #1C1C1C") : null;
-                shadowSidebar ? shadowSidebar.forEach(el => el.style.cssText += "border-color: #F2F2F2") : null;
-                logoWhite ? logoWhite.forEach(el => el.style.cssText += 'display: block') : null;
-                logoBlack ? logoBlack.forEach(el => el.style.cssText += 'display: none') : null;
-                whiteIcon ? whiteIcon.forEach(el => el.style.cssText += 'display: block') : null;
-                blackIcon ? blackIcon.forEach(el => el.style.cssText += 'display: none') : null;
-                
+        case "dark":
+            body ? body.forEach(el => el.style.cssText += "background: #1C1C1C") : null;
+            h1 ? h1.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
+            h2 ? h2.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
+            text ? text.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
+            li ? li.forEach(el => el.style.cssText += "color: #F2F2F2") : null;
+            chessBoard ? chessBoard.forEach(el => el.style.cssText += "border-color: #F2F2F2; background: #F2F2F2") : null;
+            shadowChessBoard ? shadowChessBoard.forEach(el => el.style.cssText += "border-color: #F2F2F2") : null;
+            sidebar ? sidebar.forEach(el => el.style.cssText += "border-color: #F2F2F2; background: #1C1C1C") : null;
+            shadowSidebar ? shadowSidebar.forEach(el => el.style.cssText += "border-color: #F2F2F2") : null;
+            logoWhite ? logoWhite.forEach(el => el.style.cssText += 'display: block') : null;
+            logoBlack ? logoBlack.forEach(el => el.style.cssText += 'display: none') : null;
+            whiteIcon ? whiteIcon.forEach(el => el.style.cssText += 'display: block') : null;
+            blackIcon ? blackIcon.forEach(el => el.style.cssText += 'display: none') : null;
+            
             break;
 
         default:

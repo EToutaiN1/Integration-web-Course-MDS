@@ -35,8 +35,8 @@ $blue-gradient: linear-gradient(117.79deg, #83A4D4 -59.42%, #B6FBFF 84.55%);
 /* Import */
 
 @import '../css/keyframes';
-@import'../css/theme';
 @import'../css/about';
+@import'../css/theme';
 
 // https://www.scaler.com/topics/javascript/import-js-file-in-js/
 
@@ -56,9 +56,7 @@ body {
     background: $bg-color;
 }
 
-h1 {
-    margin: 10px;
-}
+
 
 ul {
     display: grid;
@@ -96,6 +94,15 @@ li {
         margin: 10vh 0;
         .player-block{
             height: auto;
+            H2{
+                font-weight: 400;
+                
+            }
+            .player-time{
+                font-size: 2rem;
+                margin-top: 1rem;
+                font-weight: 700;
+            }
             .pieces-taken-block{
                 position: relative;
                 width: 100%;
@@ -215,6 +222,13 @@ li {
         background: $bg-color;
         ul{
             gap: 2rem;
+            li{
+                cursor: pointer;
+            }
+            a > div{
+                width:clamp(2.5rem, 2vw, 3rem);
+                
+            }
             img{
                 width: clamp(1.5rem, 2vw, 3rem);
             }
@@ -224,8 +238,8 @@ li {
                 height: 2rem;
                 .toggle-color-case{
                     position: absolute;
-                    width: 2rem;
-                    height: 2rem;
+                    width: 100%;
+                    height: 100%;
                     border: 0.2rem solid #000000;
                     box-shadow: 0px 0px 0.9rem rgba(0, 0, 0, 0.25);
                     top: 0;
@@ -262,8 +276,10 @@ li {
 #tog {
     margin: 10px 0px;
     position: absolute;
+    font-weight: 900;
+    font-size: 2rem;
     top: 5%;
-    left: 20%;
+    left: 10%;
     transform: translateX(0%);
 }
 
@@ -295,9 +311,10 @@ li {
     bottom: 0;
     width: 100%;
     height: 100vh;
+    opacity: 0;
     z-index: 1001;
     transition: all 1s ease-out 1.3s;
-    display: grid;
+    display: none;
     place-items: center;
     background: rgba($main-color, 0.7);
     .popup-block{
@@ -306,10 +323,19 @@ li {
         box-shadow: 0 0px 100px rgba(242, 242, 242, 0.7);
         height: 35rem;
         width: 30rem;
+        gap: 0rem;
         @include flexCol();
-        justify-content: space-around;
+        justify-content: flex-start;
         align-items: center;
-
+        #popup-heading{
+            text-align: center;
+            line-height: 1.3;
+        }
+        .animation-popup-block {
+            #checkmate-blue{
+                display: none;
+            }
+        }
     }
 }
 

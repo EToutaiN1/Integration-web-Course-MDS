@@ -15,18 +15,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
-    
+
     <link
         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
     <title>Chess Game ♟</title>
 </head>
 
-<body onload="onLoad()">
-    <div class="loader-wrapper">
+<body onload="">
+    <!-- <div class="loader-wrapper">
         <div class="loader-animation" id="loader-animation"></div>
         <div class="blockBg-loader"></div>
-    </div>
+    </div> -->
     <section>
         <a href="https://portfolio-ewan-toutain.webflow.io/" class="logo-ewan-t">
             <img src="../img/logo-Ewan-T-black.svg" alt="logo Ewan T." title="site of an amazing developer..."
@@ -39,20 +39,20 @@
             <div class="main-wrapper">
                 <div class="player-wrapper">
                     <div class="player-block first">
-                        <H2>Name : Player 2</H2>
-                        <p class="player-time">10:00</p>
+                        <H2>Red's Team</H2>
+                        <p class="player-time" id="firstPlayerTime">15:00</p>
                         <div class="pieces-taken-block" id="blue-taken">
                         </div>
                     </div>
                     <div class="player-block second">
-                        <H2>Name : Player 1</H2>
-                        <p class="player-time">10:00</p>
+                        <H2>Blue's Team</H2>
+                        <p class="player-time" id="secondPlayerTime">15:00</p>
                         <div class="pieces-taken-block" id="red-taken">
 
                         </div>
                     </div>
                 </div>
-                <div class="chess-board">
+                <div class="chess-board blue">
                     <ul class="li letter-chessboard">
                         <li>A</li>
                         <li>B</li>
@@ -85,14 +85,14 @@
                             <li class="box" id="b808">RBrook</li>
                         </div>
                         <div class="divv" id="row7">
-                            <li class="box Bpawn" id="b701">RPawn</li>
-                            <li class="box Bpawn" id="b702">RPawn</li>
-                            <li class="box Bpawn" id="b703">RPawn</li>
-                            <li class="box Bpawn" id="b704">RPawn</li>
-                            <li class="box Bpawn" id="b705">RPawn</li>
-                            <li class="box Bpawn" id="b706">RPawn</li>
-                            <li class="box Bpawn" id="b707">RPawn</li>
-                            <li class="box Bpawn" id="b708">RPawn</li>
+                            <li class="box Bpawn active" id="b701">RPawn</li>
+                            <li class="box Bpawn active" id="b702">RPawn</li>
+                            <li class="box Bpawn active" id="b703">RPawn</li>
+                            <li class="box Bpawn active" id="b704">RPawn</li>
+                            <li class="box Bpawn active" id="b705">RPawn</li>
+                            <li class="box Bpawn active" id="b706">RPawn</li>
+                            <li class="box Bpawn active" id="b707">RPawn</li>
+                            <li class="box Bpawn active" id="b708">RPawn</li>
                         </div>
                         <div class="divv" id="row6">
                             <li class="box" id="b601"></li>
@@ -136,14 +136,14 @@
                         </div>
 
                         <div class="divv" id="row2">
-                            <li class="box Rpawn" id="b201">BPawn</li>
-                            <li class="box Rpawn" id="b202">BPawn</li>
-                            <li class="box Rpawn" id="b203">BPawn</li>
-                            <li class="box Rpawn" id="b204">BPawn</li>
-                            <li class="box Rpawn" id="b205">BPawn</li>
-                            <li class="box Rpawn" id="b206">BPawn</li>
-                            <li class="box Rpawn" id="b207">BPawn</li>
-                            <li class="box Rpawn" id="b208">BPawn</li>
+                            <li class="box Rpawn active" id="b201">BPawn</li>
+                            <li class="box Rpawn active" id="b202">BPawn</li>
+                            <li class="box Rpawn active" id="b203">BPawn</li>
+                            <li class="box Rpawn active" id="b204">BPawn</li>
+                            <li class="box Rpawn active" id="b205">BPawn</li>
+                            <li class="box Rpawn active" id="b206">BPawn</li>
+                            <li class="box Rpawn active" id="b207">BPawn</li>
+                            <li class="box Rpawn active" id="b208">BPawn</li>
                         </div>
                         <div class="divv" id="row1">
                             <li class="box" id="b101">BBrook</li>
@@ -164,7 +164,7 @@
                             <li><a href="../theme.html" title="New party"><img src="../img/plus-icon.svg"
                                         alt="plus icon" class="black-icon"><img src="../img/plus-icon-white.svg"
                                         alt="plus icon" class="white-icon"></a></li>
-                            <li><a href="../theme.html" title="Refresh"><img src="../img/refresh-icon.svg"
+                            <li><a title="Refresh" onclick="window.location.reload()"><img src="../img/refresh-icon.svg"
                                         alt="refresh icon" class="black-icon"><img src="../img/refresh-icon-white.svg"
                                         alt="refresh icon" class="white-icon"></a>
                             </li>
@@ -172,9 +172,9 @@
                                 <div class="toggle-color-case red-bg"></div>
                                 <div class="toggle-color-case blue-bg active"></div>
                             </li>
-                            <li><a href="#" id="dark_mode" title="Switch light/dark"><img src="../img/moon-icon.svg"
-                                        alt="moon icon" class="black-icon"><img src="../img/sun-icon-white.svg"
-                                        alt="moon icon" class="white-icon"></a></li>
+                            <li><a id="dark_mode" title="Switch light/dark">
+                                    <div id="sunAndMoon"></div>
+                                </a></li>
                             <li><a href="./about.html" title="About"><img src="../img/help-icon.svg" alt="help icon"
                                         class="black-icon"><img src="../img/help-icon-white.svg" alt="help icon"
                                         class="white-icon"></a></li>
@@ -186,18 +186,19 @@
         </div>
     </section>
 
-    <!-- <div class="popup-wrapper">
+    <div class="popup-wrapper">
         <div class="popup-block">
             <div class="animation-popup-block">
-
+                <div id="checkmate-blue"></div>
+                <div id="checkmate-red"></div>
                 <img src="#" alt="">
             </div>
-            <H2 id="popup-heading">Congratulations, the Red won !</H2>
+            <H2 id="popup-heading"></H2>
             <div class="popup-btn-wrapper">
                 <div class="main-btn">
-                    <a href="../theme.html">
+                    <a href="" onclick="window.location.reload()">
                         Restart
-                        <img src="../img/refresh-icon.svg" alt="">
+                        <img src="../img/refresh-icon.svg" alt="refresh">
                     </a>
                     <div class="bg-border-btn"></div>
                 </div>
@@ -210,7 +211,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 </body>
 <script src="../js/script.js"></script>
 

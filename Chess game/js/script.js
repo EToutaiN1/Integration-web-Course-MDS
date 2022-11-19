@@ -1,30 +1,43 @@
-let LoaderPage;
-let hidePage;
+// let LoaderPage;
+// let hidePage;
 
-function onLoad() {
-    LoaderPage = setTimeout(showPage, 5500);
-    hidePage = setTimeout(hideLoader, 6500);
-}
+// function onLoad() {
+//     LoaderPage = setTimeout(showPage, 5000);
+//     hidePage = setTimeout(hideLoader, 6000);
+// }
 
-function showPage() {
-    document.querySelector(".loader-animation").style.opacity = "0";
-    document.querySelector(".blockBg-loader").style.animation = "opacityToZero 500ms 1 ease 500ms";
-}
+// function showPage() {
+//     document.querySelector(".loader-animation").style.opacity = "0";
+//     document.querySelector(".blockBg-loader").style.animation = "opacityToZero 500ms 1 ease 500ms";
+// }
 
-function hideLoader() {
-    document.querySelector(".loader-animation").style.display = "none";
-    document.querySelector(".loader-wrapper").style.display = "none";
-}
+// function hideLoader() {
+//     document.querySelector(".loader-animation").style.display = "none";
+//     document.querySelector(".loader-wrapper").style.display = "none";
+// }
 
-const popUpWrapper = document.querySelector('.popup-wrapper');
-const popUpBlock = document.querySelector('.popup-block');
-const popUpHeading = document.getElementById('popup-heading');
+let animation = bodymovin.loadAnimation({
 
+    container: document.getElementById('loader-animation'),
+    
+    path: '../img/loader-chess-game.json',
+    
+    renderer: 'svg',
+    
+    loop: 1,
+    
+    autoplay: true,
+    
+    
+    name: "Loader Animation",
+    
+});
 
-function shopPopUp(){
+let mode = localStorage.getItem("mode");
 
-}
-
+//Forçage démarrage en mode light
+localStorage.setItem("mode","light");
+mode = "light"
 
 const Case = document.querySelectorAll('.box');
 
@@ -148,7 +161,7 @@ function insertPieceTaken() {
             verif('blue', piecesBlue[key], takenByRed)
             console.log(piecesBlue[key]);
         }
-
+        
         updateInventory()
         fnResetInventory()
     }
@@ -200,6 +213,9 @@ insertImage()
 
 //Coloring
 
+let greenGradient = 'linear-gradient(110.73deg, rgb(167, 238, 195) 0%, rgb(45, 176, 129) 100.08%)'
+
+let pinkGradient = 'linear-gradient(110.73deg, rgb(220, 127, 194) 0%, rgb(241, 197, 232) 100.08%)'
 function coloring(bgColor) {
 
     Case.forEach(Cases => {
@@ -213,8 +229,11 @@ function coloring(bgColor) {
         if (a % 2 == 0) {
             Cases.style.background = `${bgColor}`
         }
-        if (a % 2 !== 0) {
+        if (a % 2 !== 0 && mode == 'light') {
             Cases.style.background = '#F2F2F2'
+        } else if (a % 2 !== 0 && mode == 'dark') {
+            Cases.style.background = '#1C1C1C'
+
         }
     })
 }
@@ -243,9 +262,9 @@ function switchModeCases() {
 
 function reddish() {
     Case.forEach(case1 => {
-        if (case1.style.background == 'pink') {
+        if (case1.style.background == `${pinkGradient}`) {
             Case.forEach(case2 => {
-                if (case2.style.background == 'green' && case2.innerText.length !== 0) {
+                if (case2.style.background == `${greenGradient}` && case2.innerText.length !== 0) {
                     greenText = case2.innerText
                     pinkText = case1.innerText
 
@@ -274,18 +293,101 @@ function reddish() {
     })
 }
 
-tog = 1
+let tog = 0;
+
+function add_active_class(btn) {
+    btn.classList.add("active");
+};
+
+// function first_time_moved(btnMoved) {
+//     btnIsMoved = (btnMoved.classList.contains('active'))
+//     console.log(btnIsMoved);
+//     if(!btnIsMoved) {
+//         add_active_class(btnMoved)
+//         btnIsMoved = true;
+//     }
+// }
+
+const chessBoard = document.querySelector('.chess-board');
+
+const firstPlayerTime = document.getElementById('firstPlayerTime')
+const secondPlayerTime = document.getElementById('secondPlayerTime')
+
+
+let default_counterFirstTimer = 900;
+let counterFirstTimer = Number(localStorage.getItem('counterFirstTimer'));
+let local_counterFirstTimer = localStorage.setItem('counterFirstTimer', counterFirstTimer);
+
+let default_counterSecondTimer = 900;
+let counterSecondTimer = Number(localStorage.getItem('counterSecondTimer'));
+let local_counterSecondTimer = localStorage.setItem('counterSecondTimer', counterSecondTimer);
+
+let intervalFirstPlayer;
+let intervalSecondPlayer;
+
+counterFirstTimer = default_counterFirstTimer
+counterSecondTimer = default_counterSecondTimer
+
+function activateTimerFirst(){
+    intervalFirstPlayer = undefined
+    // Verify if an interval is already setup to avoid duplication
+    let interval_activated = (intervalFirstPlayer != undefined);
+
+    if( !interval_activated) {
+        intervalFirstPlayer = setInterval(()=>{
+            result = parseInt(counterFirstTimer / 60) + ':' + counterFirstTimer % 60;
+            firstPlayerTime.innerHTML = result;
+            local_counterFirstTimer = localStorage.setItem('counterFirstTimer', counterFirstTimer);
+            counterFirstTimer -= 1
+            console.log(" =Le résultat de"+ counterFirstTimer+ " est " + result);
+            if(counterFirstTimer === 0){
+                showPopUp('blue')
+                console.log('popup blue');
+                clearInterval(intervalFirstPlayer); //Display the final message and clear the timer
+                intervalFirstPlayer = undefined;
+            }
+        },1000);
+    }else{
+        clearInterval(intervalFirstPlayer); //Display the final message and clear the timer
+        intervalFirstPlayer = undefined;
+    }
+}
+
+function activateTimerSecond(){
+    intervalSecondPlayer = undefined;
+    console.log(intervalSecondPlayer);
+    let nd_interval_activated = (intervalSecondPlayer != undefined);
+    console.log(nd_interval_activated);
+    if( !nd_interval_activated) {
+        intervalSecondPlayer = setInterval(()=>{
+            result = parseInt(counterSecondTimer / 60) + ':' + counterSecondTimer % 60;
+            secondPlayerTime.innerHTML = result;
+            local_counterSecondTimer = localStorage.setItem('counterSecondTimer', counterSecondTimer);
+            counterSecondTimer -= 1
+            console.log(" =Le résultat de"+ counterSecondTimer+ " est " + result);
+            if(counterSecondTimer === 0){
+                showPopUp('red')
+                console.log('popup red');
+                clearInterval(intervalSecondPlayer); //Display the final message and clear the timer
+                intervalSecondPlayer = undefined;
+            }
+        },1000);
+    }else{
+        clearInterval(intervalSecondPlayer); //Display the final message and clear the timer
+        intervalSecondPlayer = undefined;
+    }
+}
 
 Case.forEach(item => {
     item.addEventListener('click', function () {
 
         // To delete the opposite element
 
-        if (item.style.background == 'green' && item.innerText.length == 0) {
-            tog = tog + 1
-        } else if (item.style.background == 'green' && item.innerText.length !== 0) {
+        if (item.style.background == `${greenGradient}` && item.innerText.length == 0) {
+            tog += 1
+        } else if (item.style.background == `${greenGradient}` && item.innerText.length !== 0) {
             Case.forEach(i => {
-                if (i.style.background == 'pink') {
+                if (i.style.background == `${pinkGradient}`) {
                     pinkId = i.id
                     pinkText = i.innerText
                     document.getElementById(pinkId).innerText = '';
@@ -294,10 +396,39 @@ Case.forEach(item => {
                     insertPieceTaken()
                     coloring('linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)')
                     insertImage()
-                    tog = tog + 1
+                    
+                    tog+=1
+                    
+                    if(chessBoard.classList.contains('blue')){
+                        
+                        if (tog % 2 == 0) {
+                            console.log(tog);
+                            clearInterval(intervalSecondPlayer);
+                            activateTimerFirst()
+                        }
+                        if (tog % 2 !== 0) {
+                            console.log(tog);
+                            clearInterval(intervalFirstPlayer);
+                            activateTimerSecond()
+                        }
+                    }
+                    if(chessBoard.classList.contains('red')){
+                        
+                        if (tog % 2 !== 0) {
+                            console.log(tog);
+                            clearInterval(intervalSecondPlayer);
+                            activateTimerFirst()
+                        }
+                        if (tog % 2 == 0) {
+                            console.log(tog);
+                            clearInterval(intervalFirstPlayer);
+                            activateTimerSecond()
+                        }
+                    }
                 }
             })
         }
+
 
         getId = item.id
         arr = Array.from(getId)
@@ -307,43 +438,77 @@ Case.forEach(item => {
         aup = eval(arr.join(''))
         a = aside + aup
 
-        console.log(a);
-
+        
         // Function to display the available paths for all pieces
 
         function whosTurn(toggle) {
-
+            
             // PAWN
 
             if (item.innerText == `${toggle}Pawn`) {
-                item.style.background = 'pink'
+                item.style.background = `${pinkGradient}`
 
-                if (tog % 2 !== 0 && aup < 800) {
-
-                    if (document.getElementById(`b${a + 100}`).innerText.length == 0) {
-                        document.getElementById(`b${a + 100}`).style.background = 'green'
+                if (document.getElementById(`b${a}`).classList.contains('active')) {
+                    
+                    if (tog % 2 == 0 && aup == 700){
+                        if (document.getElementById(`b${a - 100}`).innerText.length == 0) {
+                            document.getElementById(`b${a - 100}`).style.background = `${greenGradient}`
+                        }
+                        
+                        if (document.getElementById(`b${a - 200}`).innerText.length == 0) {
+                                document.getElementById(`b${a - 200}`).style.background = `${greenGradient}`
+                            }
+                        if (aside < 8 && document.getElementById(`b${a - 100 + 1}`).innerText.length !== 0) {
+                            document.getElementById(`b${a - 100 + 1}`).style.background = `${greenGradient}`
+                        }
+                        if (aside > 1 && document.getElementById(`b${a - 100 - 1}`).innerText.length !== 0) {
+                            document.getElementById(`b${a - 100 - 1}`).style.background = `${greenGradient}`
+                        }
                     }
-
-                    if (aside < 8 && document.getElementById(`b${a + 100 + 1}`).innerText.length !== 0) {
-                        document.getElementById(`b${a + 100 + 1}`).style.background = 'green'
+                    if (tog % 2 !== 0 && aup == 200){
+                        if (document.getElementById(`b${a + 100}`).innerText.length == 0) {
+                            document.getElementById(`b${a + 100}`).style.background = `${greenGradient}`
+                        }
+                        if (document.getElementById(`b${a + 200}`).innerText.length == 0) {
+                            document.getElementById(`b${a + 200}`).style.background = `${greenGradient}`
+                        }
+                        console.log('blue first move');
+                    
+                        if (aside < 8 && document.getElementById(`b${a + 100 + 1}`).innerText.length !== 0) {
+                            document.getElementById(`b${a + 100 + 1}`).style.background = `${greenGradient}`
+                        }
+                        if (aside > 1 && document.getElementById(`b${a + 100 - 1}`).innerText.length !== 0) {
+                            document.getElementById(`b${a + 100 - 1}`).style.background = `${greenGradient}`
+                        }
                     }
-
-                    if (aside > 1 && document.getElementById(`b${a + 100 - 1}`).innerText.length !== 0) {
-                        document.getElementById(`b${a + 100 - 1}`).style.background = 'green'
-
+                }else{
+                    console.log('not first move');
+                    if (tog % 2 == 0 && aup < 700) {
+                        
+                        if (document.getElementById(`b${a - 100}`).innerText.length == 0) {
+                            document.getElementById(`b${a - 100}`).style.background = `${greenGradient}`
+                        }
+                        
+                        if (aside < 8 && document.getElementById(`b${a - 100 + 1}`).innerText.length !== 0) {
+                            document.getElementById(`b${a - 100 + 1}`).style.background = `${greenGradient}`
+                        }
+    
+                        if (aside > 1 && document.getElementById(`b${a - 100 - 1}`).innerText.length !== 0) {
+                            document.getElementById(`b${a - 100 - 1}`).style.background = `${greenGradient}`
+                        }
                     }
-                }
-
-                if (tog % 2 == 0 && aup > 100) {
-
-                    if (document.getElementById(`b${a - 100}`).innerText.length == 0) {
-                        document.getElementById(`b${a - 100}`).style.background = 'green'
-                    }
-                    if (aside < 8 && document.getElementById(`b${a - 100 + 1}`).innerText.length !== 0) {
-                        document.getElementById(`b${a - 100 + 1}`).style.background = 'green'
-                    }
-                    if (aside > 1 && document.getElementById(`b${a - 100 - 1}`).innerText.length !== 0) {
-                        document.getElementById(`b${a - 100 - 1}`).style.background = 'green'
+    
+                    if (tog % 2 !== 0 && aup > 200) {
+                        
+                        if (document.getElementById(`b${a + 100}`).innerText.length == 0) {
+                            document.getElementById(`b${a + 100}`).style.background = `${greenGradient}`
+                        }
+                        if (aside < 8 && document.getElementById(`b${a + 100 + 1}`).innerText.length !== 0) {
+                            document.getElementById(`b${a + 100 + 1}`).style.background = `${greenGradient}`
+                        }
+                        if (aside > 1 && document.getElementById(`b${a + 100 - 1}`).innerText.length !== 0) {
+                            document.getElementById(`b${a + 100 - 1}`).style.background = `${greenGradient}`
+                        }
                     }
                 }
             }
@@ -352,30 +517,30 @@ Case.forEach(item => {
 
             if (item.innerText == `${toggle}King`) {
                 if (aside < 8) {
-                    document.getElementById(`b${a + 1}`).style.background = 'green'
+                    document.getElementById(`b${a + 1}`).style.background = `${greenGradient}`
                 }
                 if (aside > 1) {
-                    document.getElementById(`b${a - 1}`).style.background = 'green'
+                    document.getElementById(`b${a - 1}`).style.background = `${greenGradient}`
                 }
                 if (aup < 800) {
-                    document.getElementById(`b${a + 100}`).style.background = 'green'
+                    document.getElementById(`b${a + 100}`).style.background = `${greenGradient}`
                 }
                 if (aup > 100) {
-                    document.getElementById(`b${a - 100}`).style.background = 'green'
+                    document.getElementById(`b${a - 100}`).style.background = `${greenGradient}`
                 }
                 if (aup > 100 && aside < 8) {
-                    document.getElementById(`b${a - 100 + 1}`).style.background = 'green'
+                    document.getElementById(`b${a - 100 + 1}`).style.background = `${greenGradient}`
                 }
                 if (aup > 100 && aside > 1) {
-                    document.getElementById(`b${a - 100 - 1}`).style.background = 'green'
+                    document.getElementById(`b${a - 100 - 1}`).style.background = `${greenGradient}`
                 }
                 if (aup < 800 && aside < 8) {
-                    document.getElementById(`b${a + 100 + 1}`).style.background = 'green'
+                    document.getElementById(`b${a + 100 + 1}`).style.background = `${greenGradient}`
                 }
                 if (aup < 800 && aside > 1) {
-                    document.getElementById(`b${a + 100 - 1}`).style.background = 'green'
+                    document.getElementById(`b${a + 100 - 1}`).style.background = `${greenGradient}`
                 }
-                item.style.background = 'pink'
+                item.style.background = `${pinkGradient}`
             }
 
             // ROOK
@@ -383,41 +548,41 @@ Case.forEach(item => {
             if (item.innerText == `${toggle}Brook`) {
                 for (let i = 1; i < 9; i++) {
                     if ((a + i * 100) < 900 && document.getElementById(`b${a + i * 100}`).innerText == 0) {
-                        document.getElementById(`b${a + i * 100}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100}`).style.background = `${greenGradient}`
                     }
                     else if ((a + i * 100) < 900 && document.getElementById(`b${a + i * 100}`).innerText !== 0) {
-                        document.getElementById(`b${a + i * 100}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if ((a - i * 100) > 100 && document.getElementById(`b${a - i * 100}`).innerText == 0) {
-                        document.getElementById(`b${a - i * 100}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100}`).style.background = `${greenGradient}`
                     }
                     else if ((a - i * 100) > 100 && document.getElementById(`b${a - i * 100}`).innerText !== 0) {
-                        document.getElementById(`b${a - i * 100}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if ((a + i) < (aup + 9) && document.getElementById(`b${a + i}`).innerText == 0) {
-                        document.getElementById(`b${a + i}`).style.background = 'green'
+                        document.getElementById(`b${a + i}`).style.background = `${greenGradient}`
                     }
                     else if ((a + i) < (aup + 9) && document.getElementById(`b${a + i}`).innerText !== 0) {
-                        document.getElementById(`b${a + i}`).style.background = 'green'
+                        document.getElementById(`b${a + i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if ((a - i) > (aup) && document.getElementById(`b${a - i}`).innerText == 0) {
-                        document.getElementById(`b${a - i}`).style.background = 'green'
+                        document.getElementById(`b${a - i}`).style.background = `${greenGradient}`
                     }
                     else if ((a - i) > (aup) && document.getElementById(`b${a - i}`).innerText !== 0) {
-                        document.getElementById(`b${a - i}`).style.background = 'green'
+                        document.getElementById(`b${a - i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
-                item.style.background = 'pink'
+                item.style.background = `${pinkGradient}`
             }
 
             // BISHOP
@@ -425,41 +590,41 @@ Case.forEach(item => {
             if (item.innerText == `${toggle}Bishop`) {
                 for (let i = 1; i < 9; i++) {
                     if (i < (900 - aup) / 100 && i < 9 - aside && document.getElementById(`b${a + i * 100 + i}`).innerText.length == 0) {
-                        document.getElementById(`b${a + i * 100 + i}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100 + i}`).style.background = `${greenGradient}`
                     }
                     else if (i < (900 - aup) / 100 && i < 9 - aside && document.getElementById(`b${a + i * 100 + i}`).innerText.length !== 0) {
-                        document.getElementById(`b${a + i * 100 + i}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100 + i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if (i < aup / 100 && i < 9 - aside && document.getElementById(`b${a - i * 100 + i}`).innerText.length == 0) {
-                        document.getElementById(`b${a - i * 100 + i}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100 + i}`).style.background = `${greenGradient}`
                     }
                     else if (i < aup / 100 && i < 9 - aside && document.getElementById(`b${a - i * 100 + i}`).innerText.length !== 0) {
-                        document.getElementById(`b${a - i * 100 + i}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100 + i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if (i < (900 - aup) / 100 && i < aside && document.getElementById(`b${a + i * 100 - i}`).innerText.length == 0) {
-                        document.getElementById(`b${a + i * 100 - i}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100 - i}`).style.background = `${greenGradient}`
                     }
                     else if (i < (900 - aup) / 100 && i < aside && document.getElementById(`b${a + i * 100 - i}`).innerText.length !== 0) {
-                        document.getElementById(`b${a + i * 100 - i}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100 - i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if (i < aup / 100 && i < aside && document.getElementById(`b${a - i * 100 - i}`).innerText.length == 0) {
-                        document.getElementById(`b${a - i * 100 - i}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100 - i}`).style.background = `${greenGradient}`
                     }
                     else if (i < aup / 100 && i < aside && document.getElementById(`b${a - i * 100 - i}`).innerText.length !== 0) {
-                        document.getElementById(`b${a - i * 100 - i}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100 - i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
-                item.style.background = 'pink'
+                item.style.background = `${pinkGradient}`
             }
 
             // QUEEN
@@ -467,121 +632,137 @@ Case.forEach(item => {
             if (item.innerText == `${toggle}Queen`) {
                 for (let i = 1; i < 9; i++) {
                     if ((a + i * 100) < 900 && document.getElementById(`b${a + i * 100}`).innerText == 0) {
-                        document.getElementById(`b${a + i * 100}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100}`).style.background = `${greenGradient}`
                     }
                     else if ((a + i * 100) < 900 && document.getElementById(`b${a + i * 100}`).innerText !== 0) {
-                        document.getElementById(`b${a + i * 100}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if ((a - i * 100) > 100 && document.getElementById(`b${a - i * 100}`).innerText == 0) {
-                        document.getElementById(`b${a - i * 100}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100}`).style.background = `${greenGradient}`
                     }
                     else if ((a - i * 100) > 100 && document.getElementById(`b${a - i * 100}`).innerText !== 0) {
-                        document.getElementById(`b${a - i * 100}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if ((a + i) < (aup + 9) && document.getElementById(`b${a + i}`).innerText == 0) {
-                        document.getElementById(`b${a + i}`).style.background = 'green'
+                        document.getElementById(`b${a + i}`).style.background = `${greenGradient}`
                     }
                     else if ((a + i) < (aup + 9) && document.getElementById(`b${a + i}`).innerText !== 0) {
-                        document.getElementById(`b${a + i}`).style.background = 'green'
+                        document.getElementById(`b${a + i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if ((a - i) > (aup) && document.getElementById(`b${a - i}`).innerText == 0) {
-                        document.getElementById(`b${a - i}`).style.background = 'green'
+                        document.getElementById(`b${a - i}`).style.background = `${greenGradient}`
                     }
                     else if ((a - i) > (aup) && document.getElementById(`b${a - i}`).innerText !== 0) {
-                        document.getElementById(`b${a - i}`).style.background = 'green'
+                        document.getElementById(`b${a - i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if (i < (900 - aup) / 100 && i < 9 - aside && document.getElementById(`b${a + i * 100 + i}`).innerText.length == 0) {
-                        document.getElementById(`b${a + i * 100 + i}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100 + i}`).style.background = `${greenGradient}`
                     }
                     else if (i < (900 - aup) / 100 && i < 9 - aside && document.getElementById(`b${a + i * 100 + i}`).innerText.length !== 0) {
-                        document.getElementById(`b${a + i * 100 + i}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100 + i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if (i < aup / 100 && i < 9 - aside && document.getElementById(`b${a - i * 100 + i}`).innerText.length == 0) {
-                        document.getElementById(`b${a - i * 100 + i}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100 + i}`).style.background = `${greenGradient}`
                     }
                     else if (i < aup / 100 && i < 9 - aside && document.getElementById(`b${a - i * 100 + i}`).innerText.length !== 0) {
-                        document.getElementById(`b${a - i * 100 + i}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100 + i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if (i < (900 - aup) / 100 && i < aside && document.getElementById(`b${a + i * 100 - i}`).innerText.length == 0) {
-                        document.getElementById(`b${a + i * 100 - i}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100 - i}`).style.background = `${greenGradient}`
                     }
                     else if (i < (900 - aup) / 100 && i < aside && document.getElementById(`b${a + i * 100 - i}`).innerText.length !== 0) {
-                        document.getElementById(`b${a + i * 100 - i}`).style.background = 'green'
+                        document.getElementById(`b${a + i * 100 - i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
                 for (let i = 1; i < 9; i++) {
                     if (i < aup / 100 && i < aside && document.getElementById(`b${a - i * 100 - i}`).innerText.length == 0) {
-                        document.getElementById(`b${a - i * 100 - i}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100 - i}`).style.background = `${greenGradient}`
                     }
                     else if (i < aup / 100 && i < aside && document.getElementById(`b${a - i * 100 - i}`).innerText.length !== 0) {
-                        document.getElementById(`b${a - i * 100 - i}`).style.background = 'green'
+                        document.getElementById(`b${a - i * 100 - i}`).style.background = `${greenGradient}`
                         break
                     }
                 }
-                item.style.background = 'pink'
+                item.style.background = `${pinkGradient}`
             }
 
             // KNIGHT
 
             if (item.innerText == `${toggle}Knight`) {
                 if (aside < 7 && aup < 800) {
-                    document.getElementById(`b${a + 100 + 2}`).style.background = 'green'
+                    document.getElementById(`b${a + 100 + 2}`).style.background = `${greenGradient}`
                 }
                 if (aside < 7 && aup > 200) {
-                    document.getElementById(`b${a - 100 + 2}`).style.background = 'green'
+                    document.getElementById(`b${a - 100 + 2}`).style.background = `${greenGradient}`
                 }
                 if (aside < 8 && aup < 700) {
-                    document.getElementById(`b${a + 200 + 1}`).style.background = 'green'
+                    document.getElementById(`b${a + 200 + 1}`).style.background = `${greenGradient}`
                 }
                 if (aside > 1 && aup < 700) {
-                    document.getElementById(`b${a + 200 - 1}`).style.background = 'green'
+                    document.getElementById(`b${a + 200 - 1}`).style.background = `${greenGradient}`
                 }
                 if (aside > 2 && aup < 800) {
-                    document.getElementById(`b${a - 2 + 100}`).style.background = 'green'
+                    document.getElementById(`b${a - 2 + 100}`).style.background = `${greenGradient}`
                 }
                 if (aside > 2 && aup > 100) {
-                    document.getElementById(`b${a - 2 - 100}`).style.background = 'green'
+                    document.getElementById(`b${a - 2 - 100}`).style.background = `${greenGradient}`
                 }
                 if (aside < 8 && aup > 200) {
-                    document.getElementById(`b${a - 200 + 1}`).style.background = 'green'
+                    document.getElementById(`b${a - 200 + 1}`).style.background = `${greenGradient}`
                 }
                 if (aside > 1 && aup > 200) {
-                    document.getElementById(`b${a - 200 - 1}`).style.background = 'green'
+                    document.getElementById(`b${a - 200 - 1}`).style.background = `${greenGradient}`
                 }
-                item.style.background = 'pink'
+                item.style.background = `${pinkGradient}`
             }
         }
-
+        
         // Toggling the turn
-
-        if (tog % 2 !== 0) {
-            document.getElementById('tog').innerText = "Red's Turn"
-            whosTurn('R')
+        
+        if(chessBoard.classList.contains('blue')){
+            
+            // console.log("is blue piece");
+            if (tog % 2 == 0) {
+                document.getElementById('tog').innerText = "Red's Turn"
+                whosTurn('R')
+            }
+            if (tog % 2 !== 0) {
+                document.getElementById('tog').innerText = "Blue's Turn"
+                whosTurn('B')
+            }
         }
-        if (tog % 2 == 0) {
-            document.getElementById('tog').innerText = "Blue's Turn"
-            whosTurn('B')
+        if(chessBoard.classList.contains('red')){
+            
+            // console.log("is red piece");
+            if (tog % 2 !== 0) {
+                document.getElementById('tog').innerText = "Red's Turn"
+                whosTurn('R')
+            }
+            if (tog % 2 == 0) {
+                document.getElementById('tog').innerText = "Blue's Turn"
+                whosTurn('B')
+            }
         }
-
+        
         reddish()
 
         // winning()
@@ -597,34 +778,120 @@ Case.forEach(item => {
         if (numOfKings == 1) {
             setTimeout(() => {
                 // console.log(`${toggle}`) 
-                if (tog % 2 == 0) {
-                    alert('Red Wins !!')
-                    location.reload()
+                if (tog % 2 !== 0) {
+                    showPopUp('red')
+                    
                 }
-                else if (tog % 2 !== 0) {
-                    alert('Blue Wins !!')
-                    location.reload()
+                else if (tog % 2 == 0) {
+                    showPopUp('blue')
                 }
             }, 100)
         }
     })
 })
 
+const popUpWrapper = document.querySelector('.popup-wrapper');
+const popUpBlock = document.querySelector('.popup-block');
+const popUpHeading = document.getElementById('popup-heading');
+
+const checkmateBlueWrapper = document.getElementById('checkmate-blue')
+const checkmateRedWrapper = document.getElementById('checkmate-red')
+
+let checkmateBlue = bodymovin.loadAnimation({
+
+    container: document.getElementById('checkmate-blue'),
+    
+    path: '../img/animation-check-mate-blue.json',
+    
+    renderer: 'svg',
+    
+    loop: false,
+    
+    autoplay: false,
+    
+    name: "Checkmate blue Animation",
+    
+});
+
+let checkmateRed = bodymovin.loadAnimation({
+    
+    container: document.getElementById('checkmate-red'),
+    
+    path: '../img/animation-check-mate-red.json',
+    
+    renderer: 'svg',
+    
+    loop: false,
+    
+    autoplay: false,
+    
+    name: "Checkmate red Animation",
+});
+
+function showPopUp(color){
+    popUpWrapper.style.display += 'grid';
+    popUpWrapper.style.opacity += '1';
+    if (color === 'red') {
+        console.log(color);
+        checkmateBlueWrapper.style.display = 'none'
+        checkmateRedWrapper.style.display = 'block'
+        checkmateRed.play()
+        popUpHeading.innerHTML = 'Congratulations,<br>the Red have won !';
+        clearInterval(intervalFirstPlayer);
+        clearInterval(intervalSecondPlayer);
+    }
+    if (color === 'blue') {
+        console.log(color);
+        checkmateBlueWrapper.style.display = 'block'
+        checkmateRedWrapper.style.display = 'none'
+        checkmateBlue.play()
+        popUpHeading.innerHTML = 'Congratulations,<br>the Blue have won !';
+        clearInterval(intervalFirstPlayer);
+        clearInterval(intervalSecondPlayer);
+    }
+}
+
 // Moving the element
-Case.forEach(hathiTest => {
-    hathiTest.addEventListener('click', function () {
-        if (hathiTest.style.background == 'pink') {
-            pinkId = hathiTest.id
-            pinkText = hathiTest.innerText
+Case.forEach(movingCase => {
+    movingCase.addEventListener('click', function () {
+        if (movingCase.style.background == `${pinkGradient}`) {
+            pinkId = movingCase.id
+            pinkText = movingCase.innerText
 
-            Case.forEach(hathiTest2 => {
-
-                hathiTest2.addEventListener('click', function () {
-                    if (hathiTest2.style.background == 'green' && hathiTest2.innerText.length == 0) {
+            Case.forEach(movingCase2 => {
+                
+                movingCase2.addEventListener('click', function () {
+                    if (movingCase2.style.background == `${greenGradient}` && movingCase2.innerText.length == 0) {
                         document.getElementById(pinkId).innerText = ''
-                        hathiTest2.innerText = pinkText
+                        movingCase2.innerText = pinkText
                         coloring('linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)')
                         insertImage()
+                        if(chessBoard.classList.contains('blue')){
+                        
+                            if (tog % 2 == 0) {
+                                console.log(tog);
+                                clearInterval(intervalSecondPlayer);
+                                activateTimerFirst()
+                            }
+                            if (tog % 2 !== 0) {
+                                console.log(tog);
+                                clearInterval(intervalFirstPlayer);
+                                activateTimerSecond()
+                            }
+                        }
+                        if(chessBoard.classList.contains('red')){
+                            
+                            if (tog % 2 !== 0) {
+                                console.log(tog);
+                                clearInterval(intervalSecondPlayer);
+                                activateTimerFirst()
+                            }
+                            if (tog % 2 == 0) {
+                                console.log(tog);
+                                clearInterval(intervalFirstPlayer);
+                                activateTimerSecond()
+                            }
+                        }
                     }
                 })
             })
@@ -637,7 +904,7 @@ z = 0
 Case.forEach(ee => {
     ee.addEventListener('click', function () {
         z = z + 1
-        if (z % 2 == 0 && ee.style.background !== 'green') {
+        if (z % 2 == 0 && ee.style.background !== `${greenGradient}`) {
             coloring('linear-gradient(110.73deg, #9BBCEB 0%, #6D8AB5 100.08%)')
         }
     })
@@ -659,46 +926,39 @@ btnToggleColor.addEventListener('click',() =>{
     }
 })
 
-// // Set the date we're counting down to
-// var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
 
-// // Update the count down every 1 second
-// var x = setInterval(function() {
-
-//   // Get today's date and time
-// var now = new Date().getTime();
-
-//   // Find the distance between now and the count down date
-// var distance = countDownDate - now;
-
-//   // Time calculations for days, hours, minutes and seconds
-//   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-//   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-//   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-//   // Display the result in the element with id="demo"
-//   document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-//   + minutes + "m " + seconds + "s ";
-
-//   // If the count down is finished, write some text
-//   if (distance < 0) {
-//     clearInterval(x);
-//     document.getElementById("demo").innerHTML = "EXPIRED";
-//   }
-// }, 1000);
+let animationSunMoon = bodymovin.loadAnimation({
+    
+    container: document.getElementById('sunAndMoon'),
+    
+    path: '../img/animation-sun-and-moon.json',
+    
+    renderer: 'svg',
+    
+    loop: false,
+    
+    autoplay: false,
+    
+    name: "sun and mooon Animation",
+}); 
 
 
 
+animationSunMoon.goToAndStop(30, true);
+
+document.getElementById('sunAndMoon').addEventListener('click', () => {
+    if(mode === 'light') {
+        animationSunMoon.playSegments([32, 62], true);
+    } else {
+        animationSunMoon.playSegments([0, 28], true);
+    }
+});
 
 
-let mode = localStorage.getItem("mode");
-
-//Forçage démarrage en mode light
-localStorage.setItem("mode","light");
-mode = "light"
 
 switchMode();
+
+
 
 const current_mode = document.getElementById("dark_mode");
 current_mode.addEventListener("click", setLocalStorage);
@@ -718,9 +978,11 @@ function setLocalStorage() {
     switchModeCases();
 }
 
+
+
 function switchMode() {
     //console.log("SWITCH");
-
+    
     const body = Array.from(document.querySelectorAll('body'));
     const h1= Array.from(document.querySelectorAll("h1"));
     const h2= Array.from(document.querySelectorAll("h2"));
@@ -734,6 +996,7 @@ function switchMode() {
     const shadowSidebar = Array.from(document.querySelectorAll('.sidebar-shadow'))
     const blackIcon = Array.from(document.querySelectorAll('.black-icon'))
     const whiteIcon = Array.from(document.querySelectorAll('.white-icon'))
+    const toggleColor = Array.from(document.querySelectorAll('.toggle-color-case'))
 
     switch (mode){
         case "light":
@@ -748,10 +1011,11 @@ function switchMode() {
             shadowChessBoard ? shadowChessBoard.forEach(el => el.style.cssText += "border-color: #1C1C1C") : null;
             sidebar ? sidebar.forEach(el => el.style.cssText += "border-color: #1C1C1C; background: #F2F2F2") : null;
             shadowSidebar ? shadowSidebar.forEach(el => el.style.cssText += "border-color: #1C1C1C") : null;
-            logoWhite ? logoWhite.forEach(el => el.style.cssText += 'display: none') : null;
-            logoBlack ? logoBlack.forEach(el => el.style.cssText += 'display: block') : null;
-            whiteIcon ? whiteIcon.forEach(el => el.style.cssText += 'display: none') : null;
-            blackIcon ? blackIcon.forEach(el => el.style.cssText += 'display: block') : null;
+            logoWhite ? logoWhite.forEach(el => el.style.cssText = 'display: none') : null;
+            logoBlack ? logoBlack.forEach(el => el.style.cssText = 'display: block') : null;
+            whiteIcon ? whiteIcon.forEach(el => el.style.cssText = 'display: none') : null;
+            blackIcon ? blackIcon.forEach(el => el.style.cssText = 'display: block') : null;
+            toggleColor ? toggleColor.forEach(el => el.style.cssText += "border-color: #1C1C1C") : null;
             break;
             
             case "dark":
@@ -765,32 +1029,15 @@ function switchMode() {
                 shadowChessBoard ? shadowChessBoard.forEach(el => el.style.cssText += "border-color: #F2F2F2") : null;
                 sidebar ? sidebar.forEach(el => el.style.cssText += "border-color: #F2F2F2; background: #1C1C1C") : null;
                 shadowSidebar ? shadowSidebar.forEach(el => el.style.cssText += "border-color: #F2F2F2") : null;
-                logoWhite ? logoWhite.forEach(el => el.style.cssText += 'display: block') : null;
-                logoBlack ? logoBlack.forEach(el => el.style.cssText += 'display: none') : null;
-                whiteIcon ? whiteIcon.forEach(el => el.style.cssText += 'display: block') : null;
-                blackIcon ? blackIcon.forEach(el => el.style.cssText += 'display: none') : null;
-
-            break;
-
+                logoWhite ? logoWhite.forEach(el => el.style.cssText = 'display: block') : null;
+                logoBlack ? logoBlack.forEach(el => el.style.cssText = 'display: none') : null;
+                whiteIcon ? whiteIcon.forEach(el => el.style.cssText = 'display: block') : null;
+                blackIcon ? blackIcon.forEach(el => el.style.cssText = 'display: none') : null;
+                toggleColor ? toggleColor.forEach(el => el.style.cssText += "border-color: #F2F2F2") : null;
+                
+                break;
+                
         default:
             break;
     }
 }
-
-
-let animation = bodymovin.loadAnimation({
-
-    container: document.getElementById('loader-animation'),
-    
-    path: '../img/loader-chess-game.json',
-    
-    renderer: 'svg',
-    
-    loop: true,
-    
-    autoplay: true,
-    
-    name: "Loader Animation",
-    
-}); 
-
