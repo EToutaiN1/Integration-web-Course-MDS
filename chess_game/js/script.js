@@ -948,7 +948,6 @@ btnToggleColor.addEventListener('click',() =>{
     }
 })
 
-
 // Initialisation of the sun/moon animation
 
 let animationSunMoon = bodymovin.loadAnimation({
