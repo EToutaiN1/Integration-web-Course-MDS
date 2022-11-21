@@ -791,12 +791,23 @@ Case.forEach(item => {
 
         if (numOfKings == 1) {
             setTimeout(() => {
-                if (tog % 2 !== 0) {
-                    showPopUp('red')
-                    
+                if (chessBoard.classList.contains('blue')) {
+                    if (tog % 2 !== 0) {
+                        showPopUp('red')
+                        
+                    }
+                    else if (tog % 2 == 0) {
+                        showPopUp('blue')
+                    }
                 }
-                else if (tog % 2 == 0) {
-                    showPopUp('blue')
+                if (chessBoard.classList.contains('red')) {
+                    if (tog % 2 == 0) {
+                        showPopUp('red')
+                        
+                    }
+                    else if (tog % 2 !== 0) {
+                        showPopUp('blue')
+                    }
                 }
             }, 100)
         }
